@@ -184,8 +184,7 @@
             <div class="mt-8">
                 <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">How to Reach Us</h3>
                 <div class="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden shadow-md">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d563.534579316343!2d74.59007632040023!3d18.164205958901363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc3a01cd6cc5a2b%3A0xe0a7db37f494a5d8!2sSai%20Medisales!5e0!3m2!1sen!2sin!4v1751460434493!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
-                    <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=691&amp;height=400&amp;hl=en&amp;q=Namokar Heights, Bhigwan Rd, Sahyog Society, Baramati, Maharashtra 413102&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://embed-googlemap.com/my-location/">my location</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3790.995717994369!2d74.5896575!3d18.1641112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc3a01cd6cc5a2b%3A0xe0a7db37f494a5d8!2sSai%20Medisales!5e0!3m2!1sen!2sin!4v1751463759425!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <p class="text-center text-gray-600 text-sm mt-4">
                     The map above shows our exact location.
@@ -201,7 +200,7 @@
 
     <footer class="bg-gray-800 text-white py-8 px-6 md:px-12 lg:px-24 rounded-t-lg mt-auto">
         <div class="container mx-auto text-center">
-            <p class="text-sm">© 2025 Sai Medisales. All rights reserved.</p>
+            <p class="text-sm">© 2024 Sai Medisales. All rights reserved.</p>
             <div class="flex justify-center space-x-4 mt-4">
                 <a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out">Privacy Policy</a>
                 <a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out">Terms of Service</a>
