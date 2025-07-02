@@ -55,33 +55,32 @@
     <script src="/js/main.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const queryForm = document.getElementById('queryForm');
-            const submitButton = document.getElementById('submitButton');
-            const formMessage = document.getElementById('formMessage'); // This might not be used if Formspree redirects
+    document.addEventListener('DOMContentLoaded', function() {
+        const queryForm = document.getElementById('queryForm');
+        const submitButton = document.getElementById('submitButton');
+        const formMessage = document.getElementById('formMessage'); // This might not be used if Formspree redirects
 
-            if (queryForm && submitButton) {
-                queryForm.addEventListener('submit', function(event) {
-                    // event.preventDefault(); // Keep this if you want to prevent default redirect,
-                                              // but then you need Formspree's AJAX setup.
-                                              // For simple use, remove it so Formspree handles the redirect.
+        if (queryForm && submitButton) {
+            queryForm.addEventListener('submit', function(event) {
+                // IMPORTANT: REMOVE OR COMMENT OUT THE LINE BELOW
+                // event.preventDefault(); // This line stops the form from submitting to Formspree
 
-                    submitButton.textContent = 'Sending...';
-                    submitButton.disabled = true;
-                    submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+                submitButton.textContent = 'Sending...';
+                submitButton.disabled = true;
+                submitButton.classList.add('opacity-50', 'cursor-not-allowed');
 
-                    // With Formspree's standard integration, the browser handles the submission
-                    // and redirects to a success page (or the page you configure in Formspree).
-                    // The fetch API logic is no longer needed here.
-                    // The 'finally' block is also not strictly necessary if you redirect.
+                // With Formspree's standard integration, the browser handles the submission
+                // and redirects to a success page (or the page you configure in Formspree).
+                // The fetch API logic is no longer needed here.
+                // The 'finally' block is also not strictly necessary if you redirect.
 
-                    // You might want to briefly show a "Sending..." message before redirect.
-                    // A simple timeout might work for visual feedback if you keep preventDefault().
-                    // For true AJAX feedback, refer to Formspree's AJAX guide.
-                });
-            }
-        });
-    </script>
+                // You might want to briefly show a "Sending..." message before redirect.
+                // A simple timeout might work for visual feedback if you keep preventDefault().
+                // For true AJAX feedback, refer to Formspree's AJAX guide.
+            });
+        }
+    });
+</script>
 </body>
 </html>
 <!DOCTYPE html>
