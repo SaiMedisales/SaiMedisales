@@ -22,7 +22,7 @@
                 <span class="block sm:inline"></span>
             </div>
 
-            <form id="queryForm" action="https://formspree.io/f/your_unique_id" method="POST" enctype="multipart/form-data" class="space-y-6">
+            <form id="queryForm" action="https://formspree.io/f/xjkrlejp" method="POST" enctype="multipart/form-data" class="space-y-6">
                 <div>
                     <label for="attachments" class="block text-sm font-medium text-gray-700 mb-1">
                         Attach Files (Optional):
