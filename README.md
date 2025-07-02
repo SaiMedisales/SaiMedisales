@@ -184,13 +184,13 @@
             <div class="mt-8">
                 <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">How to Reach Us</h3>
                 <div class="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden shadow-md">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3790.995717994369!2d74.5896575!3d18.1641112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc3a01cd6cc5a2b%3A0xe0a7db37f494a5d8!2sSai%20Medisales!5e0!3m2!1sen!2sin!4v1751463759425!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3790.9956077177403!2d74.58708257579113!3d18.16411627996431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc3a01cd6cc5a2b%3A0xe0a7db37f494a5d8!2sSai%20Medisales!5e0!3m2!1sen!2sin!4v1751464850534!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <p class="text-center text-gray-600 text-sm mt-4">
                     The map above shows our exact location.
                 </p>
                 <div class="text-center mt-6">
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=Namokar+Heights,+Mahalaxmi+Nagar,+Near+Sahyog+Society,+Shriram+Nagar+Chowk,+Bhigwan+Rd,+Baramati,+Pune,+Maharashtra+-+413102" target="_blank" rel="noopener noreferrer" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <a href="https://maps.app.goo.gl/dWVdkTZhPnJ18qoe7">
                         Get Directions
                     </a>
                 </div>
