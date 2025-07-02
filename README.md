@@ -184,7 +184,7 @@
             <div class="mt-8">
                 <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">How to Reach Us</h3>
                 <div class="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden shadow-md">
-                    <iframe src="https://maps.google.com/?cid=16188148418979603928&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d947.7490593828203!2d74.5888884443946!3d18.164087267177326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc3a01cd6cc5a2b%3A0xe0a7db37f494a5d8!2sSai%20Medisales!5e0!3m2!1sen!2sin!4v1751460000873!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <p class="text-center text-gray-600 text-sm mt-4">
                     The map above shows our exact location.
