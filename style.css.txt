@@ -52,10 +52,3 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-
-.hero-pattern {
-    background-image: url('../assets/img/hero-banner.jpg'); /* Adjust path as needed */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
