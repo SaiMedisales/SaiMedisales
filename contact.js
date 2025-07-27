@@ -69,3 +69,46 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is load
         });
     });
 });
+
+// This code is for the mobile menu toggle on index.html
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    // Check if both elements exist before adding event listeners
+    if (mobileMenuButton && mobileNav) {
+        mobileMenuButton.addEventListener('click', function() {
+            // Toggle the 'hidden' class on the mobile navigation
+            mobileNav.classList.toggle('hidden');
+            
+            // Optional: You might want to change the icon of the button
+            // For example, if you have an X icon when open and hamburger when closed
+            const icon = mobileMenuButton.querySelector('svg');
+            if (mobileNav.classList.contains('hidden')) {
+                // Menu is hidden, show hamburger icon
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+            } else {
+                // Menu is open, show X icon
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            }
+        });
+    }
+
+    // Optional: Close mobile menu when a menu item is clicked (useful for single-page sites)
+    // This makes the menu disappear after the user selects a link
+    const mobileNavLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (!mobileNav.classList.contains('hidden')) {
+                mobileNav.classList.add('hidden'); // Hide the menu
+                
+                // Reset the button icon if it was changed
+                const icon = mobileMenuButton.querySelector('svg');
+                if (icon) { // Check if icon exists
+                   icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>';
+                }
+            }
+        });
+    });
+});
