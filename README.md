@@ -197,9 +197,9 @@
         </div>
     </main>
 
-   <footer class="bg-gray-800 text-white py-8 px-6 md:px-12 lg:px-24 rounded-t-lg">
+  <footer class="bg-gray-800 text-white py-8 px-6 md:px-12 lg:px-24 rounded-t-lg">
     <div class="container mx-auto text-center">
-        <p class="text-sm">© 2025 Sai Medisales. All rights reserved.</p>
+        <p class="text-sm">© 2013 Sai Medisales. All rights reserved.</p>
         <div class="flex justify-center space-x-4 mt-4">
             <a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out">Privacy Policy</a>
             <a href="#" class="text-gray-400 hover:text-white transition duration-300 ease-in-out">Terms of Service</a>
