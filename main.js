@@ -5,13 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mobileMenuButton && mobileNav) {
         mobileMenuButton.addEventListener('click', function() {
             mobileNav.classList.toggle('hidden');
+            mobileNav.classList.toggle('flex'); // Add flex to make it a column
+            mobileNav.classList.toggle('flex-col'); // Stack items vertically
+            mobileNav.classList.toggle('space-y-2'); // Add spacing between items
         });
 
-        // Optional: Hide mobile menu when a link inside it is clicked
-        const mobileNavLinks = mobileNav.querySelectorAll('a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileNav.classList.add('hidden');
+        // Close mobile nav when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileNav.classList.contains('hidden')) {
+                    mobileNav.classList.add('hidden');
+                    mobileNav.classList.remove('flex', 'flex-col', 'space-y-2');
+                }
             });
         });
     }
