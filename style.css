@@ -1,54 +1,24 @@
-/* Import fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&family=Inter:wght@500;600&display=swap');
+/* style.css */
 
-/* Basic Body Styles (Good default for most text) */
-body {
-    font-family: 'Open Sans', sans-serif; /* Or 'Lato', sans-serif; */
-    color: #333; /* Example text color, adjust as needed */
-    line-height: 1.6;
-}
-
-/* Main Heading Style */
-.main-heading { /* Assuming a class for your main heading */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800; /* Extra-bold for impact */
-    font-size: 3.5em; /* Adjust size based on design, 'em' is relative */
-    color: #FFFFFF; /* Current white color looks good */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for more pop */
-}
-
-/* Subheading/Descriptive Text Style */
-.subheading-description { /* Assuming a class for this text block */
-    font-family: 'Open Sans', sans-serif; /* Or 'Lato', sans-serif; */
-    font-weight: 400; /* Regular weight for readability */
-    font-size: 1.2em; /* Adjust size as needed */
-    color: #FFFFFF; /* Current white color looks good */
-    line-height: 1.5;
-}
-
-/* Button Styles */
-.btn { /* Assuming a class for your buttons */
-    font-family: 'Inter', sans-serif; /* Or 'Montserrat', sans-serif; */
-    font-weight: 600; /* Semi-bold for good visibility */
-    font-size: 1.1em; /* Adjust size as needed */
-    text-transform: uppercase; /* Optional: adds a touch of professionalism */
-    /* Other button styles like padding, background, border-radius */
-}
-/* Custom scrollbar for WebKit browsers */
+/* Custom scrollbar for better aesthetics - Adjusted to new blue palette */
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #e2e8f0; /* Tailwind gray-200 */
     border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #2563eb; /* Tailwind blue-600 */
     border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #1d4ed8; /* Tailwind blue-700 */
 }
+
+/* Ensure smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* If you had other custom CSS, add it here */
