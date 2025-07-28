@@ -22,3 +22,14 @@ html {
 }
 
 /* If you had any other custom CSS, keep it here below these rules */
+/* style.css */
+
+/* ... other CSS rules ... */
+
+.h-8 { /* Adjust '8' to your desired height unit (e.g., h-10, h-12, or pixel values) */
+    height: 2rem; /* Example using rem units for better scalability */
+}
+
+.w-auto {
+    width: auto;
+}
