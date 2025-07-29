@@ -1,0 +1,68 @@
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&family=Inter:wght@500;600&display=swap'); [cite: 40]
+
+/* Basic Body Styles (Good default for most text) */
+body {
+    font-family: 'Inter', sans-serif; /* Prefer Inter as it's used elsewhere in your design */
+    color: #333; /* Example text color, adjust as needed */ [cite: 42]
+    line-height: 1.6; [cite: 43]
+    background-color: #f8fafc; /* Light blue-gray background, consistent with site */
+    min-height: 100vh; /* Ensure full height for consistent footer placement */
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1; /* Allows main content to take available space */
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Main Heading Style (from previous style.css.txt) */
+.main-heading { /* Assuming a class for your main heading */
+    font-family: 'Montserrat', sans-serif; [cite: 44]
+    font-weight: 800; /* Extra-bold for impact */ [cite: 44]
+    font-size: 3.5em; /* Adjust size based on design, 'em' is relative */ [cite: 45]
+    color: #FFFFFF; /* Current white color looks good */ [cite: 46]
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for more pop */ [cite: 47]
+}
+
+/* Subheading/Descriptive Text Style (from previous style.css.txt) */
+.subheading-description { /* Assuming a class for this text block */
+    font-family: 'Open Sans', sans-serif; /* Or 'Lato', sans-serif; */ [cite: 48]
+    font-weight: 400; /* Regular weight for readability */ [cite: 49]
+    font-size: 1.2em; /* Adjust size as needed */ [cite: 50]
+    color: #FFFFFF; /* Current white color looks good */ [cite: 51]
+    line-height: 1.5; [cite: 52]
+}
+
+/* Button Styles (from previous style.css.txt) */
+.btn { /* Assuming a class for your buttons */
+    font-family: 'Inter', sans-serif; /* Or 'Montserrat', sans-serif; */ [cite: 53]
+    font-weight: 600; /* Semi-bold for good visibility */ [cite: 54]
+    font-size: 1.1em; /* Adjust size as needed */ [cite: 55]
+    text-transform: uppercase; /* Optional: adds a touch of professionalism */ [cite: 56]
+    /* Other button styles like padding, background, border-radius */
+}
+
+/* Custom scrollbar for WebKit browsers (from previous style.css.txt and contact_us.html) */
+::-webkit-scrollbar {
+    width: 12px; /* Increased from 8px for better visibility */ [cite: 57]
+}
+
+::-webkit-scrollbar-track {
+    background: #e2e8f0; /* Light blue-gray for track */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3b82f6; /* Blue-500 for scrollbar thumb */
+    border-radius: 10px; [cite: 58]
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2563eb; /* Blue-600 for scrollbar hover */
+}
