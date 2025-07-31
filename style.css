@@ -1,213 +1,79 @@
-/* Import fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&family=Inter:wght@500;600&display=swap');
-
-/* Define CSS Variables for Colors */
-:root {
-    --primary-dark: #1a202c; /* Dark Black/Charcoal */
-    --secondary-gold: #D4AF37; /* Gold */
-    --accent-blue: #3b82f6; /* A slightly softer blue */
-    --text-light: #e2e8f0; /* Off-white for dark backgrounds */
-    --text-dark: #2d3748; /* Darker gray for light backgrounds */
-    --bg-light: #ffffff;
-    --bg-dark: #121820; /* Very dark background */
-    --border-color: #4a5568; /* Darker border for accents */
-}
-
 /* Basic Body Styles */
 body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text-dark); /* Default text color for body */
-    line-height: 1.6;
-    background-color: var(--bg-light); /* Default light background */
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    /* Tailwind's text-gray-800 and font-inter are applied in HTML,
+       but you can override or extend here if needed.
+       Using a very subtle off-white background for the overall page body
+       to allow the containers to stand out with their specific backgrounds. */
+    background-color: #f7f7f7; /* A very light gray, almost white */
 }
 
-main {
-    flex-grow: 1;
-}
-
-/* Smooth scrolling for anchor links */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Main Heading Style */
-.main-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 3.5em;
-    color: var(--text-light); /* White for hero section */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow */
-}
-
-/* Subheading/Descriptive Text Style */
-.subheading-description {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1.2em;
-    color: var(--text-light); /* White for hero section */
-    line-height: 1.5;
-}
-
-/* Button Styles */
-.btn {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    transition: all 0.3s ease-in-out; /* Add transition for all button properties */
-    border-radius: 9999px; /* Tailwind's rounded-full */
-    padding: 0.75rem 2rem; /* Tailwind's px-8 py-3 */
-}
-
-.btn-primary {
-    background-color: var(--secondary-gold);
-    color: var(--primary-dark);
-}
-
-.btn-primary:hover {
-    background-color: #c4a129; /* Slightly darker gold on hover */
-    transform: translateY(-2px); /* Lift effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--secondary-gold);
-    border: 2px solid var(--secondary-gold);
-}
-
-.btn-secondary:hover {
-    background-color: var(--secondary-gold);
-    color: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-/* Custom scrollbar for WebKit browsers */
-::-webkit-scrollbar {
-    width: 12px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-light);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent-blue);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #2563eb;
-}
-
-/* Header Specific Styles */
+/* Header Styles */
 .header-bg {
-    background-color: var(--primary-dark); /* Dark header */
-    color: var(--text-light);
+    background-color: #ffffff; /* White header background */
 }
 
-.header-bg .text-blue-600 {
-    color: var(--secondary-gold); /* Logo text */
+/* Footer Styles */
+.footer-bg {
+    background-color: #1a1a1a; /* Dark gray/almost black footer background */
+    color: #ffffff; /* White text on footer */
 }
 
-.header-bg .hover\:text-blue-800:hover {
-    color: #c4a129; /* Hover for logo text */
-}
-
-.header-bg .text-gray-600 {
-    color: var(--text-light); /* Nav links */
-}
-
-.header-bg .hover\:text-blue-600:hover {
-    color: var(--secondary-gold); /* Nav link hover */
-}
-
-.header-bg .mobile-nav-bg {
-    background-color: var(--primary-dark); /* Mobile nav background */
+/* Mobile Navigation Menu Background */
+.mobile-nav-bg {
+    background-color: #ffffff; /* White background for mobile menu */
+    /* Ensure z-index on mobile-nav in HTML is correct for stacking context */
 }
 
 /* Hero Section Specific Styles */
+/* These styles are applied to the section directly in HTML,
+   but if you had complex custom animations or backgrounds in style.css,
+   they would go here. We'll add back the rounded corners and shadow here
+   for consistency if hero-section is intended to be a contained block. */
 .hero-section {
-    background-color: var(--primary-dark); /* Dark background for hero */
+    /* Ensuring full-width background, but content within container */
+    /* No direct background-color here as it's an image. */
+    /* Adding consistent styling for a contained hero section */
+    border-radius: 0.5rem; /* rounded-lg */
+    margin: 1rem; /* m-4 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    overflow: hidden; /* To ensure rounded corners are applied correctly with content */
 }
 
-.hero-section h1, .hero-section p {
-    color: var(--text-light);
-}
 
 /* Section Headings */
+/* The colors for these are now directly managed by Tailwind classes in HTML
+   (text-white or text-black), but you can add general font styling here. */
 .section-heading {
-    color: var(--primary-dark); /* Dark heading for light sections */
+    /* No specific styling needed here if Tailwind handles font-size, weight, color */
 }
 
-/* Card Backgrounds */
-.card-bg {
-    background-color: var(--bg-light); /* Light card background */
-    color: var(--text-dark);
+/* Logo Animation (as defined in your original HTML) */
+@keyframes fadeInSlideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-/* Footer Specific Styles */
-.footer-bg {
-    background-color: var(--primary-dark); /* Dark footer */
-    color: var(--text-light);
+.logo-animation img, .logo-animation span {
+    animation: fadeInSlideRight 0.8s ease-out forwards;
 }
 
-/* Animation for logo (example) */
-.logo-animation:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
+/* Main Heading Animation (if you want specific animations beyond Tailwind) */
+.main-heading {
+    /* For consistency, if you want specific animations/transitions */
+    /* transform: translateY(0); */
+    /* opacity: 1; */
+    /* transition: transform 0.5s ease-out, opacity 0.5s ease-out; */
 }
 
-/* Product Card specific styles */
-.product-card {
-    background-color: var(--bg-light);
-    border-radius: 0.75rem; /* rounded-xl */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+/* Subheading Description Animation */
+.subheading-description {
+    /* Similar to main-heading, for specific animations */
 }
 
-.product-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
-}
-
-.product-card img {
-    width: 100%;
-    height: 200px; /* Fixed height for product images */
-    object-fit: cover;
-}
-
-.product-card-title {
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 600; /* font-semibold */
-    color: var(--primary-dark);
-    margin-bottom: 0.5rem;
-}
-
-.product-card-description {
-    font-size: 0.875rem; /* text-sm */
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-}
-
-.product-card-button {
-    background-color: var(--accent-blue);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem; /* rounded-md */
-    text-align: center;
-    display: inline-block;
-    width: auto;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.product-card-button:hover {
-    background-color: #2563eb;
-}
+/* No .card-bg class needed as card styles are directly applied in HTML with Tailwind */
