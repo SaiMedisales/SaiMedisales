@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is loaded [cite: 30]
+document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is loaded
     const queryForm = document.getElementById('queryForm');
     const submitButton = queryForm.querySelector('button[type="submit"]');
     const successMessage = document.getElementById('form-message-success');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is load
         errorMessage.classList.add('hidden');
 
         if (type === 'success') {
-            successMessage.classList.remove('hidden'); [cite: 31]
+            successMessage.classList.remove('hidden');
         } else if (type === 'error') {
             errorTextSpan.textContent = message;
             errorMessage.classList.remove('hidden');
@@ -21,12 +21,20 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is load
     // Helper function to reset form state
     function resetFormState() {
         submitButton.textContent = 'Send Query'; // Changed from Send Message to Send Query
-        submitButton.disabled = false; [cite: 32]
+        submitButton.disabled = false;
         submitButton.classList.remove('opacity-50', 'cursor-not-allowed'); // Remove loading styles
     }
 
     queryForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent default form submission
+
+        // Basic client-side validation using HTML5 validity
+        if (!queryForm.checkValidity()) {
+            // Trigger browser's default validation messages
+            queryForm.reportValidity();
+            showMessage('error', 'Please fill in all required fields correctly.');
+            return; // Stop the submission
+        }
 
         showMessage('none'); // Hide any previous messages
         submitButton.textContent = 'Sending...'; // Change button text
@@ -35,37 +43,35 @@ document.addEventListener('DOMContentLoaded', function() { // Ensure DOM is load
 
         const formData = new FormData(queryForm);
 
-        // Replace 'YOUR_BACKEND_ENDPOINT_HERE' with your actual backend endpoint 
         fetch('https://formspree.io/f/xjkrlejp', { // Updated to your Formspree endpoint
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json' // Essential for Formspree to return JSON
+            }
         })
         .then(response => {
             if (!response.ok) {
-                // Check for HTTP errors (e.g., 4xx or 5xx) [cite: 34]
-                // If backend sends specific error messages, parse them here
                 return response.json().then(err => { throw err; }).catch(() => {
-                    throw new Error(`HTTP error! Status: ${response.status}`); [cite: 35]
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 });
             }
-            return response.json(); // Assuming your backend returns JSON [cite: 36]
+            return response.json(); // Assuming your backend returns JSON
         })
         .then(data => {
-            if (data.success) { // Assuming your backend returns { success: true } on success
-                showMessage('success', 'Your message has been sent.');
+            if (data.ok) { // Formspree returns { ok: true } on success
+                showMessage('success', 'Your query has been sent successfully!');
                 queryForm.reset(); // Clear the form
-            } else { [cite: 37]
-                // Handle backend-specific errors if any (e.g., { success: false, message: "Invalid input" })
-                showMessage('error', data.message || 'Failed to send message.');
+            } else { //
+                showMessage('error', data.errors ? data.errors.map(e => e.message).join(', ') : 'Failed to send query.');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            // Display a user-friendly error message [cite: 38]
             showMessage('error', error.message || 'An unexpected error occurred. Please try again later.');
         })
         .finally(() => {
-            resetFormState(); // Always reset button state [cite: 39]
+            resetFormState(); // Always reset button state
         });
     });
 });
