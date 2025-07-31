@@ -1,19 +1,31 @@
 /* Import fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&family=Inter:wght@500;600&display=swap'); [cite: 40]
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&family=Inter:wght@500;600&display=swap');
 
-/* Basic Body Styles (Good default for most text) */
+/* Define CSS Variables for Colors */
+:root {
+    --primary-dark: #1a202c; /* Dark Black/Charcoal */
+    --secondary-gold: #D4AF37; /* Gold */
+    --accent-blue: #3b82f6; /* A slightly softer blue */
+    --text-light: #e2e8f0; /* Off-white for dark backgrounds */
+    --text-dark: #2d3748; /* Darker gray for light backgrounds */
+    --bg-light: #ffffff;
+    --bg-dark: #121820; /* Very dark background */
+    --border-color: #4a5568; /* Darker border for accents */
+}
+
+/* Basic Body Styles */
 body {
-    font-family: 'Inter', sans-serif; /* Prefer Inter as it's used elsewhere in your design */
-    color: #333; /* Example text color, adjust as needed */ [cite: 42]
-    line-height: 1.6; [cite: 43]
-    background-color: #f8fafc; /* Light blue-gray background, consistent with site */
-    min-height: 100vh; /* Ensure full height for consistent footer placement */
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark); /* Default text color for body */
+    line-height: 1.6;
+    background-color: var(--bg-light); /* Default light background */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 main {
-    flex-grow: 1; /* Allows main content to take available space */
+    flex-grow: 1;
 }
 
 /* Smooth scrolling for anchor links */
@@ -21,48 +33,181 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Main Heading Style (from previous style.css.txt) */
-.main-heading { /* Assuming a class for your main heading */
-    font-family: 'Montserrat', sans-serif; [cite: 44]
-    font-weight: 800; /* Extra-bold for impact */ [cite: 44]
-    font-size: 3.5em; /* Adjust size based on design, 'em' is relative */ [cite: 45]
-    color: #FFFFFF; /* Current white color looks good */ [cite: 46]
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for more pop */ [cite: 47]
+/* Main Heading Style */
+.main-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 3.5em;
+    color: var(--text-light); /* White for hero section */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow */
 }
 
-/* Subheading/Descriptive Text Style (from previous style.css.txt) */
-.subheading-description { /* Assuming a class for this text block */
-    font-family: 'Open Sans', sans-serif; /* Or 'Lato', sans-serif; */ [cite: 48]
-    font-weight: 400; /* Regular weight for readability */ [cite: 49]
-    font-size: 1.2em; /* Adjust size as needed */ [cite: 50]
-    color: #FFFFFF; /* Current white color looks good */ [cite: 51]
-    line-height: 1.5; [cite: 52]
+/* Subheading/Descriptive Text Style */
+.subheading-description {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.2em;
+    color: var(--text-light); /* White for hero section */
+    line-height: 1.5;
 }
 
-/* Button Styles (from previous style.css.txt) */
-.btn { /* Assuming a class for your buttons */
-    font-family: 'Inter', sans-serif; /* Or 'Montserrat', sans-serif; */ [cite: 53]
-    font-weight: 600; /* Semi-bold for good visibility */ [cite: 54]
-    font-size: 1.1em; /* Adjust size as needed */ [cite: 55]
-    text-transform: uppercase; /* Optional: adds a touch of professionalism */ [cite: 56]
-    /* Other button styles like padding, background, border-radius */
+/* Button Styles */
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out; /* Add transition for all button properties */
+    border-radius: 9999px; /* Tailwind's rounded-full */
+    padding: 0.75rem 2rem; /* Tailwind's px-8 py-3 */
 }
 
-/* Custom scrollbar for WebKit browsers (from previous style.css.txt and contact_us.html) */
+.btn-primary {
+    background-color: var(--secondary-gold);
+    color: var(--primary-dark);
+}
+
+.btn-primary:hover {
+    background-color: #c4a129; /* Slightly darker gold on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--secondary-gold);
+    border: 2px solid var(--secondary-gold);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-gold);
+    color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Custom scrollbar for WebKit browsers */
 ::-webkit-scrollbar {
-    width: 12px; /* Increased from 8px for better visibility */ [cite: 57]
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #e2e8f0; /* Light blue-gray for track */
+    background: var(--bg-light);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3b82f6; /* Blue-500 for scrollbar thumb */
-    border-radius: 10px; [cite: 58]
+    background: var(--accent-blue);
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #2563eb; /* Blue-600 for scrollbar hover */
+    background: #2563eb;
+}
+
+/* Header Specific Styles */
+.header-bg {
+    background-color: var(--primary-dark); /* Dark header */
+    color: var(--text-light);
+}
+
+.header-bg .text-blue-600 {
+    color: var(--secondary-gold); /* Logo text */
+}
+
+.header-bg .hover\:text-blue-800:hover {
+    color: #c4a129; /* Hover for logo text */
+}
+
+.header-bg .text-gray-600 {
+    color: var(--text-light); /* Nav links */
+}
+
+.header-bg .hover\:text-blue-600:hover {
+    color: var(--secondary-gold); /* Nav link hover */
+}
+
+.header-bg .mobile-nav-bg {
+    background-color: var(--primary-dark); /* Mobile nav background */
+}
+
+/* Hero Section Specific Styles */
+.hero-section {
+    background-color: var(--primary-dark); /* Dark background for hero */
+}
+
+.hero-section h1, .hero-section p {
+    color: var(--text-light);
+}
+
+/* Section Headings */
+.section-heading {
+    color: var(--primary-dark); /* Dark heading for light sections */
+}
+
+/* Card Backgrounds */
+.card-bg {
+    background-color: var(--bg-light); /* Light card background */
+    color: var(--text-dark);
+}
+
+/* Footer Specific Styles */
+.footer-bg {
+    background-color: var(--primary-dark); /* Dark footer */
+    color: var(--text-light);
+}
+
+/* Animation for logo (example) */
+.logo-animation:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Product Card specific styles */
+.product-card {
+    background-color: var(--bg-light);
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px; /* Fixed height for product images */
+    object-fit: cover;
+}
+
+.product-card-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: var(--primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.product-card-description {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.product-card-button {
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem; /* rounded-md */
+    text-align: center;
+    display: inline-block;
+    width: auto;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.product-card-button:hover {
+    background-color: #2563eb;
 }
