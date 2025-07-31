@@ -20,4 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // No specific JavaScript for logo animation needed if using CSS 'hover'
+    // For more complex animations (e.g., on-scroll, subtle entrance), JS would be needed here.
 });
