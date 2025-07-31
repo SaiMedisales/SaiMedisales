@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAI MEDISALES - Your Trusted Partner in Veterinary Care</title>
+    <title>Sai Medisales - Veterinary Medicines & Animal Care Products</title>
+    <meta name="description" content="Sai Medisales offers a comprehensive range of veterinary medicines, feed supplements, and animal care products for livestock and pets.">
 
     <link rel="icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-16x16.png">
@@ -18,159 +19,68 @@
     <meta name="theme-color" content="#ffffff">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="text-gray-800 font-inter">
-    <header class="header-bg shadow-md py-4 px-6 md:px-12 lg:px-24 rounded-b-lg relative z-20">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-2 logo-animation">
-                <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-16 w-auto"> 
-                <span class="text-4xl font-bold text-black hover:text-gray-700 transition duration-300 ease-in-out">
-                    Sai Medisales
-                </span>
-            </a>
-            <ul id="desktop-nav" class="hidden md:flex md:space-x-6 flex-col md:flex-row md:static">
-                <li><a href="index.html#home" class="text-black font-medium hover:text-gray-700 transition duration-300 ease-in-out">Home</a></li>
-                <li><a href="products.html" class="text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">Our Products</a></li>
-                <li><a href="index.html#about" class="text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">About Us</a></li>
-                <li><a href="contact_us.html" class="text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">Contact Us</a></li>
-                <li><a href="contact.html" class="text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">Queries</a></li>
-            </ul>
-            <button id="mobile-menu-button" class="md:hidden text-black hover:text-gray-700 focus:outline-none" aria-label="Toggle navigation">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-            <ul id="mobile-nav" class="hidden md:hidden absolute top-full left-0 w-full mobile-nav-bg shadow-lg py-4 px-6 space-y-2 z-10">
-                <li><a href="index.html#home" class="block text-black font-medium hover:text-gray-700 transition duration-300 ease-in-out">Home</a></li>
-                <li><a href="products.html" class="block text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">Our Products</a></li>
-                <li><a href="index.html#about" class="block text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">About Us</a></li>
-                <li><a href="contact_us.html" class="block text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">Contact Us</a></li>
-                <li><a href="contact.html" class="block text-black hover:text-gray-700 font-medium transition duration-300 ease-in-out">Queries</a></li>
-            </ul>
-        </nav>
-    </header>
+<body>
+    <div id="header-placeholder"></div>
 
-    <section id="home" class="hero-section text-gray-900 py-24 md:py-40 text-center rounded-lg m-4 shadow-xl min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('Hero Banner.jpg');">
-            <div class="absolute inset-0 bg-black opacity-40"></div>
-        </div>
-        <div class="container mx-auto px-6 relative z-10">
-            <h1 class="main-heading text-6xl md:text-8xl font-extrabold mb-5 leading-tight tracking-tight text-white">
-                SAI MEDISALES
-            </h1>
-            <h1 class="main-heading text-3xl md:text-4xl font-bold mb-5 leading-tight tracking-tight text-white">
-                Your Trusted Partner in Veterinary Care
-            </h1>
-            <p class="subheading-description text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-95 text-white">
-                Wholesaler & Retailer of Veterinary Medicines & Food Products Since 1999.
-                Services in large and small pet animals (food, medicines, vaccines,etc.)
-            </p>
-            <a href="products.html" class="inline-block bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition duration-300 ease-in-out mr-4">
-                Explore Our Product Range
-            </a>
-            <a href="contact_us.html" class="inline-block bg-transparent text-white border border-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition duration-300 ease-in-out">
-                Connect Us Today
-            </a>
-        </div>
-    </section>
-
-    <section id="offerings" class="py-16 md:py-24 bg-gray-300 container mx-auto px-6 rounded-lg m-4 shadow-md">
-        <h2 class="section-heading text-3xl md:text-4xl font-extrabold text-center mb-12 text-white">Our Services</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <div class="rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out bg-gray-900 border border-gray-700">
-                <img src="https://placehold.co/600x400/000000/ffffff?text=Healthy+Cattle" alt="Medicines and health solutions for cattle, horses, and other large farm animals" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Large Farm Animal Medicines</h3>
-                    <p class="text-gray-300 text-sm mb-4">
-                        We offer a comprehensive range of medicines and health solutions for cattle, horses, and other large farm animals, ensuring their optimal well-being.
-                    </p>
-                </div>
-            </div>
-
-            <div class="rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out bg-gray-900 border border-gray-700">
-                <img src="https://placehold.co/600x400/000000/ffffff?text=Dairy+Nutrition" alt="Nutritional supplements and feed additives for dairy animals" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Dairy Nutrition & Supplements</h3>
-                    <p class="text-gray-300 text-sm mb-4">
-                        Boost your dairy animals' health and productivity with our high-quality nutritional supplements and feed additives.
-                    </p>
-                </div>
-            </div>
-
-            <div class="rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out bg-gray-900 border border-gray-700">
-                <img src="https://placehold.co/600x400/000000/ffffff?text=Poultry+Care" alt="Medicines and vaccines for healthy poultry farming and disease prevention" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Poultry Medicines & Vaccines</h3>
-                    <p class="text-gray-300 text-sm mb-4">
-                        Ensure healthy poultry farming and effective disease prevention with our essential medicines and vaccines.
-                    </p>
-                </div>
-            </div>
-
-            <div class="rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out bg-gray-900 border border-gray-700">
-                <img src="https://placehold.co/600x400/000000/ffffff?text=Premium+Pet+Food" alt="Nutritious food options for dogs, cats, and other pets" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Premium Pet Food</h3>
-                    <p class="text-gray-300 text-sm mb-4">
-                        We offer nutritious and delicious food options to keep your dogs, cats, and other beloved pets healthy and thriving.
-                    </p>
-                </div>
-            </div>
-
-            <div class="rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out bg-gray-900 border border-gray-700">
-                <img src="https://placehold.co/600x400/000000/ffffff?text=Pet+Medicines" alt="Medicines and health products for dogs, cats, and other pets" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Pet Medicines, Vaccines & Accessories</h3>
-                    <p class="text-gray-300 text-sm mb-4">
-                        A wide range of medicines and grooming tools to toys and other essential accessories are available to keep your pets healthy and happy.
-                    </p>
-                </div>
-            </div>
-<div class="rounded-xl shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out bg-gray-900 border border-gray-700">
-                <img src="https://placehold.co/600x400/000000/ffffff?text=Pet+Medicines" alt="Medicines and health products for dogs, cats, and other pets" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Pet Medicines, Vaccines & Accessories</h3>
-                    <p class="text-gray-300 text-sm mb-4">
-                        A wide range of medicines and grooming tools to toys and other essential accessories are available to keep your pets healthy and happy.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-12">
-            <a href="products.html" class="inline-block bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition duration-300 ease-in-out">
-                View All Products
-            </a>
-        </div>
-    </section>
-
-    <section id="about" class="bg-gray-100 py-16 md:py-24 rounded-lg m-4 shadow-md">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-            <div class="md:w-1/2">
-                <img src="https://placehold.co/600x400/000000/ffffff?text=Modern+Veterinary+Facility" alt="Image of a modern veterinary clinic or animal care facility" class="rounded-xl shadow-lg w-full h-auto">
-            </div>
-            <div class="md:w-1/2 text-center md:text-left">
-                <h2 class="section-heading text-3xl md:text-4xl font-extrabold mb-6 text-black">About Sai Medisales</h2>
-                <p class="text-black text-lg leading-relaxed mb-4">
-                    Sai Medisales has been a trusted name in veterinary medicine distribution since 1999. We operate as both wholesale and retail distributors, committed to providing high-quality products for the health and well-being of all animals, with a focus on purity, effectiveness, and customer satisfaction.
+    <main class="flex-grow">
+        <section id="home" class="hero-section text-center py-24 md:py-32 flex items-center justify-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
+                    Your Trusted Partner in Animal Health
+                </h1>
+                <p class="text-xl md:text-2xl text-white opacity-90 mb-8 animate-fade-in-up delay-200">
+                    Providing Quality Veterinary Medicines, Feed Supplements & Animal Care Products
                 </p>
-                <p class="text-black text-lg leading-relaxed mb-4">
-                    Our extensive range covers the needs of large farm animals, dairy nutrition, poultry medicines & vaccines, pet food, pet medicines, pet accessories, and various other items crucial for animal care & treatment. Our knowledgeable team is always ready to assist you with your specific requirements.
-                </p>
-                <p class="text-black text-lg leading-relaxed">
-                    With over two decades of experience, Sai Medisales is your reliable partner for all veterinary pharmaceutical and animal care requirements.
-                </p>
+                <a href="products.html" class="btn btn-primary animate-fade-in-up delay-400">Explore Our Products</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="footer-bg text-white py-8 px-6 md:px-12 lg:px-24 rounded-t-lg">
-        <div class="container mx-auto text-center">
-            <p class="text-sm">© 2013 Sai Medisales. All rights reserved.</p>
-        </div>
-    </footer>
+        <section id="about" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-heading text-3xl md:text-4xl font-bold mb-8">About Sai Medisales</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-12">
+                    Established in 2013, Sai Medisales has grown to be a leading distributor of veterinary pharmaceuticals, nutritional supplements, and animal care products. We are committed to fostering the health and well-being of animals across various sectors, from large livestock to cherished household pets.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-3">Our Mission</h3>
+                        <p class="text-gray-600">
+                            To provide high-quality, effective, and safe veterinary products that contribute to the productivity and health of animals, supporting veterinarians and animal owners with reliable solutions.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-3">Our Vision</h3>
+                        <p class="text-gray-600">
+                            To be the most trusted and preferred partner in animal health, recognized for our extensive product range, exceptional service, and commitment to animal welfare.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-3">Our Values</h3>
+                        <p class="text-gray-600">
+                            Integrity, quality, customer focus, innovation, and a deep commitment to animal welfare guide every aspect of our business operations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <script src="main.js"></script>
+        <section class="py-16 md:py-24 bg-blue-600 text-white text-center">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Comprehensive Solutions for Every Animal</h2>
+                <p class="text-lg opacity-90 max-w-2xl mx-auto mb-10">
+                    From essential livestock medications to premium pet foods and accessories, we offer a complete portfolio designed to meet diverse animal health needs.
+                </p>
+                <a href="contact_us.html" class="btn btn-secondary bg-white text-blue-600 hover:bg-gray-100">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="main.js" defer></script>
+    <script src="products.js" defer></script>
+    <script src="loadComponents.js" defer></script>
 </body>
 </html>

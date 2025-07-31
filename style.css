@@ -1,79 +1,184 @@
-/* Basic Body Styles */
+/* General Body Styles */
 body {
-    /* Tailwind's text-gray-800 and font-inter are applied in HTML,
-       but you can override or extend here if needed.
-       Using a very subtle off-white background for the overall page body
-       to allow the containers to stand out with their specific backgrounds. */
-    background-color: #f7f7f7; /* A very light gray, almost white */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    /* IMPORTANT: Adjust this padding-top value to be the exact height of your fixed header */
+    padding-top: 70px;
+    transition: padding-top 0.3s ease; /* Optional: smooth transition */
+    min-height: 100vh; /* Ensure body takes full viewport height for footer positioning */
+    display: flex;
+    flex-direction: column; /* Allows main to flex-grow and pushes footer down */
 }
 
-/* Header Styles */
+/* Header Specific Styles */
 .header-bg {
-    background-color: #ffffff; /* White header background */
+    background-color: #f7fafc; /* Tailwind's gray-100 */
+    position: fixed; /* Makes the header stay at the top */
+    top: 0; /* Positions it at the very top */
+    width: 100%; /* Makes it span the full width */
+    z-index: 1000; /* Ensures it's on top of other content */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
+    padding: 1rem 1.5rem; /* Equivalent to py-4 px-6 */
+    border-bottom-left-radius: 0.5rem; /* rounded-b-lg */
+    border-bottom-right-radius: 0.5rem; /* rounded-b-lg */
 }
 
-/* Footer Styles */
-.footer-bg {
-    background-color: #1a1a1a; /* Dark gray/almost black footer background */
-    color: #ffffff; /* White text on footer */
+.logo-animation {
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Mobile Navigation Menu Background */
-.mobile-nav-bg {
-    background-color: #ffffff; /* White background for mobile menu */
-    /* Ensure z-index on mobile-nav in HTML is correct for stacking context */
+.logo-animation:hover {
+    transform: scale(1.05);
 }
 
-/* Hero Section Specific Styles */
-/* These styles are applied to the section directly in HTML,
-   but if you had complex custom animations or backgrounds in style.css,
-   they would go here. We'll add back the rounded corners and shadow here
-   for consistency if hero-section is intended to be a contained block. */
+.header-bg nav a {
+    transition: color 0.3s ease-in-out;
+}
+
+.header-bg nav a:hover {
+    color: #3b82f6; /* Example: Tailwind's blue-500 */
+}
+
+/* Hero Section Styles (specific to index.html) */
 .hero-section {
-    /* Ensuring full-width background, but content within container */
-    /* No direct background-color here as it's an image. */
-    /* Adding consistent styling for a contained hero section */
-    border-radius: 0.5rem; /* rounded-lg */
-    margin: 1rem; /* m-4 */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
-    overflow: hidden; /* To ensure rounded corners are applied correctly with content */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/000000/FFFFFF/png?text=Hero+Image') no-repeat center center/cover;
+    color: white;
+    min-height: 70vh; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
-/* Section Headings */
-/* The colors for these are now directly managed by Tailwind classes in HTML
-   (text-white or text-black), but you can add general font styling here. */
+/* Section Heading Styles */
 .section-heading {
-    /* No specific styling needed here if Tailwind handles font-size, weight, color */
+    color: #2c5282; /* Darker blue for headings */
+    text-align: center;
+    margin-bottom: 2.5rem; /* Adjust as needed */
 }
 
-/* Logo Animation (as defined in your original HTML) */
-@keyframes fadeInSlideRight {
+/* Product Card Styles */
+.product-card {
+    background-color: #ffffff;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    overflow: hidden; /* For image border-radius */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card img {
+    width: 100%;
+    height: 12rem; /* h-48 */
+    object-fit: cover;
+}
+
+.product-card-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: #2d3748; /* gray-800 */
+    margin-bottom: 0.5rem;
+}
+
+.product-card-description {
+    font-size: 0.875rem; /* text-sm */
+    color: #4a5568; /* gray-700 */
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Allows description to take available space */
+}
+
+.product-card-button {
+    display: inline-block;
+    background-color: #4299e1; /* blue-500 */
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem; /* rounded */
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.product-card-button:hover {
+    background-color: #3182ce; /* blue-600 */
+}
+
+/* Button styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem; /* Adjust padding as needed */
+    border-radius: 0.375rem; /* Tailwind rounded-md */
+    font-weight: 500; /* Tailwind font-medium */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
+    text-decoration: none; /* Ensure links styled as buttons don't have underline */
+}
+
+.btn-primary {
+    background-color: #4299e1; /* Blue-500 */
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #3182ce; /* Blue-600 */
+}
+
+.btn-secondary {
+    background-color: #edf2f7; /* Gray-200 */
+    color: #2d3748; /* Gray-800 */
+    border-color: #cbd5e0; /* Gray-300 */
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0; /* Gray-300 */
+}
+
+/* Mobile Navigation Specific Styles */
+#mobile-nav {
+    background-color: #f7fafc; /* mobile-nav-bg, same as header-bg for consistency */
+    position: absolute;
+    top: 100%; /* Positions it directly below the header */
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1rem 1.5rem; /* py-4 px-6 */
+    z-index: 999; /* Slightly lower than header but still above content */
+}
+
+#mobile-nav li a {
+    padding: 0.5rem 0; /* Add some vertical padding for touch targets */
+    display: block; /* Make the whole area clickable */
+}
+
+/* Footer Specific Styles */
+.footer-bg {
+    background-color: #2d3748; /* Tailwind's gray-800 */
+    color: white;
+    padding: 2rem 1.5rem; /* py-8 px-6 */
+    border-top-left-radius: 0.5rem; /* rounded-t-lg */
+    border-top-right-radius: 0.5rem; /* rounded-t-lg */
+    margin-top: auto; /* Pushes the footer to the bottom if content is short */
+}
+
+/* Animation for hero section (optional, from original) */
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+.animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+.animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
 }
-
-.logo-animation img, .logo-animation span {
-    animation: fadeInSlideRight 0.8s ease-out forwards;
-}
-
-/* Main Heading Animation (if you want specific animations beyond Tailwind) */
-.main-heading {
-    /* For consistency, if you want specific animations/transitions */
-    /* transform: translateY(0); */
-    /* opacity: 1; */
-    /* transition: transform 0.5s ease-out, opacity 0.5s ease-out; */
-}
-
-/* Subheading Description Animation */
-.subheading-description {
-    /* Similar to main-heading, for specific animations */
-}
-
-/* No .card-bg class needed as card styles are directly applied in HTML with Tailwind */
