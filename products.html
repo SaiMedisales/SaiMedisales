@@ -6,11 +6,18 @@
     <title>Our Products - Sai Medisales</title>
     <meta name="description" content="Explore the extensive range of veterinary medicines, food products, and accessories offered by Sai Medisales.">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-512x512.png">
+    <link rel="manifest" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/site.webmanifest">
 
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css"> 
 </head>
@@ -61,44 +68,10 @@
             </div>
 
         <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <div class="product-card">
-                <img src="https://placehold.co/400x300/1a202c/D4AF37?text=Product+Image" alt="Product Name 1">
-                <div class="p-4">
-                    <h3 class="product-card-title">Product Name 1</h3>
-                    <p class="product-card-description">A short description of Product 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="#" class="product-card-button">View Details</a>
-                </div>
             </div>
 
-            <div class="product-card">
-                <img src="https://placehold.co/400x300/1a202c/D4AF37?text=Product+Image" alt="Product Name 2">
-                <div class="p-4">
-                    <h3 class="product-card-title">Product Name 2</h3>
-                    <p class="product-card-description">Description for Product 2, highlighting its key features or benefits.</p>
-                    <a href="#" class="product-card-button">View Details</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://placehold.co/400x300/1a202c/D4AF37?text=Product+Image" alt="Product Name 3">
-                <div class="p-4">
-                    <h3 class="product-card-title">Product Name 3</h3>
-                    <p class="product-card-description">Brief information about Product 3 and its primary use cases.</p>
-                    <a href="#" class="product-card-button">View Details</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://placehold.co/400x300/1a202c/D4AF37?text=Product+Image" alt="Product Name 4">
-                <div class="p-4">
-                    <h3 class="product-card-title">Product Name 4</h3>
-                    <p class="product-card-description">Key details of Product 4, including who it's for and what it does.</p>
-                    <a href="#" class="product-card-button">View Details</a>
-                </div>
-            </div>
-            </div>
         <div class="text-center mt-12">
-            <p class="text-gray-600">Please note: Displaying 4000 products efficiently on a static page requires dynamic loading (e.g., JavaScript with a data source).</p>
+            <p class="text-gray-600">Note: For a very large number of products, consider implementing pagination or infinite scrolling for better performance.</p>
         </div>
     </main>
 
@@ -109,5 +82,5 @@
     </footer>
 
     <script src="main.js" defer></script>
-</body>
+    <script src="products.js" defer></script> </body>
 </html>
