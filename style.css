@@ -1,68 +1,79 @@
-/* Import fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&family=Inter:wght@500;600&display=swap'); [cite: 40]
-
-/* Basic Body Styles (Good default for most text) */
+/* Basic Body Styles */
 body {
-    font-family: 'Inter', sans-serif; /* Prefer Inter as it's used elsewhere in your design */
-    color: #333; /* Example text color, adjust as needed */ [cite: 42]
-    line-height: 1.6; [cite: 43]
-    background-color: #f8fafc; /* Light blue-gray background, consistent with site */
-    min-height: 100vh; /* Ensure full height for consistent footer placement */
-    display: flex;
-    flex-direction: column;
+    /* Tailwind's text-gray-800 and font-inter are applied in HTML,
+       but you can override or extend here if needed.
+       Using a very subtle off-white background for the overall page body
+       to allow the containers to stand out with their specific backgrounds. */
+    background-color: #f7f7f7; /* A very light gray, almost white */
 }
 
-main {
-    flex-grow: 1; /* Allows main content to take available space */
+/* Header Styles */
+.header-bg {
+    background-color: #ffffff; /* White header background */
 }
 
-/* Smooth scrolling for anchor links */
-html {
-    scroll-behavior: smooth;
+/* Footer Styles */
+.footer-bg {
+    background-color: #1a1a1a; /* Dark gray/almost black footer background */
+    color: #ffffff; /* White text on footer */
 }
 
-/* Main Heading Style (from previous style.css.txt) */
-.main-heading { /* Assuming a class for your main heading */
-    font-family: 'Montserrat', sans-serif; [cite: 44]
-    font-weight: 800; /* Extra-bold for impact */ [cite: 44]
-    font-size: 3.5em; /* Adjust size based on design, 'em' is relative */ [cite: 45]
-    color: #FFFFFF; /* Current white color looks good */ [cite: 46]
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for more pop */ [cite: 47]
+/* Mobile Navigation Menu Background */
+.mobile-nav-bg {
+    background-color: #ffffff; /* White background for mobile menu */
+    /* Ensure z-index on mobile-nav in HTML is correct for stacking context */
 }
 
-/* Subheading/Descriptive Text Style (from previous style.css.txt) */
-.subheading-description { /* Assuming a class for this text block */
-    font-family: 'Open Sans', sans-serif; /* Or 'Lato', sans-serif; */ [cite: 48]
-    font-weight: 400; /* Regular weight for readability */ [cite: 49]
-    font-size: 1.2em; /* Adjust size as needed */ [cite: 50]
-    color: #FFFFFF; /* Current white color looks good */ [cite: 51]
-    line-height: 1.5; [cite: 52]
+/* Hero Section Specific Styles */
+/* These styles are applied to the section directly in HTML,
+   but if you had complex custom animations or backgrounds in style.css,
+   they would go here. We'll add back the rounded corners and shadow here
+   for consistency if hero-section is intended to be a contained block. */
+.hero-section {
+    /* Ensuring full-width background, but content within container */
+    /* No direct background-color here as it's an image. */
+    /* Adding consistent styling for a contained hero section */
+    border-radius: 0.5rem; /* rounded-lg */
+    margin: 1rem; /* m-4 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    overflow: hidden; /* To ensure rounded corners are applied correctly with content */
 }
 
-/* Button Styles (from previous style.css.txt) */
-.btn { /* Assuming a class for your buttons */
-    font-family: 'Inter', sans-serif; /* Or 'Montserrat', sans-serif; */ [cite: 53]
-    font-weight: 600; /* Semi-bold for good visibility */ [cite: 54]
-    font-size: 1.1em; /* Adjust size as needed */ [cite: 55]
-    text-transform: uppercase; /* Optional: adds a touch of professionalism */ [cite: 56]
-    /* Other button styles like padding, background, border-radius */
+
+/* Section Headings */
+/* The colors for these are now directly managed by Tailwind classes in HTML
+   (text-white or text-black), but you can add general font styling here. */
+.section-heading {
+    /* No specific styling needed here if Tailwind handles font-size, weight, color */
 }
 
-/* Custom scrollbar for WebKit browsers (from previous style.css.txt and contact_us.html) */
-::-webkit-scrollbar {
-    width: 12px; /* Increased from 8px for better visibility */ [cite: 57]
+/* Logo Animation (as defined in your original HTML) */
+@keyframes fadeInSlideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-::-webkit-scrollbar-track {
-    background: #e2e8f0; /* Light blue-gray for track */
-    border-radius: 10px;
+.logo-animation img, .logo-animation span {
+    animation: fadeInSlideRight 0.8s ease-out forwards;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #3b82f6; /* Blue-500 for scrollbar thumb */
-    border-radius: 10px; [cite: 58]
+/* Main Heading Animation (if you want specific animations beyond Tailwind) */
+.main-heading {
+    /* For consistency, if you want specific animations/transitions */
+    /* transform: translateY(0); */
+    /* opacity: 1; */
+    /* transition: transform 0.5s ease-out, opacity 0.5s ease-out; */
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #2563eb; /* Blue-600 for scrollbar hover */
+/* Subheading Description Animation */
+.subheading-description {
+    /* Similar to main-heading, for specific animations */
 }
+
+/* No .card-bg class needed as card styles are directly applied in HTML with Tailwind */
