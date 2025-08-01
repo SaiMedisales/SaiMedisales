@@ -1,0 +1,92 @@
+[
+  {
+    "id": "lam001",
+    "name": "BovineBoost Oral Solution",
+    "description": "A potent oral solution for improving immunity and growth in cattle and buffalo. Essential for dairy farm health.",
+    "category": "Large Animal Medicines",
+    "image": "images/placeholder_large_animal.jpg",
+    "price": "₹ 750",
+    "availability": "In Stock",
+    "brand": "HealthyHerd",
+    "details": {
+      "dosage": "50ml per day for 7 days",
+      "ingredients": ["Vitamins A, D3, E", "Trace Minerals"],
+      "packaging": "1 Litre bottle"
+    }
+  },
+  {
+    "id": "poultry001",
+    "name": "PoultryGuard Vaccine",
+    "description": "Broad-spectrum vaccine protecting poultry flocks from common viral diseases. Administered via drinking water.",
+    "category": "Poultry & Birds",
+    "image": "images/placeholder_poultry.jpg",
+    "price": "₹ 1200",
+    "availability": "Limited Stock",
+    "brand": "FeatherShield",
+    "details": {
+      "type": "Live attenuated vaccine",
+      "application": "Oral (drinking water)",
+      "target_diseases": ["Marek's Disease", "Infectious Bursal Disease"]
+    }
+  },
+  {
+    "id": "petfood001",
+    "name": "Canine Elite Kibble",
+    "description": "High-protein, grain-free kibble for adult dogs. Supports muscle health and provides essential nutrients.",
+    "category": "Pet Food",
+    "image": "images/placeholder_dog_food.jpg",
+    "price": "₹ 1500 (2kg pack)",
+    "availability": "In Stock",
+    "brand": "PawfectNutrition",
+    "details": {
+      "main_ingredients": ["Real Chicken", "Sweet Potato", "Peas"],
+      "life_stage": "Adult",
+      "breed_size": "All sizes"
+    }
+  },
+  {
+    "id": "dairy001",
+    "name": "CalciMilk Plus Powder",
+    "description": "Calcium and phosphorus supplement for dairy cows, promoting stronger bones and higher milk yield. Enhances overall well-being.",
+    "category": "Dairy Nutrition",
+    "image": "images/placeholder_dairy.jpg",
+    "price": "₹ 950 (5kg bag)",
+    "availability": "In Stock",
+    "brand": "DairyBoost",
+    "details": {
+      "form": "Powder",
+      "benefits": ["Increased milk production", "Bone health", "Prevents milk fever"],
+      "application": "Mix with feed"
+    }
+  },
+  {
+    "id": "petmed001",
+    "name": "Flea & Tick Defense Collar",
+    "description": "Long-lasting protective collar for dogs, effective against fleas and ticks for up to 8 months. Water-resistant design.",
+    "category": "Pet Medicines & Accessories",
+    "image": "images/placeholder_flea_collar.jpg",
+    "price": "₹ 850",
+    "availability": "In Stock",
+    "brand": "PetShield",
+    "details": {
+      "duration": "8 months",
+      "resistance": "Water-resistant",
+      "active_ingredients": ["Imidacloprid", "Flumethrin"]
+    }
+  },
+  {
+    "id": "lam002",
+    "name": "LiverGuard Tonic",
+    "description": "Herbal liver tonic for large animals, supporting liver function and detoxification. Improves digestion and nutrient absorption.",
+    "category": "Large Animal Medicines",
+    "image": "images/placeholder_liver_tonic.jpg",
+    "price": "₹ 600",
+    "availability": "In Stock",
+    "brand": "VetHerbs",
+    "details": {
+      "form": "Liquid",
+      "volume": "1 Litre",
+      "benefits": ["Liver support", "Improved digestion"]
+    }
+  }
+]

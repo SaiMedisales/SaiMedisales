@@ -1,53 +1,147 @@
-/* Basic Body Styles */
-body {
-    /* Tailwind's text-gray-800 and font-inter are applied in HTML,
-       but you can override or extend here if needed.
-       Using a very subtle off-white background for the overall page body
-       to allow the containers to stand out with their specific backgrounds. */
-    background-color: #f7f7f7; /* A very light gray, almost white */
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap');
+
+/* CSS Variables for Dark Theme */
+:root {
+    --color-bg-primary: #1A1A2E; /* Deep Indigo-Black */
+    --color-bg-secondary: #2A2A4A; /* Slightly Lighter Indigo for cards/sections */
+    --color-bg-tertiary: #0F0F1A; /* Even Deeper for footer */
+    --color-text-light: #E0E0E0; /* Off-White/Light Gray */
+    --color-text-muted: #A0A0C0; /* Muted Blue-Gray */
+    --color-accent: #80FFE0; /* Vibrant Mint Green */
+    --color-accent-dark: #40B0A0; /* Darker mint for hover/active */
+    --color-shadow-dark: rgba(0, 0, 0, 0.4); /* Darker shadow for dark theme */
 }
 
-/* Header Styles */
-.header-bg {
-    background-color: #ffffff; /* White header background */
+/* Basic Body Styles */
+body {
+    font-family: 'Inter', sans-serif; /* Default body font */
+    background-color: var(--color-bg-primary); /* Primary dark background */
+    color: var(--color-text-light); /* Light text on dark background */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Header Styles (Fixed) */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--color-bg-secondary); /* Use secondary dark for header */
+    box-shadow: 0 5px 15px var(--color-shadow-dark); /* Darker shadow */
+    border-radius: 0; /* No rounded corners for fixed full-width header */
+}
+
+/* Body Padding for Fixed Header */
+.body-padding-top {
+    padding-top: 80px; /* Keep this value, adjust if header height changes */
 }
 
 /* Footer Styles */
 .footer-bg {
-    background-color: #1a1a1a; /* Dark gray/almost black footer background */
-    color: #ffffff; /* White text on footer */
+    background-color: var(--color-bg-tertiary); /* Even darker for footer */
+    color: var(--color-text-muted); /* Muted text for footer */
+    box-shadow: 0 -5px 15px var(--color-shadow-dark); /* Darker shadow */
 }
 
 /* Mobile Navigation Menu Background */
 .mobile-nav-bg {
-    background-color: #ffffff; /* White background for mobile menu */
-    /* Ensure z-index on mobile-nav in HTML is correct for stacking context */
+    background-color: var(--color-bg-secondary); /* Same as header */
+    box-shadow: 0 5px 15px var(--color-shadow-dark); /* Darker shadow */
 }
 
-/* Hero Section Specific Styles */
-/* These styles are applied to the section directly in HTML,
-   but if you had complex custom animations or backgrounds in style.css,
-   they would go here. We'll add back the rounded corners and shadow here
-   for consistency if hero-section is intended to be a contained block. */
+/* Hero Section Specific Styles (retaining rounded corners, but adjusting background for consistency) */
 .hero-section {
+    /* Your background image will still apply via inline style in HTML */
     /* Ensuring full-width background, but content within container */
-    /* No direct background-color here as it's an image. */
-    /* Adding consistent styling for a contained hero section */
-    border-radius: 0.5rem; /* rounded-lg */
-    margin: 1rem; /* m-4 */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
-    overflow: hidden; /* To ensure rounded corners are applied correctly with content */
+    border-radius: 0.75rem; /* rounded-xl for consistency */
+    margin: 1.5rem; /* m-6 (increased slightly for more breathing room) */
+    box-shadow: 0 15px 25px var(--color-shadow-dark); /* Larger, darker shadow */
+    overflow: hidden;
+    /* The overlay opacity will need to be adjusted if background image visibility is an issue */
+}
+
+/* Section Styles - Common for card-like sections */
+/* Applied to Services and Contact sections that use bg-white/bg-gray-50 */
+.section-card {
+    background-color: var(--color-bg-secondary); /* Dark background for cards/sections */
+    color: var(--color-text-light); /* Light text */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 20px var(--color-shadow-dark); /* Darker shadow */
 }
 
 
 /* Section Headings */
-/* The colors for these are now directly managed by Tailwind classes in HTML
-   (text-white or text-black), but you can add general font styling here. */
 .section-heading {
-    /* No specific styling needed here if Tailwind handles font-size, weight, color */
+    font-family: 'Poppins', sans-serif; /* Poppins for headings */
+    color: var(--color-text-light); /* Light color for headings */
 }
 
-/* Logo Animation (as defined in your original HTML) */
+/* Links and Navigation Text (adjusting for dark theme hover) */
+nav a,
+.mobile-menu a {
+    color: var(--color-text-light); /* Default link color */
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+.mobile-menu a:hover,
+.btn-secondary { /* Applying the general style to secondary button */
+    color: var(--color-accent); /* Accent color on hover */
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem; /* px-6 py-3 for standard buttons */
+    border-radius: 0.5rem; /* rounded-md */
+    font-weight: 600; /* font-semibold */
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px var(--color-shadow-dark); /* Shadow for buttons */
+}
+
+.btn-primary {
+    background-color: var(--color-accent); /* Accent color background */
+    color: var(--color-bg-primary); /* Dark text for contrast */
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-dark); /* Darker accent on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 6px 12px var(--color-shadow-dark); /* Enhanced shadow */
+}
+
+.btn-secondary {
+    background-color: var(--color-bg-secondary); /* Secondary background for secondary button */
+    color: var(--color-text-light); /* Light text */
+    border: 1px solid var(--color-text-muted); /* Subtle border */
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-bg-tertiary); /* Darker background on hover */
+    border-color: var(--color-accent); /* Accent border on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 6px 12px var(--color-shadow-dark); /* Enhanced shadow */
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+textarea {
+    background-color: var(--color-bg-primary); /* Dark background for inputs */
+    color: var(--color-text-light); /* Light text in inputs */
+    border: 1px solid var(--color-bg-secondary); /* Subtle border */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: var(--color-accent); /* Accent border on focus */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(128, 255, 224, 0.3); /* Subtle accent glow */
+}
+
+/* Logo Animation */
 @keyframes fadeInSlideRight {
     from {
         opacity: 0;
@@ -63,17 +157,11 @@ body {
     animation: fadeInSlideRight 0.8s ease-out forwards;
 }
 
-/* Main Heading Animation (if you want specific animations beyond Tailwind) */
-.main-heading {
-    /* For consistency, if you want specific animations/transitions */
-    /* transform: translateY(0); */
-    /* opacity: 1; */
-    /* transition: transform 0.5s ease-out, opacity 0.5s ease-out; */
+/* Active Filter Button Style */
+.filter-btn.active-filter {
+    background-color: var(--color-accent); /* Use accent color for active button */
+    color: var(--color-bg-primary); /* Dark text on accent background */
+    border-color: var(--color-accent); /* Accent border */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 8px var(--color-shadow-dark); /* Enhanced shadow */
 }
-
-/* Subheading Description Animation */
-.subheading-description {
-    /* Similar to main-heading, for specific animations */
-}
-
-/* No .card-bg class needed as card styles are directly applied in HTML with Tailwind */

@@ -1,89 +1,78 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const productsData = [
-        // Example Products - Add your 4000 products here
-        {
-            id: 1,
-            name: "Bovine Multi-Vitamin Supplement",
-            description: "Essential vitamins and minerals for optimal cattle health and productivity. Promotes growth and immunity.",
-            imageUrl: "https://placehold.co/400x300/1a202c/D4AF37?text=Cattle+Sup", // Replace with your image
-            detailUrl: "#" // Link to a product detail page if you create one
-        },
-        {
-            id: 2,
-            name: "Poultry Growth Booster",
-            description: "Formulated to enhance rapid growth and improve feed conversion in broiler chickens. Supports bone development.",
-            imageUrl: "https://placehold.co/400x300/1a202c/D4AF37?text=Poultry+Boost", // Replace with your image
-            detailUrl: "#"
-        },
-        {
-            id: 3,
-            name: "Canine Joint Care Chews",
-            description: "Delicious chews supporting hip and joint health for dogs of all ages. Contains glucosamine and chondroitin.",
-            imageUrl: "https://placehold.co/400x300/1a202c/D4AF37?text=Dog+Joint", // Replace with your image
-            detailUrl: "#"
-        },
-        {
-            id: 4,
-            name: "Equine Digestive Aid",
-            description: "Natural blend to support healthy digestion and gut flora in horses. Reduces colic risk.",
-            imageUrl: "https://placehold.co/400x300/1a202c/D4AF37?text=Horse+Digestion", // Replace with your image
-            detailUrl: "#"
-        },
-        {
-            id: 5,
-            name: "Feline Dental Treats",
-            description: "Crunchy treats designed to reduce plaque and tartar buildup in cats, promoting fresher breath.",
-            imageUrl: "https://placehold.co/400x300/1a202c/D4AF37?text=Cat+Dental", // Replace with your image
-            detailUrl: "#"
-        },
-        {
-            id: 6,
-            name: "Dairy Cattle Probiotic",
-            description: "Improves milk production and prevents digestive upsets in dairy cows. Enhances nutrient absorption.",
-            imageUrl: "https://placehold.co/400x300/1a202c/D4AF37?text=Dairy+Probiotic", // Replace with your image
-            detailUrl: "#"
-        },
-        // ... Add more products following this structure ...
-        // Example for adding more products (copy-paste and modify):
-        /*
-        {
-            id: 7,
-            name: "New Product Name",
-            description: "Description of your new product.",
-            imageUrl: "path/to/your/image.jpg",
-            detailUrl: "#"
-        },
-        */
-    ];
+document.addEventListener('DOMContentLoaded', () => {
+    const productListDiv = document.getElementById('product-list');
+    const filterButtons = document.querySelectorAll('.filter-btn'); // Select all filter buttons
+    let allProducts = []; // To store all products fetched from JSON
 
-    const productListContainer = document.getElementById('product-list');
-
-    function createProductCard(product) {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card'; // This class is defined in style.css
-
-        productCard.innerHTML = `
-            <img src="${product.imageUrl}" alt="${product.name}" class="w-full h-48 object-cover">
-            <div class="p-4">
-                <h3 class="product-card-title">${product.name}</h3>
-                <p class="product-card-description">${product.description}</p>
-                <a href="${product.detailUrl}" class="product-card-button">View Details</a>
-            </div>
-        `;
-        return productCard;
-    }
-
-    // Function to render all products
-    function renderProducts() {
-        if (productListContainer) {
-            productListContainer.innerHTML = ''; // Clear existing content
-            productsData.forEach(product => {
-                const card = createProductCard(product);
-                productListContainer.appendChild(card);
-            });
+    // Function to fetch products from products.json
+    async function fetchProducts() {
+        try {
+            const response = await fetch('products.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            allProducts = await response.json();
+            displayProducts(allProducts); // Display all products initially
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            productListDiv.innerHTML = '<p class="text-red-400 text-center text-xl">Failed to load products. Please try again later.</p>';
         }
     }
 
-    // Call renderProducts when the page loads
-    renderProducts();
+    // Function to create and display product cards
+    function displayProducts(productsToDisplay) {
+        productListDiv.innerHTML = ''; // Clear existing products
+
+        if (productsToDisplay.length === 0) {
+            productListDiv.innerHTML = '<p class="text-muted text-center text-lg col-span-full">No products found for this category.</p>';
+            return;
+        }
+
+        productsToDisplay.forEach(product => {
+            const productCard = `
+                <div class="product-card p-4 rounded-xl shadow-lg section-card text-center">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-semibold section-heading mb-2">${product.name}</h3>
+                    <p class="text-muted text-sm mb-2">${product.category}</p>
+                    <p class="text-light text-md mb-4">${product.description}</p>
+                    <div class="text-accent text-2xl font-bold mb-4">${product.price}</div>
+                    <p class="text-muted text-sm mb-4">Availability: ${product.availability}</p>
+                    ${product.brand ? `<p class="text-muted text-xs mb-2">Brand: ${product.brand}</p>` : ''}
+
+                    ${product.details ? `
+                        <div class="product-details text-muted text-sm mt-4">
+                            ${Object.entries(product.details).map(([key, value]) => `
+                                <p><strong>${key.replace(/_/g, ' ')}:</strong> ${Array.isArray(value) ? value.join(', ') : value}</p>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+
+                    <button class="btn btn-primary w-full mt-4">View Details</button>
+                </div>
+            `;
+            productListDiv.innerHTML += productCard; // Add product card to the list
+        });
+    }
+
+    // Add event listeners to filter buttons
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            // Remove 'active' class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active-filter'));
+            // Add 'active' class to the clicked button
+            event.target.classList.add('active-filter');
+
+            const category = event.target.dataset.category; // Get category from data-category attribute
+
+            let filteredProducts = [];
+            if (category === 'All Products') {
+                filteredProducts = allProducts;
+            } else {
+                filteredProducts = allProducts.filter(product => product.category === category);
+            }
+            displayProducts(filteredProducts);
+        });
+    });
+
+    // Fetch products when the page loads
+    fetchProducts();
 });
