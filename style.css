@@ -1,143 +1,229 @@
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap');
+/* Google Fonts Import - Using 'Inter' for body, 'Poppins' for headings, and 'Space Mono' for code/techy elements */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&family=Space+Mono:wght@400;700&display=swap');
 
-/* CSS Variables for NEW Dark Aesthetic Theme */
+/* NEW Aesthetic CSS Variables */
 :root {
-    --color-bg-primary: linear-gradient(135deg, #151525, #252535); /* Soft Dark Gradient */
-    --color-bg-secondary: #2A2A4A; /* Slightly lighter for cards/sections */
-    --color-bg-tertiary: #10101A; /* Even Deeper for footer/borders */
-    --color-text-light: #F0F0F0; /* Brighter Off-White for main text */
-    --color-text-muted: #A0A0B0; /* Muted Gray for secondary text */
-    --color-accent: #03DAC6; /* Vibrant Teal Accent */
-    --color-accent-dark: #018786; /* Darker Teal for hover/active */
-    --color-shadow-dark: rgba(0, 0, 0, 0.6); /* Pronounced shadow for dark theme */
+    /* Background Colors */
+    --background-start-rgb: 21, 21, 31;   /* Very dark blue-black for gradient start */
+    --background-end-rgb: 31, 31, 41;     /* Slightly lighter blue-black for gradient end */
+
+    /* Card & Callout Colors (mostly transparent, reveal on hover) */
+    --callout-rgb: 40, 40, 60;            /* Dark blue-gray for callouts/borders */
+    --callout-border-rgb: 60, 60, 80;     /* Slightly lighter blue-gray for callout borders */
+    --card-rgb: 40, 40, 60;               /* Same as callout for transparent cards */
+    --card-border-rgb: 80, 80, 100;       /* Lighter blue-gray for card borders */
+
+    /* Glow Effects */
+    --primary-glow: radial-gradient(rgba(1, 128, 192, 0.4), rgba(1, 128, 192, 0.0)); /* Blue glow */
+    --secondary-glow: linear-gradient(to bottom right, rgba(128, 1, 192, 0.4), rgba(1, 128, 192, 0.0)); /* Purple/blue glow */
+    --tile-border: conic-gradient(
+        from 180deg at 50% 50%,
+        #2a2a2e 0deg,
+        #1e1e22 90deg,
+        #1e1e22 180deg,
+        #2a2a2e 270deg,
+        #2a2a2e 360deg
+    ); /* Conic gradient for special borders/elements */
+    --tile-start-rgb: 21, 21, 31;
+    --tile-end-rgb: 31, 31, 41;
+
+
+    /* Text & Accent Colors */
+    --color-text-light: #E0E0E0;          /* Soft white text */
+    --color-text-muted: #A0A0B0;          /* Muted gray text for secondary info */
+    --color-accent: #00FFFF;              /* Vibrant Cyan for primary accent */
+    --color-accent-dark: #00BFFF;         /* Slightly darker Cyan for hover/active */
+    --color-warning: #FFD700;             /* Yellow for warnings/highlights */
+
+    /* General Spacing & Radius */
+    --border-radius: 0.75rem; /* Consistent with Tailwind rounded-xl */
+    --max-width: 1200px; /* Example max width, adjust if needed */
+
+    /* Fonts */
+    --font-mono: 'Space Mono', monospace;
+    --font-sans: 'Inter', sans-serif;
+    --font-heading: 'Poppins', sans-serif;
 }
 
-/* Basic Body Styles */
+/* Basic HTML/Body Styles */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
 body {
-    font-family: 'Inter', sans-serif; /* Default body font */
-    background: var(--color-bg-primary); /* Apply gradient background */
+    font-family: var(--font-sans); /* Default body font */
+    background: rgb(var(--background-start-rgb)); /* Fallback for no gradient */
+    background: linear-gradient(
+        to bottom,
+        rgb(var(--background-start-rgb)),
+        rgb(var(--background-end-rgb))
+    ); /* Main gradient background */
     color: var(--color-text-light); /* Light text on dark background */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6; /* Improved readability */
 }
 
-/* Header Styles (Fixed) */
+/* Fixed Header and its Body Padding */
 .header-fixed {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--color-bg-secondary); /* Use secondary dark for header */
-    box-shadow: 0 5px 15px var(--color-shadow-dark); /* Darker shadow */
-    border-radius: 0; /* No rounded corners for fixed full-width header */
+    background-color: rgba(var(--callout-rgb), 0.8); /* Semi-transparent dark header */
+    backdrop-filter: blur(8px); /* Subtle blur behind header */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.3); /* Subtle bottom border */
 }
 
-/* Body Padding for Fixed Header */
 .body-padding-top {
-    padding-top: 80px; /* Keep this value to prevent content going under fixed header */
+    padding-top: 80px; /* Ensures content doesn't go under fixed header */
 }
 
-/* Footer Styles */
-.footer-bg {
-    background-color: var(--color-bg-tertiary); /* Even darker for footer */
-    color: var(--color-text-muted); /* Muted text for footer */
-    box-shadow: 0 -5px 15px var(--color-shadow-dark); /* Darker shadow */
-}
-
-/* Mobile Navigation Menu Background */
-.mobile-nav-bg {
-    background-color: var(--color-bg-secondary); /* Same as header */
-    box-shadow: 0 5px 15px var(--color-shadow-dark); /* Darker shadow */
-}
-
-/* Hero Section Specific Styles */
+/* Hero Section Styles */
+/* This will replace the image with a dynamic glow effect as seen in your reference */
 .hero-section {
-    background-attachment: fixed; /* Makes the background image fixed */
-    background-size: cover;
-    background-position: center;
-    border-radius: 0.75rem; /* rounded-xl */
-    margin: 0 1.5rem 1.5rem 1.5rem; /* No top margin, but space on sides and bottom (m-6 was problematic) */
-    box-shadow: 0 15px 25px var(--color-shadow-dark); /* Larger, darker shadow */
-    overflow: hidden;
-    position: relative; /* Needed for z-index of overlay and content */
+    position: relative;
+    overflow: hidden; /* Important for containing pseudo-elements */
+    background: rgb(var(--background-start-rgb)); /* Base background if glows don't cover */
+    min-height: 70vh; /* Make hero section tall enough */
+    display: flex; /* For centering content */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1.5rem; /* Adjust padding as needed */
 }
 
-.hero-section .absolute.inset-0 {
-    background-color: rgba(0, 0, 0, 0.75); /* Slightly less opaque overlay if needed, adjust to your liking */
-    /* opacity-70 was good, but rgba might give more control with new background */
+/* Hero Section Glows (similar to .center::before/after in your snippet) */
+.hero-section::before,
+.hero-section::after {
+    content: '';
+    position: absolute;
+    filter: blur(60px); /* Stronger blur for glow effect */
+    transform: translateZ(0); /* Hardware acceleration */
+    opacity: 0.7; /* Adjust glow intensity */
+    pointer-events: none; /* Ensure they don't block interaction */
 }
 
-/* Section Styles - Common for card-like sections */
+.hero-section::before {
+    background: var(--primary-glow); /* First glow color */
+    width: 500px;
+    height: 400px;
+    left: 10%;
+    top: 10%;
+}
+
+.hero-section::after {
+    background: var(--secondary-glow); /* Second glow color */
+    width: 300px;
+    height: 250px;
+    right: 15%;
+    bottom: 5%;
+}
+
+/* Content wrapper for z-index */
+.hero-section .container {
+    position: relative;
+    z-index: 10; /* Ensure content is above glows */
+}
+
+/* Section Card Styles (Adapting .card from your snippet) */
 .section-card {
-    background-color: var(--color-bg-secondary); /* Dark background for cards/sections */
-    color: var(--color-text-light); /* Light text */
-    border-radius: 0.75rem; /* rounded-xl */
-    box-shadow: 0 10px 20px var(--color-shadow-dark); /* Darker shadow */
-    margin: 1.5rem; /* Consistent margin around sections */
+    background: rgba(var(--card-rgb), 0.1); /* Slightly visible dark background */
+    border: 1px solid rgba(var(--card-border-rgb), 0.1); /* Subtle border */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Stronger, darker shadow */
+    transition: background 0.3s ease, border 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    margin: 1.5rem; /* Consistent margin around sections/cards */
+    overflow: hidden; /* For containing internal elements like images with rounded corners */
 }
+
+.section-card:hover {
+    background: rgba(var(--card-rgb), 0.3); /* More visible on hover */
+    border: 1px solid rgba(var(--card-border-rgb), 0.3); /* Border more visible on hover */
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Enhanced shadow on hover */
+}
+
 
 /* Section Headings */
 .section-heading {
-    font-family: 'Poppins', sans-serif; /* Poppins for headings */
+    font-family: var(--font-heading); /* Poppins for headings */
     color: var(--color-text-light); /* Light color for headings */
-    /* Added a subtle text shadow for better pop on dark backgrounds */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 0 15px rgba(var(--color-accent), 0.3); /* Subtle glow for headings */
 }
 
-/* Links and Navigation Text (adjusting for dark theme hover) */
-nav a,
-.mobile-menu a {
-    color: var(--color-text-light); /* Default link color */
-    transition: color 0.3s ease;
+/* Logo Styling */
+.logo-animation img {
+    filter: invert(1) drop-shadow(0 0 0.5rem rgba(var(--color-accent), 0.5)); /* Invert for dark theme, add glow */
 }
 
-nav a:hover,
-.mobile-menu a:hover,
-.btn-secondary { /* Applying the general style to secondary button */
+.logo-animation span {
+    font-family: var(--font-heading); /* Use heading font for logo text */
+    color: var(--color-accent); /* Accent color for logo text */
+    text-shadow: 0 0 10px rgba(var(--color-accent), 0.6); /* Stronger glow for logo text */
+}
+
+/* Navigation Links */
+nav a, .mobile-menu a {
+    color: var(--color-text-muted); /* Muted text for default links */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover, .mobile-menu a:hover {
     color: var(--color-accent); /* Accent color on hover */
+    transform: translateY(-2px); /* Slight lift */
 }
 
-/* Buttons */
+/* Buttons (Modern & Sleek) */
 .btn {
-    padding: 0.75rem 1.5rem; /* px-6 py-3 for standard buttons */
-    border-radius: 0.5rem; /* rounded-md */
-    font-weight: 600; /* font-semibold */
+    padding: 0.8rem 2rem; /* Generous padding */
+    border-radius: var(--border-radius);
+    font-weight: 600;
     text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px var(--color-shadow-dark); /* Shadow for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle initial shadow */
 }
 
 .btn-primary {
-    background-color: var(--color-accent); /* Accent color background */
-    color: var(--color-bg-primary); /* Dark text for contrast */
+    background-color: var(--color-accent); /* Accent background */
+    color: rgb(var(--background-start-rgb)); /* Dark text for contrast */
+    border: 1px solid var(--color-accent);
 }
 
 .btn-primary:hover {
     background-color: var(--color-accent-dark); /* Darker accent on hover */
-    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
-    box-shadow: 0 8px 16px var(--color-shadow-dark); /* Enhanced shadow */
+    border-color: var(--color-accent-dark);
+    transform: translateY(-2px) scale(1.02); /* Slight lift and scale */
+    box-shadow: 0 8px 20px rgba(var(--color-accent), 0.4); /* Accent glowing shadow */
 }
 
 .btn-secondary {
-    background-color: var(--color-bg-secondary); /* Secondary background for secondary button */
-    color: var(--color-text-light); /* Light text */
-    border: 1px solid var(--color-text-muted); /* Subtle border */
+    background: transparent; /* Transparent background */
+    color: var(--color-accent); /* Accent text */
+    border: 1px solid var(--color-accent); /* Accent border */
 }
 
 .btn-secondary:hover {
-    background-color: var(--color-bg-tertiary); /* Darker background on hover */
-    border-color: var(--color-accent); /* Accent border on hover */
-    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
-    box-shadow: 0 8px 16px var(--color-shadow-dark); /* Enhanced shadow */
+    background-color: rgba(var(--color-accent), 0.1); /* Subtle accent fill on hover */
+    color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+    transform: translateY(-2px) scale(1.02); /* Slight lift and scale */
+    box-shadow: 0 8px 20px rgba(var(--color-accent), 0.2); /* Subtle accent glow */
 }
 
-/* Input Fields */
+/* Input Fields (Forms) */
 input[type="text"],
 input[type="email"],
 textarea {
-    background-color: var(--color-bg-primary); /* Dark background for inputs */
+    background-color: rgba(var(--card-rgb), 0.2); /* Semi-transparent dark background */
     color: var(--color-text-light); /* Light text in inputs */
-    border: 1px solid var(--color-bg-secondary); /* Subtle border */
+    border: 1px solid rgba(var(--card-border-rgb), 0.3); /* Subtle border */
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="text"]:focus,
@@ -145,10 +231,45 @@ input[type="email"]:focus,
 textarea:focus {
     border-color: var(--color-accent); /* Accent border on focus */
     outline: none;
-    box-shadow: 0 0 0 3px rgba(3, 218, 198, 0.4); /* Subtle accent glow from new accent */
+    box-shadow: 0 0 0 3px rgba(var(--color-accent), 0.3); /* Accent glow on focus */
 }
 
-/* Logo Animation */
+/* Footer Styles */
+.footer-bg {
+    background-color: rgb(var(--background-start-rgb)); /* Very dark background for footer */
+    color: var(--color-text-muted); /* Muted text for footer */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    border-top: 1px solid rgba(var(--callout-border-rgb), 0.2); /* Subtle top border */
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* Mobile Navigation Menu */
+.mobile-nav-bg {
+    background-color: rgba(var(--callout-rgb), 0.9); /* Semi-transparent dark for mobile menu */
+    backdrop-filter: blur(8px); /* Subtle blur */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+}
+
+/* Active Filter Button Style for products.html */
+.filter-btn.active-filter {
+    background-color: var(--color-accent); /* Accent color for active button */
+    color: rgb(var(--background-start-rgb)); /* Dark text on accent background */
+    border-color: var(--color-accent); /* Accent border */
+    transform: translateY(-2px) scale(1.05); /* Enhanced lift and scale */
+    box-shadow: 0 6px 15px rgba(var(--color-accent), 0.4); /* Accent glowing shadow */
+}
+
+/* Code Block Styling (for future use if you add code) */
+.code {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  background-color: rgba(var(--card-rgb), 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgba(var(--card-border-rgb), 0.2);
+}
+
+/* Logo and Animation - adjust for new filter/glow */
 @keyframes fadeInSlideRight {
     from {
         opacity: 0;
@@ -160,15 +281,17 @@ textarea:focus {
     }
 }
 
-.logo-animation img, .logo-animation span {
+/* No direct filter on logo text, handled by span styling above */
+/* .logo-animation img, .logo-animation span {
     animation: fadeInSlideRight 0.8s ease-out forwards;
-}
+} */
 
-/* Active Filter Button Style for products.html */
-.filter-btn.active-filter {
-    background-color: var(--color-accent); /* Use accent color for active button */
-    color: var(--color-bg-primary); /* Dark text on accent background */
-    border-color: var(--color-accent); /* Accent border */
-    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
-    box-shadow: 0 6px 12px var(--color-shadow-dark); /* Enhanced shadow */
+/* Animation for glowing elements (if applied to specific elements) */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
