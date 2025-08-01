@@ -1,17 +1,23 @@
-// main.js
-
-// This file is now primarily for general page-specific scripts that are NOT
-// related to the header/footer (which are loaded by loadComponents.js)
-// or product loading (which is handled by products.js).
-
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Main script loaded. Any general page interactions go here.");
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileNav = document.getElementById('mobile-nav');
 
-    // Example of a simple interaction on the main page content
-    // const exploreButton = document.querySelector('.hero-section .btn-primary');
-    // if (exploreButton) {
-    //     exploreButton.addEventListener('click', function() {
-    //         console.log("Explore products button clicked!");
-    //     });
-    // }
+    if (mobileMenuButton && mobileNav) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileNav.classList.toggle('hidden');
+            mobileNav.classList.toggle('flex'); // Add flex to make it a column
+            mobileNav.classList.toggle('flex-col'); // Stack items vertically
+            mobileNav.classList.toggle('space-y-2'); // Add spacing between items
+        });
+
+        // Close mobile nav when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileNav.classList.contains('hidden')) {
+                    mobileNav.classList.add('hidden');
+                    mobileNav.classList.remove('flex', 'flex-col', 'space-y-2');
+                }
+            });
+        });
+    }
 });

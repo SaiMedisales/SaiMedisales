@@ -4,72 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Sai Medisales</title>
-    <meta name="description" content="Contact Sai Medisales for inquiries about our veterinary products, partnerships, or general information.">
+    <meta name="description" content="Contact Sai Medisales in Baramati, Pune. Find our address, phone number, email, business hours, and get directions on Google Maps.">
 
-    <link rel="icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-512x512.png">
-    <link rel="manifest" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/site.webmanifest">
-
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/mstile-150x150.png">
-    <meta name="theme-color" content="#ffffff">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <div id="header-placeholder"></div>
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 lg:px-24 rounded-b-lg relative z-20">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-10 w-auto"> 
+                <span class="text-3xl font-bold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out">
+                    Sai Medisales
+                </span>
+            </a>
+            <ul id="desktop-nav" class="hidden md:flex md:space-x-6 flex-col md:flex-row md:static">
+                <li><a href="index.html#home" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Home</a></li>
+                <li><a href="index.html#offerings" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Our Products</a></li>
+                <li><a href="index.html#about" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">About Us</a></li>
+                <li><a href="contact_us.html" class="text-blue-600 font-medium transition duration-300 ease-in-out">Contact Us</a></li>
+                <li><a href="contact.html" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Queries</a></li>
+            </ul>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none" aria-label="Toggle navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <ul id="mobile-nav" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-6 space-y-2 z-10">
+                <li><a href="index.html#home" class="block text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Home</a></li>
+                <li><a href="index.html#offerings" class="block text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Our Products</a></li>
+                <li><a href="index.html#about" class="block text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">About Us</a></li>
+                <li><a href="contact_us.html" class="block text-blue-600 font-medium transition duration-300 ease-in-out">Contact Us</a></li>
+                <li><a href="contact.html" class="block text-gray-600 hover:text-blue-600 font-medium transition duration-300 ease-in-out">Queries</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="py-16 md:py-24 flex-grow container mx-auto px-6">
-        <h2 class="section-heading text-3xl md:text-4xl font-bold text-center mb-12">Get in Touch with Sai Medisales</h2>
-        <p class="text-center text-gray-700 mb-10 max-w-2xl mx-auto">
-            We'd love to hear from you! Whether you have a question about our products, need support, or are interested in partnership opportunities, please don't hesitate to reach out.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="bg-white p-8 rounded-lg shadow-md">
-                <h3 class="text-2xl font-semibold text-blue-700 mb-6">Contact Information</h3>
-                <div class="space-y-4 text-gray-700">
-                    <p class="flex items-center">
-                        <svg class="w-6 h-6 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                        <strong>Address:</strong> Your Company Address, City, State, ZIP
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-800">Contact Sai Medisales</h2>
+        <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Reach Out To Us</h3>
+                    <p class="text-gray-700 mb-2">
+                        <strong>Address:</strong> Namokar Heights, Mahalaxmi Nagar, Near Sahyog Society, Shriram Nagar Chowk, Bhigwan Rd, Baramati, Pune, Maharashtra - 413102
                     </p>
-                    <p class="flex items-center">
-                        <svg class="w-6 h-6 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        <strong>Email:</strong> <a href="mailto:info@saimedisales.com" class="text-blue-600 hover:underline">info@saimedisales.com</a>
+                    <p>Phone: <a href="tel:+919822514631" class="text-blue-600 hover:underline">+91 9822514631</a></p>
+                    <p>Email: <a href="mailto:saimedisales2013@gmail.com" class="text-blue-600 hover:underline">saimedisales2013@gmail.com</a></p>
+                    <p class="text-gray-700 mb-4">
+                        Feel free to contact us during our business hours for any inquiries, product information, or assistance.
                     </p>
-                    <p class="flex items-center">
-                        <svg class="w-6 h-6 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/></svg>
-                        <strong>Phone:</strong> <a href="tel:+911234567890" class="text-blue-600 hover:underline">+91 123 456 7890</a>
-                    </p>
-                    <p class="flex items-center">
-                        <svg class="w-6 h-6 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM9 10h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1s.45 1 1 1zm0 4h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
-                        <strong>Business Hours:</strong> Mon - Fri: 9:00 AM - 6:00 PM
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Business Hours</h3>
+                    <p class="text-gray-700"><strong>Monday - Saturday:</strong> 10:00 A.M. - 03:00 P.M. & 05:00 P.M. - 09:00 P.M.</p>
+                    <p class="text-gray-700"><strong>Sunday:</strong> Closed</p>
+                    <p class="text-gray-700 mt-4">
+                        For specific product queries or bulk orders, please visit our <a href="contact.html" class="text-blue-600 hover:underline font-medium">Queries page</a>.
                     </p>
                 </div>
             </div>
 
-            <div class="w-full h-80 bg-gray-200 rounded-lg shadow-md overflow-hidden flex items-center justify-center text-gray-500">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.207963339174!2d74.5772421!3d18.6508929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc3870685957d19%3A0x7d6f0f2b3e4f5a6b!2sBaramati%2C%20Maharashtra%20413102!5e0!3m2!1sen!2sin!4v1678901234567!5m2!1sen!2sin"
-                    width="100%"
-                    height="100%"
-                    style="border:0;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4 text-center">How to Reach Us</h3>
+                <div class="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden shadow-md">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d236.93724322137493!2d74.58978735941508!3d18.164103205413305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc3a01cd6cc5a2b%3A0xe0a7db37f494a5d8!2sSai%20Medisales!5e0!3m2!1sen!2sin!4v1753804048963!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <p class="text-center text-gray-600 text-sm mt-4">
+                    The map above shows our exact location.
+                </p>
+                <div class="text-center mt-6">
+                    <a href="https://maps.app.goo.gl/7Em7ib2DqsoMNT6j8" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                        Get Directions
+                    </a>
+                </div>
             </div>
         </div>
     </main>
 
-    <div id="footer-placeholder"></div>
+    <footer class="bg-blue-900 text-white py-8 px-6 md:px-12 lg:px-24 rounded-t-lg mt-auto">
+        <div class="container mx-auto text-center">
+            <p class="text-sm">© 2013 Sai Medisales. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="main.js" defer></script>
-    <script src="loadComponents.js" defer></script>
 </body>
 </html>
