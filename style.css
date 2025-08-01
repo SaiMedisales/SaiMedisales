@@ -1,22 +1,22 @@
 /* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap');
 
-/* CSS Variables for Dark Theme */
+/* CSS Variables for NEW Dark Aesthetic Theme */
 :root {
-    --color-bg-primary: #1A1A2E; /* Deep Indigo-Black */
-    --color-bg-secondary: #2A2A4A; /* Slightly Lighter Indigo for cards/sections */
-    --color-bg-tertiary: #0F0F1A; /* Even Deeper for footer */
-    --color-text-light: #E0E0E0; /* Off-White/Light Gray */
-    --color-text-muted: #A0A0C0; /* Muted Blue-Gray */
-    --color-accent: #80FFE0; /* Vibrant Mint Green */
-    --color-accent-dark: #40B0A0; /* Darker mint for hover/active */
-    --color-shadow-dark: rgba(0, 0, 0, 0.4); /* Darker shadow for dark theme */
+    --color-bg-primary: linear-gradient(135deg, #151525, #252535); /* Soft Dark Gradient */
+    --color-bg-secondary: #2A2A4A; /* Slightly lighter for cards/sections */
+    --color-bg-tertiary: #10101A; /* Even Deeper for footer/borders */
+    --color-text-light: #F0F0F0; /* Brighter Off-White for main text */
+    --color-text-muted: #A0A0B0; /* Muted Gray for secondary text */
+    --color-accent: #03DAC6; /* Vibrant Teal Accent */
+    --color-accent-dark: #018786; /* Darker Teal for hover/active */
+    --color-shadow-dark: rgba(0, 0, 0, 0.6); /* Pronounced shadow for dark theme */
 }
 
 /* Basic Body Styles */
 body {
     font-family: 'Inter', sans-serif; /* Default body font */
-    background-color: var(--color-bg-primary); /* Primary dark background */
+    background: var(--color-bg-primary); /* Apply gradient background */
     color: var(--color-text-light); /* Light text on dark background */
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
@@ -34,7 +34,7 @@ body {
 
 /* Body Padding for Fixed Header */
 .body-padding-top {
-    padding-top: 80px; /* Keep this value, adjust if header height changes */
+    padding-top: 80px; /* Keep this value to prevent content going under fixed header */
 }
 
 /* Footer Styles */
@@ -50,31 +50,38 @@ body {
     box-shadow: 0 5px 15px var(--color-shadow-dark); /* Darker shadow */
 }
 
-/* Hero Section Specific Styles (retaining rounded corners, but adjusting background for consistency) */
+/* Hero Section Specific Styles */
 .hero-section {
-    /* Your background image will still apply via inline style in HTML */
-    /* Ensuring full-width background, but content within container */
-    border-radius: 0.75rem; /* rounded-xl for consistency */
-    margin: 1.5rem; /* m-6 (increased slightly for more breathing room) */
+    background-attachment: fixed; /* Makes the background image fixed */
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.75rem; /* rounded-xl */
+    margin: 0 1.5rem 1.5rem 1.5rem; /* No top margin, but space on sides and bottom (m-6 was problematic) */
     box-shadow: 0 15px 25px var(--color-shadow-dark); /* Larger, darker shadow */
     overflow: hidden;
-    /* The overlay opacity will need to be adjusted if background image visibility is an issue */
+    position: relative; /* Needed for z-index of overlay and content */
+}
+
+.hero-section .absolute.inset-0 {
+    background-color: rgba(0, 0, 0, 0.75); /* Slightly less opaque overlay if needed, adjust to your liking */
+    /* opacity-70 was good, but rgba might give more control with new background */
 }
 
 /* Section Styles - Common for card-like sections */
-/* Applied to Services and Contact sections that use bg-white/bg-gray-50 */
 .section-card {
     background-color: var(--color-bg-secondary); /* Dark background for cards/sections */
     color: var(--color-text-light); /* Light text */
     border-radius: 0.75rem; /* rounded-xl */
     box-shadow: 0 10px 20px var(--color-shadow-dark); /* Darker shadow */
+    margin: 1.5rem; /* Consistent margin around sections */
 }
-
 
 /* Section Headings */
 .section-heading {
     font-family: 'Poppins', sans-serif; /* Poppins for headings */
     color: var(--color-text-light); /* Light color for headings */
+    /* Added a subtle text shadow for better pop on dark backgrounds */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Links and Navigation Text (adjusting for dark theme hover) */
@@ -107,8 +114,8 @@ nav a:hover,
 
 .btn-primary:hover {
     background-color: var(--color-accent-dark); /* Darker accent on hover */
-    transform: translateY(-2px); /* Slight lift */
-    box-shadow: 0 6px 12px var(--color-shadow-dark); /* Enhanced shadow */
+    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 8px 16px var(--color-shadow-dark); /* Enhanced shadow */
 }
 
 .btn-secondary {
@@ -120,8 +127,8 @@ nav a:hover,
 .btn-secondary:hover {
     background-color: var(--color-bg-tertiary); /* Darker background on hover */
     border-color: var(--color-accent); /* Accent border on hover */
-    transform: translateY(-2px); /* Slight lift */
-    box-shadow: 0 6px 12px var(--color-shadow-dark); /* Enhanced shadow */
+    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 8px 16px var(--color-shadow-dark); /* Enhanced shadow */
 }
 
 /* Input Fields */
@@ -138,7 +145,7 @@ input[type="email"]:focus,
 textarea:focus {
     border-color: var(--color-accent); /* Accent border on focus */
     outline: none;
-    box-shadow: 0 0 0 3px rgba(128, 255, 224, 0.3); /* Subtle accent glow */
+    box-shadow: 0 0 0 3px rgba(3, 218, 198, 0.4); /* Subtle accent glow from new accent */
 }
 
 /* Logo Animation */
@@ -157,11 +164,11 @@ textarea:focus {
     animation: fadeInSlideRight 0.8s ease-out forwards;
 }
 
-/* Active Filter Button Style */
+/* Active Filter Button Style for products.html */
 .filter-btn.active-filter {
     background-color: var(--color-accent); /* Use accent color for active button */
     color: var(--color-bg-primary); /* Dark text on accent background */
     border-color: var(--color-accent); /* Accent border */
-    transform: translateY(-2px); /* Slight lift */
-    box-shadow: 0 4px 8px var(--color-shadow-dark); /* Enhanced shadow */
+    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 6px 12px var(--color-shadow-dark); /* Enhanced shadow */
 }
