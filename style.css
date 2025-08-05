@@ -89,12 +89,12 @@ body {
     background: rgb(var(--background-start-rgb)); /* Base background if glows don't cover */
     min-height: 70vh; /* Make hero section tall enough */
     display: flex; /* For centering content */
+    flex-direction: column; /* THIS IS THE FIX: Stack items vertically */
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 4rem 1.5rem; /* Adjust padding as needed */
 }
-
 /* Hero Section Glows (similar to .center::before/after in your snippet) */
 .hero-section::before,
 .hero-section::after {
@@ -294,4 +294,5 @@ textarea:focus {
     to {
         transform: rotate(360deg);
     }
+
 }
