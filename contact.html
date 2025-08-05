@@ -3,110 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Queries - Sai Medisales</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-512x512.png">
+    <title>Contact Us - Sai Medisales</title>
+    <meta name="description" content="Contact Sai Medisales in Baramati, Pune. Send us a query, find our address, phone number, email, business hours, and get directions on Google Maps.">
 
+    <!-- Favicon and App Icons (using relative paths assuming they are in the root directory) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="flex flex-col min-h-screen body-padding-top">
-    <header class="header-bg relative z-20 header-fixed">
-        <nav class="container mx-auto flex justify-between items-center py-4 px-6 md:px-12 lg:px-24">
-            <a href="index.html" class="flex items-center space-x-2 logo-animation">
-                <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-12 w-auto">
-                <span class="text-3xl font-bold text-accent transition duration-300 ease-in-out">
-                    Sai Medisales
-                </span>
-            </a>
-            <ul id="desktop-nav" class="hidden md:flex md:space-x-6 flex-col md:flex-row md:static">
-                <li><a href="index.html#home" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Home</a></li>
-                <li><a href="products.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Our Products</a></li>
-                <li><a href="index.html#about" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">About Us</a></li>
-                <li><a href="contact_us.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Contact Us</a></li>
-                <li><a href="contact.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Queries</a></li>
-            </ul>
-            <button id="mobile-menu-button" class="md:hidden text-light hover:text-accent focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </nav>
-        <div id="mobile-nav" class="mobile-nav-bg absolute top-full left-0 w-full shadow-lg md:hidden hidden z-10">
-            <ul class="flex flex-col space-y-4 p-4">
-                <li><a href="index.html#home" class="block text-light hover:text-accent font-medium">Home</a></li>
-                <li><a href="products.html" class="block text-light hover:text-accent font-medium">Our Products</a></li>
-                <li><a href="index.html#about" class="block text-light hover:text-accent font-medium">About Us</a></li>
-                <li><a href="contact_us.html" class="block text-light hover:text-accent font-medium">Contact Us</a></li>
-                <li><a href="contact.html" class="block text-light hover:text-accent font-medium">Queries</a></li>
-            </ul>
-        </div>
-    </header>
+<body class="body-padding-top">
+    <!-- Placeholder for Header (loaded by loadComponents.js) -->
+    <div id="header-placeholder"></div>
 
-    <main class="flex-grow py-16 px-4 md:px-8 lg:px-16">
-        <h1 class="section-heading text-4xl md:text-5xl font-extrabold text-center mb-6">Send Us Your Queries</h1>
-        <p class="text-center text-lg text-light mb-12 max-w-3xl mx-auto">
-            Have a question or need more information? Fill out the form below, and our team will get back to you shortly.
-        </p>
-
-        <section class="max-w-xl mx-auto p-8 rounded-xl shadow-lg section-card">
-            <form action="https://formspree.io/f/xjkrlejp" method="POST" class="space-y-6">
+    <main class="container mx-auto py-8 px-6 md:px-12 lg:px-24">
+        <!-- Contact Form Section -->
+        <section class="mb-12 section-card p-6 md:p-8 lg:p-10">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading text-center mb-8">Send Us a Query</h2>
+            <p class="text-center text-color-text-muted mb-6">
+                Have a question or need assistance? Fill out the form below, and we'll get back to you as soon as possible.
+            </p>
+            <form id="queryForm" class="max-w-xl mx-auto space-y-6">
                 <div>
-                    <label for="full-name" class="block text-sm font-medium text-light mb-1">Full Name</label>
-                    <input type="text" id="full-name" name="name" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" placeholder="Your Name" required>
-                    </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-light mb-1">Email Address</label>
-                    <input type="email" id="email" name="_replyto" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" placeholder="you@example.com" required>
+                    <label for="name" class="block text-color-text-light text-lg font-medium mb-2">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required
+                           class="w-full p-3 rounded-md focus:ring-accent focus:border-accent">
                 </div>
                 <div>
-                    <label for="subject" class="block text-sm font-medium text-light mb-1">Subject</label>
-                    <input type="text" id="subject" name="subject" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" placeholder="e.g., Inquiry about Poultry Vaccines" required>
+                    <label for="email" class="block text-color-text-light text-lg font-medium mb-2">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required
+                           class="w-full p-3 rounded-md focus:ring-accent focus:border-accent">
                 </div>
                 <div>
-                    <label for="message" class="block text-sm font-medium text-light mb-1">Your Query</label>
-                    <textarea id="message" name="message" rows="6" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" placeholder="Please describe your query in detail..." required></textarea>
+                    <label for="subject" class="block text-color-text-light text-lg font-medium mb-2">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Subject of your query" required
+                           class="w-full p-3 rounded-md focus:ring-accent focus:border-accent">
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">
-                        Send Query
-                    </button>
+                <div>
+                    <label for="message" class="block text-color-text-light text-lg font-medium mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required
+                              class="w-full p-3 rounded-md focus:ring-accent focus:border-accent"></textarea>
                 </div>
-                <div id="form-message-success" class="hidden text-accent text-center mt-4">Thank you! Your message has been sent.</div>
-                <div id="form-message-error" class="hidden text-red-400 text-center mt-4">Oops! Something went wrong. Please try again later.</div>
+                <button type="submit"
+                        class="btn btn-primary w-full py-3 text-xl font-semibold rounded-lg hover:scale-105 transition-transform duration-300 ease-in-out">
+                    Send Query
+                </button>
+                <div id="form-message-success" class="hidden text-accent text-center mt-4 text-lg font-medium">Thank you! Your message has been sent.</div>
+                <div id="form-message-error" class="hidden text-red-400 text-center mt-4 text-lg font-medium">Oops! <span></span> Please try again later.</div>
             </form>
         </section>
-        <div class="mt-8 text-center text-light">
-            For immediate assistance, please call us at 
-            <a href="tel:+919822514631" class="text-accent hover:underline">+91 9822514631</a>, 
-            <a href="tel:+917083218568" class="text-accent hover:underline">+91 7083218568</a> 
-            or email us at <a href="mailto:saimedisales2013@gmail.com" class="text-accent hover:underline">saimedisales2013@gmail.com</a>.
-        </div>
+
+        <!-- Direct Contact Info Section -->
+        <section class="mb-12 section-card p-6 md:p-8 lg:p-10">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading text-center mb-8">Reach Out Directly</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                <div class="p-4 rounded-lg bg-gray-800 bg-opacity-30 border border-gray-700 hover:border-accent transition duration-300">
+                    <i class="fas fa-phone-alt text-accent text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-color-text-light mb-2">Call Us</h3>
+                    <p class="text-color-text-muted">
+                        <a href="tel:+919822514631" class="text-accent hover:underline">+91 9822514631</a><br>
+                        <a href="tel:+917083218568" class="text-accent hover:underline">+91 7083218568</a>
+                    </p>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-800 bg-opacity-30 border border-gray-700 hover:border-accent transition duration-300">
+                    <i class="fas fa-envelope text-accent text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-color-text-light mb-2">Email Us</h3>
+                    <p class="text-color-text-muted">
+                        <a href="mailto:saimedisales2013@gmail.com" class="text-accent hover:underline">saimedisales2013@gmail.com</a>
+                    </p>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-800 bg-opacity-30 border border-gray-700 hover:border-accent transition duration-300">
+                    <i class="fas fa-clock text-accent text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-color-text-light mb-2">Business Hours</h3>
+                    <p class="text-color-text-muted">
+                        Monday - Saturday: 9:00 AM - 7:00 PM<br>
+                        Sunday: Closed
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="section-card p-6 md:p-8 lg:p-10">
+            <h2 class="text-3xl md:text-4xl font-bold section-heading text-center mb-8">Our Location</h2>
+            <p class="text-center text-color-text-muted mb-6">
+                Visit us at our office in Baramati, Pune. We look forward to meeting you!
+            </p>
+            <div class="map-container relative w-full h-80 md:h-96 rounded-lg overflow-hidden shadow-xl border border-gray-700">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.457187114675!2d74.5614392759979!3d18.636603467610495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc37f0000000001%3A0x7d2f9d8d6f7a6a4!2sSai%20Medisales!5e0!3m2!1sen!2sin!4v1715423696238!5m2!1sen!2sin"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="text-center text-lg text-color-text-muted mt-4">
+                The map above shows our exact location. Click "Get Directions" for navigation.
+            </p>
+            <div class="text-center mt-6">
+                <a href="https://maps.app.goo.gl/PPFeBXbvZTsjATPy8" target="_blank" rel="noopener noreferrer" class="btn btn-primary inline-block">
+                    <i class="fas fa-directions mr-2"></i> Get Directions
+                </a>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer-bg py-8 px-6 md:px-12 lg:px-24 rounded-t-lg mt-auto">
-        <div class="container mx-auto text-center">
-            <p class="text-sm">© 2013 - 2025 Sai Medisales. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Placeholder for Footer (loaded by loadComponents.js) -->
+    <div id="footer-placeholder"></div>
 
-    <script src="main.js"></script>
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-nav');
-
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-    </script>
+    <!-- Scripts for loading components and form functionality -->
+    <script src="loadComponents.js"></script>
+    <script src="contact.js"></script>
 </body>
 </html>
