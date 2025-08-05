@@ -32,6 +32,11 @@
                 <li><a href="index.html#about" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">About Us</a></li>
                 <li><a href="contact_us.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Contact Us</a></li>
                 <li><a href="contact.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Queries</a></li>
+                <li>
+                    <a href="tel:+919822514631" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i> Call Us Now
+                    </a>
+                </li>
             </ul>
             <button id="mobile-menu-button" class="md:hidden text-light hover:text-accent focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -46,6 +51,11 @@
                 <li><a href="index.html#about" class="block text-light hover:text-accent font-medium">About Us</a></li>
                 <li><a href="contact_us.html" class="block text-light hover:text-accent font-medium">Contact Us</a></li>
                 <li><a href="contact.html" class="block text-light hover:text-accent font-medium">Queries</a></li>
+                <li>
+                    <a href="tel:+919822514631" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i> Call Us Now
+                    </a>
+                </li>
             </ul>
         </div>
     </header>
@@ -63,9 +73,6 @@
     <p class="text-xl md:text-2xl text-light mb-8 max-w-3xl mx-auto">
         Your dedicated partner since 1999, providing quality wholesale and retail veterinary medicines, food products, and accessories for all animals.
     </p>
-    <a href="tel:+919822514631" class="btn btn-primary text-lg px-8 py-4 inline-block">
-        <i class="fas fa-phone-alt mr-2"></i> Call Us Now
-    </a>
 </section>
         <section id="services" class="py-16 px-4 md:px-8 lg:px-16 section-card m-6">
             <div class="container mx-auto">
@@ -127,7 +134,7 @@
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-nav'); // Corrected from mobile-menu
+        const mobileMenu = document.getElementById('mobile-nav');
 
         if (mobileMenuButton && mobileMenu) {
             mobileMenuButton.addEventListener('click', () => {
@@ -142,7 +149,7 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const headerOffset = document.querySelector('.header-fixed').offsetHeight; // Get height of fixed header
+                    const headerOffset = document.querySelector('.header-fixed').offsetHeight;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
