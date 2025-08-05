@@ -39,7 +39,7 @@
                 </svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="mobile-nav-bg absolute top-full left-0 w-full shadow-lg md:hidden hidden z-10">
+        <div id="mobile-nav" class="mobile-nav-bg absolute top-full left-0 w-full shadow-lg md:hidden hidden z-10">
             <ul class="flex flex-col space-y-4 p-4">
                 <li><a href="index.html#home" class="block text-light hover:text-accent font-medium">Home</a></li>
                 <li><a href="products.html" class="block text-light hover:text-accent font-medium">Our Products</a></li>
@@ -127,7 +127,7 @@
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenu = document.getElementById('mobile-nav'); // Corrected from mobile-menu
 
         if (mobileMenuButton && mobileMenu) {
             mobileMenuButton.addEventListener('click', () => {
