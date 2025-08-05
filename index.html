@@ -13,124 +13,426 @@
     <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-512x512.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+    </style>
 </head>
-<body class="flex flex-col min-h-screen body-padding-top">
-    <header class="header-bg relative z-20 header-fixed">
-        <nav class="container mx-auto flex justify-between items-center py-4 px-6 md:px-12 lg:px-24">
-            <a href="index.html" class="flex items-center space-x-2 logo-animation">
-                <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-12 w-auto">
-                <span class="text-3xl font-bold text-accent transition duration-300 ease-in-out">
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
+            <a href="#home" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-paw text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-bold font-poppins bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform">
                     Sai Medisales
                 </span>
             </a>
-            <ul id="desktop-nav" class="hidden md:flex md:space-x-6 flex-col md:flex-row md:static">
-                <li><a href="index.html#home" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Home</a></li>
-                <li><a href="products.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Our Products</a></li>
-                <li><a href="index.html#about" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">About Us</a></li>
-                <li><a href="contact_us.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Contact Us</a></li>
-                <li><a href="contact.html" class="text-light hover:text-accent font-medium transition duration-300 ease-in-out">Queries</a></li>
-                <li>
-                    <a href="tel:+919822514631" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out flex items-center">
-                        <i class="fas fa-phone-alt mr-2"></i> Call Us Now
-                    </a>
-                </li>
+            
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a></li>
+                <li><a href="#services" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Services</a></li>
+                <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">About</a></li>
+                <li><a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a></li>
             </ul>
-            <button id="mobile-menu-button" class="md:hidden text-light hover:text-accent focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="tel:+919822514631" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 flex items-center space-x-2 pulse-animation">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="font-medium">Call Now</span>
+                </a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-blue-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
         </nav>
-        <div id="mobile-nav" class="mobile-nav-bg absolute top-full left-0 w-full shadow-lg md:hidden hidden z-10">
-            <ul class="flex flex-col space-y-4 p-4">
-                <li><a href="index.html#home" class="block text-light hover:text-accent font-medium">Home</a></li>
-                <li><a href="products.html" class="block text-light hover:text-accent font-medium">Our Products</a></li>
-                <li><a href="index.html#about" class="block text-light hover:text-accent font-medium">About Us</a></li>
-                <li><a href="contact_us.html" class="block text-light hover:text-accent font-medium">Contact Us</a></li>
-                <li><a href="contact.html" class="block text-light hover:text-accent font-medium">Queries</a></li>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-nav" class="md:hidden hidden bg-white border-t">
+            <ul class="flex flex-col space-y-4 p-6">
+                <li><a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
+                <li><a href="#services" class="block text-gray-700 hover:text-blue-600 font-medium">Services</a></li>
+                <li><a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium">About</a></li>
+                <li><a href="#contact" class="block text-gray-700 hover:text-blue-600 font-medium">Contact</a></li>
                 <li>
-                    <a href="tel:+919822514631" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 ease-in-out flex items-center">
-                        <i class="fas fa-phone-alt mr-2"></i> Call Us Now
+                    <a href="tel:+919822514631" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full inline-flex items-center space-x-2">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Now</span>
                     </a>
                 </li>
             </ul>
         </div>
     </header>
 
-    <main class="flex-grow">
-     <section id="home" class="hero-section text-light py-20 px-4 md:px-8 lg:px-16 text-center relative overflow-hidden">
-    <div class="absolute inset-0 bg-black opacity-60"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white pt-24 pb-20 px-6 lg:px-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="container mx-auto text-center relative z-10">
+            <div class="fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold font-poppins mb-6 leading-tight">
+                    SAI MEDISALES
+                </h1>
+                <h2 class="text-2xl md:text-4xl font-semibold mb-8 text-blue-100">
+                    Your Trusted Partner in Veterinary Care
+                </h2>
+                <p class="text-xl md:text-2xl mb-12 max-w-4xl mx-auto text-blue-50 leading-relaxed">
+                    Your dedicated partner since 1999, providing quality wholesale and retail veterinary medicines, food products, and accessories for all animals.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#services" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Explore Our Services
+                    </a>
+                    <a href="tel:+919822514631" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 floating">
+            <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center">
+                <i class="fas fa-heartbeat text-white text-2xl"></i>
+            </div>
+        </div>
+        <div class="absolute bottom-20 right-10 floating" style="animation-delay: 1s;">
+            <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+                <i class="fas fa-paw text-white text-xl"></i>
+            </div>
+        </div>
+    </section>
 
-    <h1 class="text-6xl md:text-6xl font-extrabold text-light leading-tight mb-4 section-heading">
-        SAI MEDISALES
-    </h1>
-    <h2 class="text-3xl md:text-4xl font-bold text-light leading-tight mb-4 section-heading">
-        Your Trusted Partner in Veterinary Care
-    </h2>
-    <p class="text-xl md:text-2xl text-light mb-8 max-w-3xl mx-auto">
-        Your dedicated partner since 1999, providing quality wholesale and retail veterinary medicines, food products, and accessories for all animals.
-    </p>
-</section>
-        <section id="services" class="py-16 px-4 md:px-8 lg:px-16 section-card m-6">
-            <div class="container mx-auto">
-                <h2 class="section-heading text-3xl md:text-4xl font-extrabold mb-12 text-center">Our Specialized Services</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="section-card p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-semibold text-accent mb-4">Large Farm Animal Medicines</h3>
-                        <p class="text-light">Comprehensive range of medicines for cattle, buffalo, and other large livestock, ensuring their health and productivity.</p>
+    <!-- Stats Section -->
+    <section class="py-16 px-6 lg:px-12 bg-white">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="stats-counter">25+</div>
+                    <p class="text-gray-600 font-medium">Years of Experience</p>
+                </div>
+                <div class="fade-in" style="animation-delay: 0.2s;">
+                    <div class="stats-counter">1000+</div>
+                    <p class="text-gray-600 font-medium">Happy Customers</p>
+                </div>
+                <div class="fade-in" style="animation-delay: 0.4s;">
+                    <div class="stats-counter">500+</div>
+                    <p class="text-gray-600 font-medium">Products Available</p>
+                </div>
+                <div class="fade-in" style="animation-delay: 0.6s;">
+                    <div class="stats-counter">24/7</div>
+                    <p class="text-gray-600 font-medium">Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6 lg:px-12 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold font-poppins mb-6 text-gray-800">Our Specialized Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive veterinary solutions for all your animal care needs</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cow text-white text-2xl"></i>
                     </div>
-                    <div class="section-card p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-semibold text-accent mb-4">Dairy Nutrition & Supplements</h3>
-                        <p class="text-light">High-quality nutritional supplements and feed additives to boost milk production and overall health of dairy animals.</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Large Farm Animal Medicines</h3>
+                    <p class="text-gray-600 leading-relaxed">Comprehensive range of medicines for cattle, buffalo, and other large livestock, ensuring their health and productivity.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-white text-2xl"></i>
                     </div>
-                    <div class="section-card p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-semibold text-accent mb-4">Poultry Medicines & Vaccines</h3>
-                        <p class="text-light">Essential medicines and vaccines for poultry and birds, critical for disease prevention and flock health.</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Dairy Nutrition & Supplements</h3>
+                    <p class="text-gray-600 leading-relaxed">High-quality nutritional supplements and feed additives to boost milk production and overall health of dairy animals.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg" style="animation-delay: 0.4s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-egg text-white text-2xl"></i>
                     </div>
-                    <div class="section-card p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-semibold text-accent mb-4">Premium Pet Food</h3>
-                        <p class="text-light">Nutritionally balanced and high-quality pet food for dogs, cats, and other companion animals to ensure their vitality.</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Poultry Medicines & Vaccines</h3>
+                    <p class="text-gray-600 leading-relaxed">Essential medicines and vaccines for poultry and birds, critical for disease prevention and flock health.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg" style="animation-delay: 0.6s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-red-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bone text-white text-2xl"></i>
                     </div>
-                    <div class="section-card p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-semibold text-accent mb-4">Pet Medicines, Vaccines & Accessories</h3>
-                        <p class="text-light">A complete range of veterinary medicines, vaccines, and accessories for the health and comfort of your beloved pets.</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Premium Pet Food</h3>
+                    <p class="text-gray-600 leading-relaxed">Nutritionally balanced and high-quality pet food for dogs, cats, and other companion animals to ensure their vitality.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg" style="animation-delay: 0.8s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-syringe text-white text-2xl"></i>
                     </div>
-                    <div class="section-card p-8 text-center hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-semibold text-accent mb-4">Consultation & Support</h3>
-                        <p class="text-light">Our experienced team offers expert advice and support for all your veterinary needs, ensuring optimal animal care.</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Pet Medicines & Accessories</h3>
+                    <p class="text-gray-600 leading-relaxed">A complete range of veterinary medicines, vaccines, and accessories for the health and comfort of your beloved pets.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg" style="animation-delay: 1s;">
+                    <div class="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-md text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Consultation & Support</h3>
+                    <p class="text-gray-600 leading-relaxed">Our experienced team offers expert advice and support for all your veterinary needs, ensuring optimal animal care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 lg:px-12 bg-white">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold font-poppins mb-8 text-gray-800">About Sai Medisales</h2>
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <p>
+                            Sai Medisales has been a trusted name in veterinary medicine distribution since 1999. We operate as both wholesale and retail distributors, committed to providing high-quality products for the health and well-being of all animals.
+                        </p>
+                        <p>
+                            Our extensive range covers the needs of large farm animals, dairy nutrition, poultry medicines & vaccines, pet food, pet medicines, pet accessories, and various other items crucial for animal care & treatment.
+                        </p>
+                        <p>
+                            With over two decades of experience, Sai Medisales is your reliable partner for all veterinary pharmaceutical and animal care requirements.
+                        </p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#contact" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center space-x-2">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-6">Why Choose Us?</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span>25+ Years of Experience</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span>Quality Assured Products</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span>Expert Consultation</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <span>Wholesale & Retail</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" class="py-16 px-4 md:px-8 lg:px-16 bg-gray-100 text-light shadow-lg rounded-xl m-6">
-            <div class="container mx-auto">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="section-heading text-3xl md:text-4xl font-extrabold mb-6 text-light">About Sai Medisales</h2>
-                    <p class="text-light text-lg leading-relaxed mb-4">
-                        Sai Medisales has been a trusted name in veterinary medicine distribution since 1999. We operate as both wholesale and retail distributors, committed to providing high-quality products for the health and well-being of all animals, with a focus on purity, effectiveness, and customer satisfaction.
-                    </p>
-                    <p class="text-light text-lg leading-relaxed mb-4">
-                        Our extensive range covers the needs of large farm animals, dairy nutrition, poultry medicines & vaccines, pet food, pet medicines, pet accessories, and various other items crucial for animal care & treatment.
-                    </p>
-                    <p class="text-light text-lg leading-relaxed">
-                        With over two decades of experience, Sai Medisales is your reliable partner for all veterinary pharmaceutical and animal care requirements.
-                    </p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 lg:px-12 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold font-poppins mb-6 text-gray-800">Get In Touch</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ready to provide the best care for your animals? Contact us today!</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Phone</p>
+                                    <a href="tel:+919822514631" class="text-blue-600 hover:text-blue-700">+91 98225 14631</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Email</p>
+                                    <a href="mailto:info@saimedisales.com" class="text-blue-600 hover:text-blue-700">info@saimedisales.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Business Hours</p>
+                                    <p class="text-gray-600">Mon - Sat: 9:00 AM - 7:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your message..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="footer-bg text-muted py-8 px-6 md:px-12 lg:px-24 rounded-t-lg">
-        <div class="container mx-auto text-center">
-            <p class="text-sm">© 2013 - 2025 Sai Medisales. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-6 lg:px-12">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-paw text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold font-poppins">Sai Medisales</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">Your trusted partner in veterinary care since 1999. Providing quality medicines and care for all animals.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2">
+                        <p class="text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +91 98225 14631
+                        </p>
+                        <p class="text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@saimedisales.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2013 - 2025 Sai Medisales. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="main.js"></script>
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -142,14 +444,14 @@
             });
         }
 
-        // Smooth scrolling for anchor links (adjusted to account for fixed header)
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const headerOffset = document.querySelector('.header-fixed').offsetHeight;
+                    const headerOffset = 80;
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -160,8 +462,62 @@
                 }
             });
         });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stats-counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                    const suffix = counter.textContent.replace(/[0-9]/g, '');
+                    let current = 0;
+                    const increment = target / 50;
+                    
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = Math.floor(current) + suffix;
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target + suffix;
+                        }
+                    };
+                    
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a8bc7a82d22961',t:'MTc1NDQyMjUxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
-
