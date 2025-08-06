@@ -46,3 +46,25 @@ h1, h2, h3 {
 }
 
 /* Add more styles here as needed */
+/* Styling for the hero banner */
+.hero-banner {
+    /* Use flexbox to easily center the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Add some padding to create space around the image */
+    padding: 20px 0;
+}
+
+.hero-banner img {
+    /* Limit the image to a maximum width to prevent it from getting too large on big screens */
+    max-width: 1200px;
+    /* Make the image responsive so it scales down on smaller screens */
+    width: 100%;
+    /* Ensure the aspect ratio is maintained */
+    height: auto;
+    /* Add a border-radius for slightly rounded corners, which can look more modern */
+    border-radius: 8px;
+    /* Add a subtle shadow to make the image stand out */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
