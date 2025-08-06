@@ -181,12 +181,12 @@
                             <div>
                                 <label for="name" class="block text-gray-700 font-semibold mb-2">Your Name *</label>
                                 <input type="text" id="name" name="name" placeholder="Enter your name" required
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
                             </div>
                             <div>
                                 <label for="email" class="block text-gray-700 font-semibold mb-2">Your Email *</label>
                                 <input type="email" id="email" name="email" placeholder="Enter your email" required
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
                             </div>
                         </div>
 
@@ -194,20 +194,21 @@
                             <div>
                                 <label for="phone" class="block text-gray-700 font-semibold mb-2">Phone Number *</label>
                                 <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
                             </div>
-                             <div>
-                                <label for="phone" class="block text-gray-700 font-semibold mb-2">Describe Your Query *</label>
-                                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
-                                       class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                            </div> 
-<div class="grid md:grid-cols-1 gap-6">                 
+                            <div>
+                                <label for="query-type" class="block text-gray-700 font-semibold mb-2">Describe Your Query *</label>
+                                <input type="text" id="query-type" name="query-type" placeholder="e.g., Product Inquiry, Support, Feedback"
+                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                            </div>
+                        </div>
+                        
                         <div>
                             <label for="message" class="block text-gray-700 font-semibold mb-2">Description *</label>
                             <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you..." required
-                                      class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 resize-none"></textarea>
-                        </div>   
-<div class="grid md:gap-6">                                         
+                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 resize-none"></textarea>
+                        </div>
+                        
                         <div class="text-center">
                             <button type="submit" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-12 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                                 <i class="fas fa-paper-plane mr-2"></i>
@@ -239,33 +240,64 @@
 
         // Form submission handler
         function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
             const button = event.target.querySelector('button[type="submit"]');
             const originalText = button.innerHTML;
             
             button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
             button.disabled = true;
             
-            // Let the form submit naturally to Formspree
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
-                button.classList.add('bg-green-600', 'hover:bg-green-700');
+            // Use fetch API for submission to handle response more gracefully
+            const formData = new FormData(event.target);
+            fetch(event.target.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Request JSON response from Formspree
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Parse JSON response
+                } else {
+                    // Handle HTTP errors or Formspree errors
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.message || 'Form submission failed.');
+                    });
+                }
+            })
+            .then(data => {
+                // Formspree returns { success: true } on successful submission
+                if (data.success) {
+                    button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
+                    button.classList.add('bg-green-600', 'hover:bg-green-700');
+                    button.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
+                    event.target.reset(); // Clear the form
+                } else {
+                    // This case might be hit if Formspree returns success: false with a message
+                    throw new Error(data.message || 'Failed to send message.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                button.innerHTML = '<i class="fas fa-times mr-2"></i>Error!';
+                button.classList.add('bg-red-600', 'hover:bg-red-700');
                 button.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
-                
+            })
+            .finally(() => {
+                // Reset button state after a delay
                 setTimeout(() => {
                     button.innerHTML = originalText;
-                    button.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    button.classList.remove('bg-green-600', 'hover:bg-green-700', 'bg-red-600', 'hover:bg-red-700');
                     button.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
                     button.disabled = false;
-                }, 3000);
-            }, 1000);
+                }, 3000); // 3 seconds before resetting
+            });
         }
 
         // Initialize animations
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('load', handleScroll);
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b049f15643404f',t:'MTc1NDUwMTcwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
-
-
-
