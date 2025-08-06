@@ -6,7 +6,6 @@
     <title>Contact Us - Sai Medisales</title>
     <meta name="description" content="Contact Sai Medisales in Baramati, Pune. Send us a query, find our address, phone number, email, business hours, and get directions on Google Maps.">
 
-    <!-- Favicon and App Icons (using relative paths assuming they are in the root directory) -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -15,11 +14,8 @@
     <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -94,13 +90,51 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
+
+        /* --- Header specific styles for consistency --- */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .header-link {
+            transition: color 0.2s ease;
+        }
+        .header-link:hover {
+            color: #4361EE; /* A primary blue color */
+        }
     </style>
 </head>
 <body class="body-padding-top">
-    <!-- Placeholder for Header (loaded by loadComponents.js) -->
-    <div id="header-placeholder"></div>
+    <header class="header">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+                <img src="logo.png" alt="Sai Medisales Logo" class="h-10">
+                <span class="ml-3 text-2xl font-bold text-gray-800 font-poppins">Sai Medisales</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-600 header-link font-medium">Home</a>
+                <a href="products.html" class="text-gray-600 header-link font-medium">Products</a>
+                <a href="about.html" class="text-gray-600 header-link font-medium">About Us</a>
+                <a href="contact.html" class="text-blue-600 header-link font-semibold">Connect Us/a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="products.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Products</a>
+            <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About Us</a>
+            <a href="contact.html" class="block px-4 py-2 text-blue-600 hover:bg-gray-100 font-semibold">Connect Us</a>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
     <section class="hero-gradient pt-24 pb-16">
         <div class="container mx-auto px-6 lg:px-12 text-center">
             <div class="fade-in">
@@ -117,31 +151,27 @@
         </div>
     </section>
 
-    <!-- Contact Information Cards -->
     <section class="py-16 -mt-8">
         <div class="container mx-auto px-6 lg:px-12">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Phone Card -->
                 <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
                     <i class="fas fa-phone-alt text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2 font-poppins">Call Us</h3>
                     <p class="text-white/90 mb-4">Speak directly with our team</p>
-                    <a href="tel:+919822123456" class="text-white font-semibold hover:underline">
-                        +91 98221 23456
+                    <a href="tel:+919822514631" class="text-white font-semibold hover:underline">
+                        +91 98225 14631
                     </a>
                 </div>
 
-                <!-- Email Card -->
                 <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
                     <i class="fas fa-envelope text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2 font-poppins">Email Us</h3>
                     <p class="text-white/90 mb-4">Send us your inquiries</p>
                     <a href="mailto:info@saimedisales.com" class="text-white font-semibold hover:underline">
-                        info@saimedisales.com
+                        saimedisales2013@gmail.com
                     </a>
                 </div>
 
-                <!-- Location Card -->
                 <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
                     <i class="fas fa-map-marker-alt text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2 font-poppins">Visit Us</h3>
@@ -152,7 +182,6 @@
                     </p>
                 </div>
 
-                <!-- Hours Card -->
                 <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
                     <i class="fas fa-clock text-4xl mb-4"></i>
                     <h3 class="text-xl font-bold mb-2 font-poppins">Business Hours</h3>
@@ -166,7 +195,6 @@
         </div>
     </section>
 
-    <!-- Contact Form Section -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-6 lg:px-12">
             <div class="max-w-4xl mx-auto">
@@ -221,10 +249,15 @@
         </div>
     </section>
 
-    <!-- Load Components Script -->
-    <script src="loadComponents.js"></script>
-    
+    <div id="footer-placeholder"></div>
+
     <script>
+        // Javascript to handle mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
         // Fade in animation on scroll
         function handleScroll() {
             const elements = document.querySelectorAll('.fade-in');
@@ -240,41 +273,37 @@
 
         // Form submission handler
         function handleFormSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault();
             const button = event.target.querySelector('button[type="submit"]');
             const originalText = button.innerHTML;
             
             button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
             button.disabled = true;
             
-            // Use fetch API for submission to handle response more gracefully
             const formData = new FormData(event.target);
             fetch(event.target.action, {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'Accept': 'application/json' // Request JSON response from Formspree
+                    'Accept': 'application/json'
                 }
             })
             .then(response => {
                 if (response.ok) {
-                    return response.json(); // Parse JSON response
+                    return response.json();
                 } else {
-                    // Handle HTTP errors or Formspree errors
                     return response.json().then(errorData => {
                         throw new Error(errorData.message || 'Form submission failed.');
                     });
                 }
             })
             .then(data => {
-                // Formspree returns { success: true } on successful submission
                 if (data.success) {
                     button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
                     button.classList.add('bg-green-600', 'hover:bg-green-700');
                     button.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
-                    event.target.reset(); // Clear the form
+                    event.target.reset();
                 } else {
-                    // This case might be hit if Formspree returns success: false with a message
                     throw new Error(data.message || 'Failed to send message.');
                 }
             })
@@ -285,13 +314,12 @@
                 button.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
             })
             .finally(() => {
-                // Reset button state after a delay
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.classList.remove('bg-green-600', 'hover:bg-green-700', 'bg-red-600', 'hover:bg-red-700');
                     button.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
                     button.disabled = false;
-                }, 3000); // 3 seconds before resetting
+                }, 3000);
             });
         }
 
