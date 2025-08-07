@@ -16,7 +16,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -76,10 +76,33 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
-        
-        .body-padding-top {
-            padding-top: 80px;
-            background-color: #f9fafb;
+
+        .nav-link {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
         }
         
         .form-input {
@@ -91,23 +114,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-         /* --- Header specific styles for consistency --- */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .header-link {
-            transition: color 0.2s ease;
-        }
-        .header-link:hover {
-            color: #4361EE; /* A primary blue color */
-        }
-        
-        /* Header animation styles */
         .header-hidden {
             transform: translateY(-100%);
             opacity: 0;
@@ -117,9 +123,44 @@
             transform: translateY(0);
             opacity: 1;
         }
+
+        .medical-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .success-message {
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .business-hours {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
+
     <!-- Header -->
     <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-hidden">
         <nav class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
@@ -131,10 +172,10 @@
             </a>
             
             <ul class="hidden md:flex space-x-8">
-                <li><a href="#home" class="text-blue-600 font-medium transition-colors">Home</a></li>
+                <li><a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a></li>
                 <li><a href="products.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Our Products</a></li>
                 <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">About Us</a></li>
-                <li><a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Connect Us</a></li>
+                <li><a href="contact.html" class="text-blue-600 font-medium transition-colors">Connect Us</a></li>
             </ul>
             
             <div class="hidden md:flex items-center space-x-4">
@@ -154,10 +195,10 @@
         <!-- Mobile Menu -->
         <div id="mobile-nav" class="md:hidden hidden bg-white border-t">
             <ul class="flex flex-col space-y-4 p-6">
-                <li><a href="#home" class="block text-blue-600 font-medium">Home</a></li>
+                <li><a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
                 <li><a href="products.html" class="block text-gray-700 hover:text-blue-600 font-medium">Our Products</a></li>
                 <li><a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium">About Us</a></li>
-                <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 font-medium">Connect Us</a></li>        
+                <li><a href="contact.html" class="block text-blue-600 font-medium">Connect Us</a></li>        
                 <li>
                     <a href="tel:+919822514631" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full inline-flex items-center space-x-2">
                         <i class="fas fa-phone-alt"></i>
@@ -168,131 +209,393 @@
         </div>
     </header>
 
-    <section class="hero-gradient pt-24 pb-16">
-        <div class="container mx-auto px-6 lg:px-12 text-center">
-            <div class="fade-in">
-                <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins">
-                    Get In Touch
-                </h1>
-                <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                    Ready to partner with us? We're here to help you find the perfect medical solutions for your needs.
-                </p>
-                <div class="pulse-animation inline-block">
-                    <i class="fas fa-phone-alt text-6xl text-white mb-4"></i>
+    <!-- Main Content -->
+    <main class="medical-pattern">
+        
+        <!-- Hero Section -->
+        <section class="hero-gradient pt-24 pb-16">
+            <div class="container mx-auto px-6 lg:px-12 text-center">
+                <div class="fade-in">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins">
+                        Get In Touch
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Ready to partner with us? We're here to help you find the perfect medical solutions for your needs.
+                    </p>
+                    <div class="pulse-animation inline-block">
+                        <i class="fas fa-phone-alt text-6xl text-white mb-4"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-16 -mt-8">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
-                    <i class="fas fa-phone-alt text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2 font-poppins">Call Us</h3>
-                    <p class="text-white/90 mb-4">Speak directly with our team</p>
-                    <a href="tel:+919822514631" class="text-white font-semibold hover:underline">
-                        +91 98225 14631
-                    </a>
-                </div>
+        <!-- Contact Cards Section -->
+        <section class="py-16 -mt-10 relative z-10">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Phone Card -->
+                    <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-phone text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Call Us</h3>
+                        <p class="text-sm opacity-90 mb-3">Mon-Sat 9AM-7PM</p>
+                        <a href="tel:+919822514631" class="text-white hover:text-gray-200 font-medium">
+                            +91 98225 14631
+                        </a>
+                    </div>
 
-                <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
-                    <i class="fas fa-envelope text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2 font-poppins">Email Us</h3>
-                    <p class="text-white/90 mb-4">Send us your inquiries</p>
-                    <a href="mailto:info@saimedisales.com" class="text-white font-semibold hover:underline">
-                        saimedisales2013@gmail.com
-                    </a>
-                </div>
+                    <!-- Email Card -->
+                    <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Email Us</h3>
+                        <p class="text-sm opacity-90 mb-3">Quick Response</p>
+                        <a href="mailto:info@saimedisales.com" class="text-white hover:text-gray-200 font-medium">
+                            info@saimedisales.com
+                        </a>
+                    </div>
 
-                <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
-                    <i class="fas fa-map-marker-alt text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2 font-poppins">Visit Us</h3>
-                    <p class="text-white/90 mb-4">Come to our office</p>
-                    <p class="text-white font-semibold">
-                        Baramati, <br>
-                        Maharashtra, India
-                    </p>
-                </div>
+                    <!-- Location Card -->
+                    <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-map-marker-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Visit Us</h3>
+                        <p class="text-sm opacity-90 mb-3">Baramati, Pune</p>
+                        <button onclick="showMap()" class="text-white hover:text-gray-200 font-medium">
+                            Get Directions
+                        </button>
+                    </div>
 
-                <div class="contact-card card-hover rounded-2xl p-8 text-center text-white fade-in">
-                    <i class="fas fa-clock text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2 font-poppins">Business Hours</h3>
-                    <p class="text-white/90 mb-4">We're here when you need us</p>
-                    <p class="text-white font-semibold">
-                        Mon - Sat: 10AM - 3PM & 5PM - 8:30PM<br>
-                        Sunday Closed
-                    </p>
+                    <!-- WhatsApp Card -->
+                    <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
+                        <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">WhatsApp</h3>
+                        <p class="text-sm opacity-90 mb-3">Instant Support</p>
+                        <a href="https://wa.me/919822514631" target="_blank" class="text-white hover:text-gray-200 font-medium">
+                            Chat Now
+                        </a>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="max-w-4xl mx-auto">
+        <!-- Contact Form & Info Section -->
+        <section class="py-16">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    
+                    <!-- Contact Form -->
+                    <div class="fade-in">
+                        <div class="bg-white rounded-2xl shadow-xl p-8">
+                            <h2 class="text-3xl font-bold font-poppins text-gray-800 mb-6">Send Us a Message</h2>
+                            
+                            <!-- Success Message -->
+                            <div id="successMessage" class="success-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
+                                </div>
+                            </div>
+
+                            <form id="contactForm" class="space-y-6">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Full Name *</label>
+                                        <input type="text" name="name" required 
+                                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+                                        <input type="tel" name="phone" required 
+                                               class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                                    <input type="email" name="email" required 
+                                           class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Subject</label>
+                                    <select name="subject" 
+                                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option value="">Select a subject</option>
+                                        <option value="product-inquiry">Product Inquiry</option>
+                                        <option value="service-request">Service Request</option>
+                                        <option value="support">Technical Support</option>
+                                        <option value="partnership">Partnership</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Message *</label>
+                                    <textarea name="message" rows="5" required 
+                                              placeholder="Tell us how we can help you..."
+                                              class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+                                </div>
+                                
+                                <button type="submit" 
+                                        class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Business Info -->
+                    <div class="space-y-8 fade-in">
+                        
+                        <!-- Business Hours -->
+                        <div class="business-hours rounded-2xl p-8 text-white">
+                            <h3 class="text-2xl font-bold font-poppins mb-6">Business Hours</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">Monday - Friday</span>
+                                    <span>9:00 AM - 7:00 PM</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">Saturday</span>
+                                    <span>9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">Sunday</span>
+                                    <span class="text-red-200">Closed</span>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-white border-opacity-20">
+                                    <p class="text-sm opacity-90">
+                                        <i class="fas fa-info-circle mr-2"></i>
+                                        Emergency services available 24/7
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="bg-white rounded-2xl shadow-xl p-8">
+                            <h3 class="text-2xl font-bold font-poppins text-gray-800 mb-6">Our Location</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-blue-100 rounded-full p-3">
+                                        <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Address</h4>
+                                        <p class="text-gray-600">
+                                            123 Medical Plaza, Baramati<br>
+                                            Pune, Maharashtra 413102<br>
+                                            India
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="bg-green-100 rounded-full p-3">
+                                        <i class="fas fa-route text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800">Directions</h4>
+                                        <p class="text-gray-600 mb-3">
+                                            Near Baramati Bus Stand, opposite City Hospital
+                                        </p>
+                                        <button onclick="showMap()" 
+                                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                            <i class="fas fa-directions mr-2"></i>
+                                            Get Directions
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Container -->
+                        <div id="mapContainer" class="map-container bg-white p-4" style="display: none;">
+                            <div class="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
+                                <div class="text-center">
+                                    <i class="fas fa-map text-4xl text-gray-400 mb-4"></i>
+                                    <p class="text-gray-600 font-medium">Interactive Map</p>
+                                    <p class="text-sm text-gray-500">Sai Medisales, Baramati, Pune</p>
+                                    <a href="https://maps.google.com/?q=Baramati,Pune,Maharashtra" 
+                                       target="_blank" 
+                                       class="inline-block mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                        Open in Google Maps
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6 lg:px-12">
                 <div class="text-center mb-12 fade-in">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-4 font-poppins">Send Us a Query</h2>
-                    <p class="text-xl text-gray-600">Fill out the form below and we'll get back to you within 24 hours</p>
+                    <h2 class="text-4xl font-bold font-poppins text-gray-800 mb-4">Frequently Asked Questions</h2>
+                    <p class="text-xl text-gray-600">Quick answers to common questions</p>
                 </div>
+                
+                <div class="max-w-4xl mx-auto space-y-4">
+                    
+                    <div class="faq-item bg-gray-50 rounded-lg fade-in">
+                        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
+                            <span>What types of medical equipment do you supply?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                            <p>We supply a wide range of medical equipment including diagnostic devices, surgical instruments, hospital furniture, patient monitoring systems, and rehabilitation equipment. Contact us for specific product inquiries.</p>
+                        </div>
+                    </div>
 
-                <div class="bg-gray-50 rounded-3xl p-8 lg:p-12 shadow-xl fade-in">
-                    <form action="https://formspree.io/f/xjkrlejp" method="post" class="space-y-6" onsubmit="handleFormSubmit(event)">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-gray-700 font-semibold mb-2">Your Name *</label>
-                                <input type="text" id="name" name="name" placeholder="Enter your name" required
-                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-gray-700 font-semibold mb-2">Your Email *</label>
-                                <input type="email" id="email" name="email" placeholder="Enter your email" required
-                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                            </div>
+                    <div class="faq-item bg-gray-50 rounded-lg fade-in">
+                        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
+                            <span>Do you provide installation and maintenance services?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                            <p>Yes, we provide complete installation, training, and maintenance services for all equipment we supply. Our certified technicians ensure proper setup and ongoing support.</p>
                         </div>
+                    </div>
 
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="phone" class="block text-gray-700 font-semibold mb-2">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
-                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                            </div>
-                            <div>
-                                <label for="query-type" class="block text-gray-700 font-semibold mb-2">Describe Your Query *</label>
-                                <input type="text" id="query-type" name="query-type" placeholder="e.g., Product Inquiry, Support, Feedback"
-                                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-                            </div>
+                    <div class="faq-item bg-gray-50 rounded-lg fade-in">
+                        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
+                            <span>What are your delivery timelines?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                            <p>Delivery timelines vary based on product availability and location. Standard items are typically delivered within 3-7 business days, while specialized equipment may take 2-4 weeks.</p>
                         </div>
-                        
-                        <div>
-                            <label for="message" class="block text-gray-700 font-semibold mb-2">Description *</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you..." required
-                                    class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 resize-none"></textarea>
+                    </div>
+
+                    <div class="faq-item bg-gray-50 rounded-lg fade-in">
+                        <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
+                            <span>Do you offer financing options?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                            <p>Yes, we offer flexible financing options and payment plans for qualified customers. Contact our sales team to discuss financing solutions that work for your budget.</p>
                         </div>
-                        
-                        <div class="text-center">
-                            <button type="submit" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-12 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                                <i class="fas fa-paper-plane mr-2"></i>
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div id="footer-placeholder"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-10 w-auto">
+                        <div>
+                            <h3 class="text-xl font-bold font-poppins">Sai Medisales</h3>
+                            <p class="text-sm text-gray-400">Medical Equipment & Supplies</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner for quality medical equipment and exceptional service in Baramati and surrounding areas.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Our Products</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Connect Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-blue-400"></i>
+                            <span class="text-gray-400">+91 98225 14631</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-blue-400"></i>
+                            <span class="text-gray-400">info@saimedisales.com</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-blue-400 mt-1"></i>
+                            <span class="text-gray-400">123 Medical Plaza, Baramati<br>Pune, Maharashtra 413102</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Sai Medisales. All rights reserved. | 
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Javascript to handle mobile menu toggle
+        // Mobile menu toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
         });
 
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
+        function handleHeaderScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Show header when scrolled down
+                header.classList.remove('header-hidden');
+                header.classList.add('header-visible');
+            } else {
+                // Hide header when at top
+                header.classList.add('header-hidden');
+                header.classList.remove('header-visible');
+            }
+            
+            lastScrollTop = scrollTop;
+        }
+
         // Fade in animation on scroll
-        function handleScroll() {
+        function handleScrollAnimations() {
             const elements = document.querySelectorAll('.fade-in');
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
@@ -304,117 +607,72 @@
             });
         }
 
-        // Form submission handler
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const button = event.target.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-            button.disabled = true;
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
             
-            const formData = new FormData(event.target);
-            fetch(event.target.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    return response.json().then(errorData => {
-                        throw new Error(errorData.message || 'Form submission failed.');
-                    });
-                }
-            })
-            .then(data => {
-                if (data.success) {
-                    button.innerHTML = '<i class="fas fa-check mr-2"></i>Message Sent!';
-                    button.classList.add('bg-green-600', 'hover:bg-green-700');
-                    button.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
-                    event.target.reset();
-                } else {
-                    throw new Error(data.message || 'Failed to send message.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                button.innerHTML = '<i class="fas fa-times mr-2"></i>Error!';
-                button.classList.add('bg-red-600', 'hover:bg-red-700');
-                button.classList.remove('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
-            })
-            .finally(() => {
+            // Simulate form submission
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'block';
+                this.reset();
+                
+                // Hide success message after 5 seconds
                 setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.classList.remove('bg-green-600', 'hover:bg-green-700', 'bg-red-600', 'hover:bg-red-700');
-                    button.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'hover:from-blue-700', 'hover:to-blue-800');
-                    button.disabled = false;
-                }, 3000);
-            });
-        }
-
-        // Initialize animations
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', handleScroll);
-    </script>
- <script>
-        let lastScrollTop = 0;
-        let isScrolling = false;
-        const header = document.getElementById('header');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileNav = document.getElementById('mobile-nav');
-
-        // Scroll detection for header animation
-        window.addEventListener('scroll', function() {
-            if (!isScrolling) {
-                window.requestAnimationFrame(function() {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    // Show header when scrolling down after initial scroll
-                    if (scrollTop > 100 && scrollTop > lastScrollTop) {
-                        // Scrolling down - show header
-                        header.classList.remove('header-hidden');
-                        header.classList.add('header-visible');
-                    } else if (scrollTop <= 50) {
-                        // At top of page - hide header
-                        header.classList.remove('header-visible');
-                        header.classList.add('header-hidden');
-                    } else if (scrollTop < lastScrollTop) {
-                        // Scrolling up - show header
-                        header.classList.remove('header-hidden');
-                        header.classList.add('header-visible');
-                    }
-                    
-                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                    isScrolling = false;
-                });
-            }
-            isScrolling = true;
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }, 1000);
         });
 
-        // Mobile menu toggle
-        if (mobileMenuButton && mobileNav) {
-            mobileMenuButton.addEventListener('click', function() {
-                mobileNav.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when clicking on links
-            const mobileLinks = mobileNav.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.add('hidden');
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer) {
+                        otherAnswer.classList.add('hidden');
+                        otherAnswer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
                 });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
             });
+        });
+
+        // Show map function
+        function showMap() {
+            const mapContainer = document.getElementById('mapContainer');
+            mapContainer.style.display = mapContainer.style.display === 'none' ? 'block' : 'none';
+            
+            if (mapContainer.style.display === 'block') {
+                mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            handleScrollAnimations();
+            handleHeaderScroll();
+        });
+
+        window.addEventListener('load', () => {
+            handleScrollAnimations();
+            // Keep header hidden on load
+            header.classList.add('header-hidden');
+            header.classList.remove('header-visible');
+        });
+
+        // Initialize animations
+        handleScrollAnimations();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b4759f0192409f',t:'MTc1NDU0NTQzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-</body>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b9846f8194c6aa',t:'MTc1NDU5ODQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
-
-
-
-
