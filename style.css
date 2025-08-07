@@ -1,42 +1,30 @@
 /*
- * Copyright (c) 2025 Sai Medisales
+ * Copyright (c) Sai Medisales
  * The license text is available at LICENSE file.
  */
 
 /* Use CSS Custom Properties for easy theming */
 :root {
-    /* Primary color palette from your original design */
     --primary-color: #007bff; /* A blue color for buttons and links */
     --secondary-color: #6c757d; /* A gray color for secondary elements */
+    --font-family-body: 'Arial', sans-serif;
+    --font-family-heading: 'Helvetica', sans-serif;
     --light-gray-background: #f8f9fa; /* A very light gray for sections */
     --border-color: #dee2e6; /* A subtle border color */
-
-    /* Additional color variables for consistency */
-    --text-color-primary: #1f2937; /* Dark gray for main text */
-    --text-color-secondary: #4b5563; /* Medium gray for secondary text */
-    --background-color-dark: #111827; /* Dark gray for footer */
-    --white: #ffffff;
 }
 
-/* Global body styles - using Inter as default as per your original HTML */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family-body);
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333; /* Default text color */
+    color: #333;
     background-color: #fff; /* Ensure a clean white background for the body */
 }
 
-/* Poppins font for specific elements, as used in your original HTML */
-.font-poppins {
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Headings styles - assuming Poppins for headings */
 h1, h2, h3 {
-    font-family: 'Poppins', sans-serif;
-    color: #222; /* Darker color for headings */
+    font-family: var(--font-family-heading);
+    color: #222;
 }
 
 .container {
@@ -45,130 +33,24 @@ h1, h2, h3 {
     padding: 0 20px;
 }
 
-/* Card hover effect */
-.card-hover {
-    transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-/* Fade-in animation for elements on scroll */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Contact card specific gradients from your original contact.html */
-.contact-card {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.contact-card:nth-child(2n) {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-.contact-card:nth-child(3n) {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-}
-
-.contact-card:nth-child(4n) {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-}
-
-/* Hero section and newsletter gradient from your original HTML */
-.hero-gradient, .newsletter-gradient {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
-}
-
-/* Pulse animation for buttons */
-.pulse-animation {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-/* Body padding for header spacing (if needed, adjust as per layout) */
-.body-padding-top {
-    padding-top: 80px;
-    background-color: #f9fafb;
-}
-
-/* Form input focus effect */
-.form-input {
-    transition: all 0.3s ease;
-}
-
-.form-input:focus {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Header specific styles for consistency and animation */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: white; /* Or use bg-white/95 from Tailwind in HTML directly */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    transition: transform 0.7s ease, opacity 0.7s ease; /* Smooth transition for show/hide */
-}
-
-.header-hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-}
-
-.header-visible {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Header link hover effect */
-.header-link {
-    transition: color 0.2s ease;
-}
-
-.header-link:hover {
-    color: #4361EE; /* A primary blue color */
-}
-
-/* Footer background color */
-.footer-bg {
-    background-color: var(--background-color-dark);
-}
-
-/* Button styles, merged and using variables */
-.button, .filter-btn {
-    display: inline-block; /* Ensure it behaves like a block but respects content width */
-    padding: 1rem 2rem; /* Generous padding */
+/* Updated button styles to use the new variables */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
     background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-    font-weight: 600;
-    border-radius: 9999px; /* Fully rounded */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none; /* Remove underline for links acting as buttons */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none; /* Ensure no default button border */
+    cursor: pointer; /* Indicate it's clickable */
 }
 
-.button:hover, .filter-btn:hover {
-    background-color: var(--secondary-color);
+.button:hover {
+    background-color: #0056b3;
 }
 
-/* Styling for the hero banner image (if used as an <img> tag) */
+/* Styling for the hero banner */
 .hero-banner {
     display: flex;
     justify-content: center;
@@ -185,7 +67,7 @@ h1, h2, h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to make the image stand out */
 }
 
-/* Newsletter signup section styles */
+/* New styles for the newsletter signup section */
 .newsletter-signup {
     background-color: var(--light-gray-background); /* Use a light gray background */
     padding: 60px 20px; /* Generous padding for visual breathing room */
@@ -264,56 +146,3 @@ h1, h2, h3 {
     }
 }
 
-/* Product category icons background (from products.html) */
-.product-category {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); /* Example gradient, adjust if needed */
-}
-
-/* Back to Top Button (from index.html) */
-.back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4361EE; /* Example blue */
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 999;
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* WhatsApp Chat Widget (from index.html) */
-.chat-widget {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #25D366; /* WhatsApp green */
-    color: white;
-    padding: 10px 15px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    font-weight: 500;
-    z-index: 999;
-    transition: background-color 0.3s ease;
-}
-
-.chat-widget:hover {
-    background-color: #1DA851;
-}
