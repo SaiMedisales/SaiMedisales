@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products - SAI MEDISALES</title>
+    <title>Contact Us - Sai Medisales</title>
+    <meta name="description" content="Contact Sai Medisales in Baramati, Pune. Send us a query, find our address, phone number, email, business hours, and get directions on Google Maps.">
 
-    <link rel="icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/favicon-32x32.png">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/SaiMedisales/SaiMedisales/main/android-chrome-512x512.png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         * {
@@ -23,10 +26,6 @@
         
         .font-poppins {
             font-family: 'Poppins', sans-serif;
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
         }
         
         .card-hover {
@@ -49,6 +48,26 @@
             transform: translateY(0);
         }
         
+        .contact-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .contact-card:nth-child(2n) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .contact-card:nth-child(3n) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .contact-card:nth-child(4n) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+        }
+        
         .pulse-animation {
             animation: pulse 2s infinite;
         }
@@ -58,28 +77,53 @@
             50% { transform: scale(1.05); }
         }
         
-        .product-category {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .body-padding-top {
+            padding-top: 80px;
+            background-color: #f9fafb;
         }
         
-        .product-category:nth-child(2n) {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        .form-input {
+            transition: all 0.3s ease;
         }
         
-        .product-category:nth-child(3n) {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- Header specific styles for consistency --- */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .header-link {
+            transition: color 0.2s ease;
+        }
+        .header-link:hover {
+            color: #4361EE; /* A primary blue color */
         }
         
-        .product-category:nth-child(4n) {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        /* Header animation styles */
+        .header-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .header-visible {
+            transform: translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg">
+    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-hidden">
         <nav class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
-            <a href="index.html" class="flex items-center space-x-3 group">
+            <a href="#home" class="flex items-center space-x-3 group">
                 <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-12 w-auto">
                 <span class="text-3xl font-bold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out group-hover:scale-105">
                     Sai Medisales
@@ -87,9 +131,9 @@
             </a>
             
             <ul class="hidden md:flex space-x-8">
-                <li><a href="index.html#home" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a></li>
-                <li><a href="products.html" class="text-blue-600 font-medium transition-colors">Our Products</a></li>
-                <li><a href="index.html#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">About Us</a></li>
+                <li><a href="#home" class="text-blue-600 font-medium transition-colors">Home</a></li>
+                <li><a href="products.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Our Products</a></li>
+                <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">About Us</a></li>
                 <li><a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Connect Us</a></li>
             </ul>
             
@@ -110,10 +154,10 @@
         <!-- Mobile Menu -->
         <div id="mobile-nav" class="md:hidden hidden bg-white border-t">
             <ul class="flex flex-col space-y-4 p-6">
-                <li><a href="index.html#home" class="block text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
-                <li><a href="products.html" class="block text-blue-600 font-medium">Our Products</a></li>
-                <li><a href="index.html#about" class="block text-gray-700 hover:text-blue-600 font-medium">About Us</a></li>
-                <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 font-medium">Connect Us</a></li>
+                <li><a href="#home" class="block text-blue-600 font-medium">Home</a></li>
+                <li><a href="products.html" class="block text-gray-700 hover:text-blue-600 font-medium">Our Products</a></li>
+                <li><a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium">About Us</a></li>
+                <li><a href="contact.html" class="block text-gray-700 hover:text-blue-600 font-medium">Connect Us</a></li>        
                 <li>
                     <a href="tel:+919822514631" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full inline-flex items-center space-x-2">
                         <i class="fas fa-phone-alt"></i>
@@ -623,8 +667,60 @@
             }
         });
     </script>
+ <script>
+        let lastScrollTop = 0;
+        let isScrolling = false;
+        const header = document.getElementById('header');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        // Scroll detection for header animation
+        window.addEventListener('scroll', function() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Show header when scrolling down after initial scroll
+                    if (scrollTop > 100 && scrollTop > lastScrollTop) {
+                        // Scrolling down - show header
+                        header.classList.remove('header-hidden');
+                        header.classList.add('header-visible');
+                    } else if (scrollTop <= 50) {
+                        // At top of page - hide header
+                        header.classList.remove('header-visible');
+                        header.classList.add('header-hidden');
+                    } else if (scrollTop < lastScrollTop) {
+                        // Scrolling up - show header
+                        header.classList.remove('header-hidden');
+                        header.classList.add('header-visible');
+                    }
+                    
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                    isScrolling = false;
+                });
+            }
+            isScrolling = true;
+        });
+
+        // Mobile menu toggle
+        if (mobileMenuButton && mobileNav) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileNav.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking on links
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b4759f0192409f',t:'MTc1NDU0NTQzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96a8d4a403ed4710',t:'MTc1NDQyMzUwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
