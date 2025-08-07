@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileNav = document.getElementById('mobile-nav');
+    const header = document.getElementById('header');
 
+    // Mobile menu toggle logic
     if (mobileMenuButton && mobileNav) {
         mobileMenuButton.addEventListener('click', function() {
             mobileNav.classList.toggle('hidden');
@@ -20,4 +22,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Header visibility on scroll logic
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Only show/hide header if scrolling beyond a certain threshold (e.g., 50px)
+        if (scrollTop > 50) {
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down - hide header
+                header.classList.remove('header-visible');
+                header.classList.add('header-hidden');
+            } else {
+                // Scrolling up - show header
+                header.classList.remove('header-hidden');
+                header.classList.add('header-visible');
+            }
+        } else {
+            // At the very top of the page, always show header
+            header.classList.remove('header-hidden');
+            header.classList.add('header-visible');
+        }
+        lastScrollTop = scrollTop;
+    });
+
+    // Handle initial header state on page load
+    window.addEventListener('load', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop === 0) {
+            header.classList.add('header-visible'); // Show header if at top on load
+            header.classList.remove('header-hidden');
+        } else {
+            header.classList.add('header-hidden'); // Hide header if not at top on load
+            header.classList.remove('header-visible');
+        }
+    });
 });
