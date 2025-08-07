@@ -91,7 +91,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* --- Header specific styles for consistency --- */
+         /* --- Header specific styles for consistency --- */
         .header {
             position: fixed;
             top: 0;
@@ -106,11 +106,22 @@
         .header-link:hover {
             color: #4361EE; /* A primary blue color */
         }
+        
+        /* Header animation styles */
+        .header-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .header-visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg">
+    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-hidden">
         <nav class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
             <a href="#home" class="flex items-center space-x-3 group">
                 <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-12 w-auto">
@@ -351,6 +362,7 @@
     </script>
 </body>
 </html>
+
 
 
 
