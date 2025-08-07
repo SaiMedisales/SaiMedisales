@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Sai Medisales
+ * Copyright (c) Sai Medisales
  * The license text is available at LICENSE file.
  */
 
@@ -145,3 +145,4 @@ h1, h2, h3 {
         max-width: none; /* Remove max-width constraint */
     }
 }
+
