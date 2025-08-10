@@ -763,9 +763,51 @@
         // Initialize animations
         handleScrollAnimations();
     </script>
+<script>
+    let lastScrollTop = 0;
+    const header = document.getElementById('header');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.classList.remove('header-visible');
+            header.classList.add('header-hidden');
+            // Hide the mobile menu if it's open
+            if (!mobileNav.classList.contains('hidden')) {
+                mobileNav.classList.add('hidden');
+            }
+        } else {
+            // Scrolling up
+            header.classList.remove('header-hidden');
+            header.classList.add('header-visible');
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // Mobile menu toggle
+    if (mobileMenuButton && mobileNav) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.add('hidden');
+            });
+        });
+    }
+</script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b9846f8194c6aa',t:'MTc1NDU5ODQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
+
 
 
 
