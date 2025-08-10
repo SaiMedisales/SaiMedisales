@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileNav.classList.toggle('space-y-4');
             });
 
-            // Close mobile nav when a link is clicked
             mobileNav.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (!mobileNav.classList.contains('hidden')) {
@@ -27,18 +26,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Header visibility on scroll logic
     let lastScrollTop = 0;
+    const headerHeight = header ? header.offsetHeight : 0;
 
     function handleHeaderScroll() {
         if (!header) return;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
+        if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
             // Scrolling down - hide header
-            header.classList.remove('header-visible');
-            header.style.transform = 'translateY(-100%)';
+            header.style.transform = `translateY(-${headerHeight}px)`;
         } else {
             // Scrolling up or at the top - show header
-            header.classList.add('header-visible');
             header.style.transform = 'translateY(0)';
         }
         lastScrollTop = scrollTop;
@@ -61,10 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
         handleHeaderScroll();
     });
 
-    // Handle initial state on page load
     window.addEventListener('load', () => {
         handleScrollAnimations();
         handleHeaderScroll();
-        setupMobileMenu(); // Ensure mobile menu is set up after everything is loaded
+        setupMobileMenu();
     });
 });
