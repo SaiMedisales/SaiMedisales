@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const html = await response.text();
-            document.getElementById(elementId).innerHTML = html;
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.innerHTML = html;
+            }
         } catch (error) {
             console.error(`Error loading ${url}:`, error);
         }
@@ -15,17 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load header
     loadHTML('header.html', 'header-placeholder').then(() => {
-        // After header is loaded, initialize mobile menu if needed
+        // After the header is loaded, set up the mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileNav = document.getElementById('mobile-nav');
 
         if (mobileMenuButton && mobileNav) {
             mobileMenuButton.addEventListener('click', () => {
                 mobileNav.classList.toggle('hidden');
+                mobileNav.classList.toggle('flex');
             });
         }
     });
-
 
     // Load footer
     loadHTML('footer.html', 'footer-placeholder');
