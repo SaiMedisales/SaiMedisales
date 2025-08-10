@@ -161,58 +161,10 @@
 </head>
 <body class="bg-gray-50">
 
-    <!-- Header -->
-    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-hidden">
-        <nav class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
-            <a href="#home" class="flex items-center space-x-3 group">
-                <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-12 w-auto">
-                <span class="text-3xl font-bold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out group-hover:scale-105">
-                    Sai Medisales
-                </span>
-            </a>
-            
-            <ul class="hidden md:flex space-x-8">
-                <li><a href="#home" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a></li>
-                <li><a href="products.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Our Products</a></li>
-                <li><a href="#about" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">About Us</a></li>
-                <li><a href="contact.html" class="text-blue-600 font-medium transition-colors">Connect Us</a></li>
-            </ul>
-            
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="tel:+919822514631" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 flex items-center space-x-2 pulse-animation">
-                    <i class="fas fa-phone-alt"></i>
-                    <span class="font-medium">Call Now</span>
-                </a>
-            </div>
-            
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-blue-600" aria-label="Toggle navigation">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </nav>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-nav" class="md:hidden hidden bg-white border-t">
-            <ul class="flex flex-col space-y-4 p-6">
-                <li><a href="#home" class="block text-gray-700 hover:text-blue-600 font-medium">Home</a></li>
-                <li><a href="products.html" class="block text-gray-700 hover:text-blue-600 font-medium">Our Products</a></li>
-                <li><a href="#about" class="block text-gray-700 hover:text-blue-600 font-medium">About Us</a></li>
-                <li><a href="contact.html" class="block text-blue-600 font-medium">Connect Us</a></li>        
-                <li>
-                    <a href="tel:+919822514631" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full inline-flex items-center space-x-2">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>Call Now</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
 
-    <!-- Main Content -->
     <main class="medical-pattern">
         
-        <!-- Hero Section -->
         <section class="hero-gradient pt-24 pb-16">
             <div class="container mx-auto px-6 lg:px-12 text-center">
                 <div class="fade-in">
@@ -229,25 +181,21 @@
             </div>
         </section>
 
-        <!-- Contact Cards Section -->
         <section class="py-16 -mt-10 relative z-10">
             <div class="container mx-auto px-6 lg:px-12">
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <!-- Phone Card -->
                     <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
                         <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-phone text-2xl"></i>
                         </div>
                         <h3 class="text-lg font-semibold mb-2">Call Us</h3>
-                        <p class="text-sm opacity-90 mb-3">Mon-Sat 10AM-3PM & 1
-                            5PM-9PM</p>
+                        <p class="text-sm opacity-90 mb-3">Mon-Sat 10AM-3PM & 5PM-9PM</p>
                         <a href="tel:+919822514631" class="text-white hover:text-gray-200 font-medium">
                             +91 98225 14631
                         </a>
                     </div>
 
-                    <!-- Email Card -->
                     <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
                         <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-envelope text-2xl"></i>
@@ -259,7 +207,6 @@
                         </a>
                     </div>
 
-                    <!-- Location Card -->
                     <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
                         <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-map-marker-alt text-2xl"></i>
@@ -271,7 +218,6 @@
                         </button>
                     </div>
 
-                    <!-- WhatsApp Card -->
                     <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
                         <div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                             <i class="fab fa-whatsapp text-2xl"></i>
@@ -287,17 +233,14 @@
             </div>
         </section>
 
-        <!-- Contact Form & Info Section -->
         <section class="py-16">
             <div class="container mx-auto px-6 lg:px-12">
                 <div class="grid lg:grid-cols-2 gap-12">
                     
-                    <!-- Contact Form -->
                     <div class="fade-in">
                         <div class="bg-white rounded-2xl shadow-xl p-8">
                             <h2 class="text-3xl font-bold font-poppins text-gray-800 mb-6">Send Us a Message</h2>
                             
-                            <!-- Success Message -->
                             <div id="successMessage" class="success-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
                                 <div class="flex items-center">
                                     <i class="fas fa-check-circle mr-2"></i>
@@ -327,15 +270,15 @@
                                 
                                 <div>
                                     <label class="block text-gray-700 font-medium mb-2">Your Query *</label>
-                                    <input type="email" name="email" required 
+                                    <input type="text" name="query" required 
                                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
                                 
                                 <div>
                                     <label class="block text-gray-700 font-medium mb-2">Message *</label>
                                     <textarea name="message" rows="5" required 
-                                              placeholder="Tell us how we can help you..."
-                                              class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+                                                  placeholder="Tell us how we can help you..."
+                                                  class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
                                 </div>
                                 
                                 <button type="submit" 
@@ -347,10 +290,8 @@
                         </div>
                     </div>
 
-                    <!-- Business Info -->
                     <div class="space-y-8 fade-in">
                         
-                        <!-- Business Hours -->
                         <div class="business-hours rounded-2xl p-8 text-white">
                             <h3 class="text-2xl font-bold font-poppins mb-6">Business Hours</h3>
                             <div class="space-y-4">
@@ -373,7 +314,6 @@
                             </div>
                         </div>
 
-                        <!-- Address -->
                         <div class="bg-white rounded-2xl shadow-xl p-8">
                             <h3 class="text-2xl font-bold font-poppins text-gray-800 mb-6">Our Location</h3>
                             <div class="space-y-4">
@@ -410,15 +350,14 @@
                             </div>
                         </div>
 
-                        <!-- Map Container -->
                         <div id="mapContainer" class="map-container bg-white p-4" style="display: none;">
                             <div class="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
                                 <div class="text-center">
                                     <i class="fas fa-map text-4xl text-gray-400 mb-4"></i>
                                     <p class="text-gray-600 font-medium">Interactive Map</p>
                                     <p class="text-sm text-gray-500">Sai Medisales, Baramati, Pune</p>
-                                    <a href="https://maps.google.com/?q=Baramati,Pune,Maharashtra" 
-                                       target="_blank" 
+                                    <a href="https://www.google.com/maps/dir/?api=1&destination=Sai+Medisales,+Baramati,+Maharashtra+413102"
+                                       target="_blank"
                                        class="inline-block mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                                         Open in Google Maps
                                     </a>
@@ -431,7 +370,6 @@
             </div>
         </section>
 
-        <!-- FAQ Section -->
         <section class="py-16 bg-white">
             <div class="container mx-auto px-6 lg:px-12">
                 <div class="text-center mb-12 fade-in">
@@ -487,101 +425,39 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-6 lg:px-12">
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-10 w-auto">
-                        <div>
-                            <h3 class="text-xl font-bold font-poppins">Sai Medisales</h3>
-                            <p class="text-sm text-gray-400">Medicines & Other supplies</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 mb-4">
-                        Your trusted partner for quality medicine and exceptional service in Baramati and surrounding areas.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                    </div>
-                </div>
+    <div id="footer-placeholder"></div>
 
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Our Products</a></li>
-                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Connect Us</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
-                    <div class="space-y-3">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-phone text-blue-400"></i>
-                            <span class="text-gray-400">+91 98225 14631</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-envelope text-blue-400"></i>
-                            <span class="text-gray-400">saimedisales2013@gmail.com</span>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <i class="fas fa-map-marker-alt text-blue-400 mt-1"></i>
-                            <span class="text-gray-400">Sai Medisales, Baramati, Maharastra, India.<br>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-                <p class="text-gray-400">
-                    © Sai Medisales. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+    <script src="loadComponents.js"></script>
 
     <script>
+        // Your existing scripts
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        function setupMobileMenu() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileNav = document.getElementById('mobile-nav');
-            mobileNav.classList.toggle('hidden');
-        });
+            
+            if (mobileMenuButton && mobileNav) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileNav.classList.toggle('hidden');
+                });
+            }
+        }
 
         // Header scroll behavior
         let lastScrollTop = 0;
-        const header = document.getElementById('header');
-
         function handleHeaderScroll() {
+            const header = document.getElementById('header');
+            if (!header) return;
+
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
             if (scrollTop > 100) {
-                // Show header when scrolled down
                 header.classList.remove('header-hidden');
                 header.classList.add('header-visible');
             } else {
-                // Hide header when at top
                 header.classList.add('header-hidden');
                 header.classList.remove('header-visible');
             }
-            
-            lastScrollTop = scrollTop;
         }
 
         // Fade in animation on scroll
@@ -598,25 +474,27 @@
         }
 
         // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simulate form submission
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'block';
-                this.reset();
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Hide success message after 5 seconds
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Simulate form submission
                 setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 5000);
-            }, 1000);
-        });
-
+                    document.getElementById('successMessage').style.display = 'block';
+                    this.reset();
+                    
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                }, 1000);
+            });
+        }
+        
         // FAQ toggle functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', function() {
@@ -655,16 +533,9 @@
 
         window.addEventListener('load', () => {
             handleScrollAnimations();
-            // Keep header hidden on load
-            header.classList.add('header-hidden');
-            header.classList.remove('header-visible');
+            handleHeaderScroll(); // Call on load to hide if at top
+            setupMobileMenu(); // Set up mobile menu after content is loaded
         });
-
-        // Initialize animations
-        handleScrollAnimations();
     </script>
-
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b9846f8194c6aa',t:'MTc1NDU5ODQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
-
-
