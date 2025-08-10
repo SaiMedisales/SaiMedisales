@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Sai Medisales</title>
+    <title>Home - Sai Medisales</title>
     <meta name="description" content="Contact Sai Medisales in Baramati, Pune. Send us a query, find our address, phone number, email, business hours, and get directions on Google Maps.">
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -657,9 +657,116 @@
             });
         }
     </script>
+ <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
+        });
+
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
+        function handleHeaderScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Show header when scrolled down
+                header.classList.remove('header-hidden');
+                header.classList.add('header-visible');
+            } else {
+                // Hide header when at top
+                header.classList.add('header-hidden');
+                header.classList.remove('header-visible');
+            }
+            
+            lastScrollTop = scrollTop;
+        }
+
+        // Fade in animation on scroll
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'block';
+                this.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+                    if (otherAnswer !== answer) {
+                        otherAnswer.classList.add('hidden');
+                        otherAnswer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+        });
+
+        // Show map function
+        function showMap() {
+            const mapContainer = document.getElementById('mapContainer');
+            mapContainer.style.display = mapContainer.style.display === 'none' ? 'block' : 'none';
+            
+            if (mapContainer.style.display === 'block') {
+                mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            handleScrollAnimations();
+            handleHeaderScroll();
+        });
+
+        window.addEventListener('load', () => {
+            handleScrollAnimations();
+            // Keep header hidden on load
+            header.classList.add('header-hidden');
+            header.classList.remove('header-visible');
+        });
+
+        // Initialize animations
+        handleScrollAnimations();
+    </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b9846f8194c6aa',t:'MTc1NDU5ODQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
+
 
 
 
