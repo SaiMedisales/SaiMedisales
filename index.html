@@ -160,8 +160,7 @@
     </style>
 </head>
 <body class="bg-gray-50">
-  <!-- Header -->
-    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-hidden">
+    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-visible">
         <nav class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
             <a href="#home" class="flex items-center space-x-3 group">
                 <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-12 w-auto">
@@ -171,10 +170,10 @@
             </a>
             
             <ul class="hidden md:flex space-x-8">
-               <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Our Products</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Connect Us</a></li>
+                <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Our Products</a></li>
+                <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Connect Us</a></li>
             </ul>
             
             <div class="hidden md:flex items-center space-x-4">
@@ -191,13 +190,12 @@
             </button>
         </nav>
         
-        <!-- Mobile Menu -->
         <div id="mobile-nav" class="md:hidden hidden bg-white border-t">
             <ul class="flex flex-col space-y-4 p-6">
                 <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Our Products</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Connect Us</a></li>        
+                <li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Our Products</a></li>
+                <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Connect Us</a></li>       
                 <li>
                     <a href="tel:+919822514631" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full inline-flex items-center space-x-2">
                         <i class="fas fa-phone-alt"></i>
@@ -209,7 +207,6 @@
     </header>
 
 
-    <!-- Hero Section -->
     <section id="home" class="hero-gradient text-white pt-24 pb-20 px-6 lg:px-12 relative overflow-hidden">
         <div class="absolute inset-0 bg-black opacity-10"></div>
         <div class="container mx-auto relative z-10">
@@ -268,7 +265,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="py-16 px-6 lg:px-12 bg-white">
         <div class="container mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -292,7 +288,6 @@
         </div>
     </section>
 
-    <!-- Featured Products -->
     <section class="py-20 px-6 lg:px-12 bg-gray-50">
         <div class="container mx-auto">
             <div class="text-center mb-16 fade-in">
@@ -352,7 +347,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-20 px-6 lg:px-12 bg-white">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -414,7 +408,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12 px-6 lg:px-12">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -487,25 +480,31 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- WhatsApp Chat Widget -->
     <div class="chat-widget" onclick="openWhatsApp()">
         <i class="fab fa-whatsapp mr-2"></i>
         Chat with us
     </div>
 
     <script>
+        // Combined JavaScript for all site functionalities
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-nav');
-
-        if (mobileMenuButton && mobileMenu) {
+        const mobileNav = document.getElementById('mobile-nav');
+        if (mobileMenuButton && mobileNav) {
             mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                mobileNav.classList.toggle('hidden');
+            });
+            // Close mobile menu when clicking on links
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.add('hidden');
+                });
             });
         }
 
@@ -523,12 +522,31 @@
             });
         });
 
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // Scrolling down, hide the header
+                header.classList.remove('header-visible');
+                header.classList.add('header-hidden');
+                if (mobileNav && !mobileNav.classList.contains('hidden')) {
+                    mobileNav.classList.add('hidden');
+                }
+            } else {
+                // Scrolling up or at the top, show the header
+                header.classList.remove('header-hidden');
+                header.classList.add('header-visible');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
         // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -536,7 +554,6 @@
                 }
             });
         }, observerOptions);
-
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
@@ -554,8 +571,6 @@
                 element.textContent = Math.floor(current) + '+';
             }, 20);
         }
-
-        // Trigger counter animation when in view
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -566,14 +581,12 @@
                 }
             });
         });
-
         document.querySelectorAll('.counter').forEach(counter => {
             counterObserver.observe(counter);
         });
 
         // Back to top button
         const backToTop = document.getElementById('backToTop');
-        
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTop.classList.add('visible');
@@ -581,7 +594,6 @@
                 backToTop.classList.remove('visible');
             }
         });
-
         backToTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -598,219 +610,44 @@
         }
 
         // Newsletter form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            if (email) {
-                alert('Thank you for subscribing! We will keep you updated with our latest products and offers.');
-                this.reset();
-            }
-        });
-    </script>
-<script>
-        let lastScrollTop = 0;
-        let isScrolling = false;
-        const header = document.getElementById('header');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileNav = document.getElementById('mobile-nav');
-
-        // Scroll detection for header animation
-        window.addEventListener('scroll', function() {
-            if (!isScrolling) {
-                window.requestAnimationFrame(function() {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    // Show header when scrolling down after initial scroll
-                    if (scrollTop > 100 && scrollTop > lastScrollTop) {
-                        // Scrolling down - show header
-                        header.classList.remove('header-hidden');
-                        header.classList.add('header-visible');
-                    } else if (scrollTop <= 50) {
-                        // At top of page - hide header
-                        header.classList.remove('header-visible');
-                        header.classList.add('header-hidden');
-                    } else if (scrollTop < lastScrollTop) {
-                        // Scrolling up - show header
-                        header.classList.remove('header-hidden');
-                        header.classList.add('header-visible');
-                    }
-                    
-                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                    isScrolling = false;
-                });
-            }
-            isScrolling = true;
-        });
-
-        // Mobile menu toggle
-        if (mobileMenuButton && mobileNav) {
-            mobileMenuButton.addEventListener('click', function() {
-                mobileNav.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when clicking on links
-            const mobileLinks = mobileNav.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileNav.classList.add('hidden');
-                });
-            });
-        }
-    </script>
- <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileNav = document.getElementById('mobile-nav');
-            mobileNav.classList.toggle('hidden');
-        });
-
-        // Header scroll behavior
-        let lastScrollTop = 0;
-        const header = document.getElementById('header');
-
-        function handleHeaderScroll() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 100) {
-                // Show header when scrolled down
-                header.classList.remove('header-hidden');
-                header.classList.add('header-visible');
-            } else {
-                // Hide header when at top
-                header.classList.add('header-hidden');
-                header.classList.remove('header-visible');
-            }
-            
-            lastScrollTop = scrollTop;
-        }
-
-        // Fade in animation on scroll
-        function handleScrollAnimations() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
+        const newsletterForm = document.querySelector('form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('Thank you for subscribing! We will keep you updated with our latest products and offers.');
+                    this.reset();
                 }
             });
         }
-
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simulate form submission
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'block';
-                this.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 5000);
-            }, 1000);
-        });
-
-        // FAQ toggle functionality
+        
+        // FAQ toggle functionality (if you add an FAQ section)
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', function() {
                 const answer = this.nextElementSibling;
                 const icon = this.querySelector('i');
-                
-                // Close all other FAQs
                 document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
                     if (otherAnswer !== answer) {
                         otherAnswer.classList.add('hidden');
                         otherAnswer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
                     }
                 });
-                
-                // Toggle current FAQ
                 answer.classList.toggle('hidden');
                 icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
             });
         });
 
-        // Show map function
+        // Show map function (if you add a map section)
         function showMap() {
             const mapContainer = document.getElementById('mapContainer');
-            mapContainer.style.display = mapContainer.style.display === 'none' ? 'block' : 'none';
-            
-            if (mapContainer.style.display === 'block') {
-                mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (mapContainer) {
+                mapContainer.style.display = mapContainer.style.display === 'none' ? 'block' : 'none';
+                if (mapContainer.style.display === 'block') {
+                    mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }
         }
-
-        // Event listeners
-        window.addEventListener('scroll', () => {
-            handleScrollAnimations();
-            handleHeaderScroll();
-        });
-
-        window.addEventListener('load', () => {
-            handleScrollAnimations();
-            // Keep header hidden on load
-            header.classList.add('header-hidden');
-            header.classList.remove('header-visible');
-        });
-
-        // Initialize animations
-        handleScrollAnimations();
     </script>
-<script>
-    let lastScrollTop = 0;
-    const header = document.getElementById('header');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down
-            header.classList.remove('header-visible');
-            header.classList.add('header-hidden');
-            // Hide the mobile menu if it's open
-            if (!mobileNav.classList.contains('hidden')) {
-                mobileNav.classList.add('hidden');
-            }
-        } else {
-            // Scrolling up
-            header.classList.remove('header-hidden');
-            header.classList.add('header-visible');
-        }
-
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-
-    // Mobile menu toggle
-    if (mobileMenuButton && mobileNav) {
-        mobileMenuButton.addEventListener('click', function() {
-            mobileNav.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking on links
-        const mobileLinks = mobileNav.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileNav.classList.add('hidden');
-            });
-        });
-    }
-</script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b9846f8194c6aa',t:'MTc1NDU5ODQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
-
-
-
-
-
-
-
