@@ -56,14 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // --- Show Map Functionality ---
-    window.showMap = function() { // Attach to window to make it globally accessible from HTML onclick
+    window.showMap = function() {
         const mapContainer = document.getElementById('mapContainer');
         mapContainer.style.display = mapContainer.style.display === 'none' ? 'block' : 'none';
         if (mapContainer.style.display === 'block') {
             mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     };
-    
+
     // Call functions on initial page load
     setupMobileMenu();
     handleScrollAnimations();
