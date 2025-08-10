@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     // Function to load HTML content into a specified element
     async function loadHTML(url, elementId) {
         try {
             const response = await fetch(url);
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                console.error(`Error loading ${url}: HTTP status ${response.status}`);
+                throw new Error('Network response was not ok');
             }
             const html = await response.text();
             const element = document.getElementById(elementId);
@@ -16,73 +18,94 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Load header and then initialize its scripts
+    // Load header and then set up all other functionality
     loadHTML('header.html', 'header-placeholder').then(() => {
-        // After the header is loaded, run the setup logic from main.js
+        // Only run these functions once the header is on the page
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileNav = document.getElementById('mobile-nav');
         const header = document.getElementById('header');
 
         // Mobile menu toggle logic
-        function setupMobileMenu() {
-            if (mobileMenuButton && mobileNav) {
-                mobileMenuButton.addEventListener('click', function() {
-                    mobileNav.classList.toggle('hidden');
-                    mobileNav.classList.toggle('flex');
-                    mobileNav.classList.toggle('flex-col');
-                    mobileNav.classList.toggle('space-y-4');
+        if (mobileMenuButton && mobileNav) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileNav.classList.toggle('hidden');
+                mobileNav.classList.toggle('flex');
+            });
+
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.add('hidden');
+                    mobileNav.classList.remove('flex');
                 });
-                mobileNav.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        if (!mobileNav.classList.contains('hidden')) {
-                            mobileNav.classList.add('hidden');
-                            mobileNav.classList.remove('flex', 'flex-col', 'space-y-4');
-                        }
-                    });
-                });
-            }
-        }
-
-        // Header visibility on scroll logic
-        let lastScrollTop = 0;
-        const headerHeight = header ? header.offsetHeight : 0;
-        function handleHeaderScroll() {
-            if (!header) return;
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
-                header.style.transform = `translateY(-${headerHeight}px)`;
-            } else {
-                header.style.transform = 'translateY(0)';
-            }
-            lastScrollTop = scrollTop;
-        }
-
-        // Fade in animation on scroll
-        function handleScrollAnimations() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
             });
         }
-        
-        // Setup event listeners after header is loaded
-        window.addEventListener('scroll', () => {
-            handleScrollAnimations();
-            handleHeaderScroll();
-        });
-        window.addEventListener('load', () => {
-            handleScrollAnimations();
-            handleHeaderScroll();
-            setupMobileMenu();
-        });
+    }).catch(error => console.error("Failed to load header:", error));
 
+    // Load footer
+    loadHTML('footer.html', 'footer-placeholder').catch(error => console.error("Failed to load footer:", error));
+
+    // Form submission logic
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+    if (contactForm && successMessage) {
+        contactForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            fetch(e.target.action, {
+                method: contactForm.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    contactForm.reset();
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! There was a problem submitting your form");
+                        }
+                    });
+                }
+            }).catch(error => {
+                alert("Oops! There was a problem submitting your form: " + error.message);
+            });
+        });
+    }
+
+    // FAQ accordion logic
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const answer = item.querySelector('.faq-answer');
+            const icon = question.querySelector('i');
+
+            if (answer.classList.contains('hidden')) {
+                // Hide all other open answers
+                faqItems.forEach(otherItem => {
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    const otherIcon = otherItem.querySelector('i');
+                    if (!otherAnswer.classList.contains('hidden')) {
+                        otherAnswer.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-180');
+                    }
+                });
+
+                // Show the clicked answer
+                answer.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                // Hide the clicked answer
+                answer.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        });
     });
-
-    // Load footer separately
-    loadHTML('footer.html', 'footer-placeholder');
 });
