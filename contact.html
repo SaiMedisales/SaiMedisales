@@ -428,61 +428,8 @@
     <div id="footer-placeholder"></div>
 
     <script src="loadComponents.js"></script>
-
-    <script>
-        // Your existing scripts
-        // Contact form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
-                
-                // Simulate form submission
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'block';
-                    this.reset();
-                    
-                    setTimeout(() => {
-                        document.getElementById('successMessage').style.display = 'none';
-                    }, 5000);
-                }, 1000);
-            });
-        }        
-        // FAQ toggle functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const answer = this.nextElementSibling;
-                const icon = this.querySelector('i');
-                
-                // Close all other FAQs
-                document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
-                    if (otherAnswer !== answer) {
-                        otherAnswer.classList.add('hidden');
-                        otherAnswer.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
-                    }
-                });
-                
-                // Toggle current FAQ
-                answer.classList.toggle('hidden');
-                icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-            });
-        });
-
-        // Show map function
-        function showMap() {
-            const mapContainer = document.getElementById('mapContainer');
-            mapContainer.style.display = mapContainer.style.display === 'none' ? 'block' : 'none';
-            
-            if (mapContainer.style.display === 'block') {
-                mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-    </script>
 </body>
 </html>
+
 
 
