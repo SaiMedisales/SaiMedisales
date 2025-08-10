@@ -16,324 +16,52 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-...some-hash..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .font-poppins {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .contact-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .contact-card:nth-child(2n) {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        
-        .contact-card:nth-child(3n) {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-        
-        .contact-card:nth-child(4n) {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
-        }
-        
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .body-padding-top {
-            padding-top: 80px;
-            background-color: #f9fafb;
-        }
-        
-        .form-input {
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        /* --- Header specific styles for consistency --- */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .header-link {
-            transition: color 0.2s ease;
-        }
-        .header-link:hover {
-            color: #4361EE; /* A primary blue color */
-        }
-        
-        /* Header animation styles */
-        .header-hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-        
-        .header-visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    </style>
 </head>
 <body class="bg-gray-50">
 
     <div id="header-placeholder"></div>
 
-    <section class="hero-gradient text-white pt-24 pb-16 px-6 lg:px-12">
-        <div class="container mx-auto text-center">
-            <div class="fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold font-poppins mb-6">Our Products</h1>
-                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-blue-100">
-                    Comprehensive range of veterinary medicines, nutrition, and care products for all animals
+    <main class="medical-pattern pt-20">
+        
+        <section class="hero-gradient-products py-20">
+            <div class="container mx-auto px-6 lg:px-12 text-center fade-in">
+                <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins">
+                    Our Products
+                </h1>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+                    Explore our extensive range of high-quality veterinary, dairy, and pet care products.
                 </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-20 px-6 lg:px-12 bg-white">
-        <div class="container mx-auto">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold font-poppins mb-6 text-gray-800">Product Categories</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Quality products for comprehensive animal healthcare and nutrition</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg border border-gray-100">
-                    <div class="w-20 h-20 product-category rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-cow text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Large Farm Animal Medicines</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Cattle Medicines</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Buffalo Healthcare</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Livestock Vaccines</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Antibiotics & Treatments</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Reproductive Health</li>
-                    </ul>
+        <section class="py-16">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="mb-12 text-center fade-in">
+                    <h2 class="text-4xl font-bold text-gray-800 font-poppins mb-4">Product Categories</h2>
+                    <p class="text-gray-600 text-lg">Browse our products by category to find what you need.</p>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg border border-gray-100" style="animation-delay: 0.2s;">
-                    <div class="w-20 h-20 product-category rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-leaf text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Dairy Nutrition & Supplements</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Milk Boosters</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Feed Additives</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Mineral Supplements</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Vitamin Complexes</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Digestive Aids</li>
-                    </ul>
+                <div id="filter-buttons" class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+                    <button class="filter-btn active bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors hover:bg-blue-700" data-category="all">All Products</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="veterinary">Veterinary Medicines</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="dairy">Dairy Nutrition</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="poultry">Poultry Products</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="pet">Pet Care</button>
                 </div>
-                
-                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg border border-gray-100" style="animation-delay: 0.4s;">
-                    <div class="w-20 h-20 product-category rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-egg text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Poultry Medicines & Vaccines</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Poultry Vaccines</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Growth Promoters</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Disease Prevention</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Egg Production Aids</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Feed Supplements</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg border border-gray-100" style="animation-delay: 0.6s;">
-                    <div class="w-20 h-20 product-category rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-bone text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Premium Pet Food</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Dog Food (All Ages)</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Cat Food (All Varieties)</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Puppy & Kitten Food</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Senior Pet Nutrition</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Specialty Diets</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg border border-gray-100" style="animation-delay: 0.8s;">
-                    <div class="w-20 h-20 product-category rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-syringe text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Pet Medicines & Healthcare</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Pet Vaccines</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Flea & Tick Control</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Deworming Solutions</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Skin Care Products</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Joint & Mobility Aids</li>
-                    </ul>
-                </div>
-                
-                <div class="bg-white rounded-2xl p-8 card-hover fade-in shadow-lg border border-gray-100" style="animation-delay: 1s;">
-                    <div class="w-20 h-20 product-category rounded-2xl flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-heart text-white text-3xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Pet Accessories & Care</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Feeding Bowls & Accessories</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Grooming Supplies</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Toys & Entertainment</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Bedding & Comfort</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Training Aids</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-20 px-6 lg:px-12 bg-gray-50">
-        <div class="container mx-auto">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold font-poppins mb-6 text-gray-800">Why Choose Our Products?</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Quality assurance and trusted brands for optimal animal health</p>
+                <div id="products-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+                    </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center fade-in">
-                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-certificate text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Quality Certified</h3>
-                    <p class="text-gray-600">All products are quality certified and approved by veterinary authorities</p>
-                </div>
-                
-                <div class="text-center fade-in" style="animation-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shipping-fast text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fast Delivery</h3>
-                    <p class="text-gray-600">Quick and reliable delivery to ensure your animals get timely care</p>
-                </div>
-                
-                <div class="text-center fade-in" style="animation-delay: 0.4s;">
-                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-md text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Expert Guidance</h3>
-                    <p class="text-gray-600">Professional consultation and guidance for proper product usage</p>
-                </div>
-                
-                <div class="text-center fade-in" style="animation-delay: 0.6s;">
-                    <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-dollar-sign text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Best Prices</h3>
-                    <p class="text-gray-600">Competitive wholesale and retail prices for all our products</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-20 px-6 lg:px-12 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div class="container mx-auto text-center">
-            <div class="fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold font-poppins mb-6">Need Help Choosing Products?</h2>
-                <p class="text-xl mb-8 max-w-3xl mx-auto">
-                    Our experienced team is here to help you select the right products for your animals' specific needs.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <a href="contact.html" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        Connect Us Today
-                    </a>
-                    <a href="tel:+919822514631" class="text-white px-8 py-4 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 pulse-animation">
-                        <i class="fas fa-phone-alt mr-2"></i> Call Now
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="loadComponents.js"></script>
-    <script src="products.js"></script>
-    <script>
-        // Your existing script
-        // Header scroll behavior
-        let lastScrollTop = 0;
-        function handleHeaderScroll() {
-            const header = document.getElementById('header');
-            if (!header) return;
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > 100) {
-                header.classList.remove('header-hidden');
-                header.classList.add('header-visible');
-            } else {
-                header.classList.add('header-hidden');
-                header.classList.remove('header-visible');
-            }
-        }
-        
-        // Fade in animation on scroll
-        function handleScrollAnimations() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', () => {
-            handleScrollAnimations();
-            handleHeaderScroll();
-        });
-
-        window.addEventListener('load', () => {
-            handleScrollAnimations();
-            handleHeaderScroll();
-        });
-    </script>
+    <script src="main.js"></script>
+    <script type="module" src="products.js"></script>
 </body>
 </html>
-
