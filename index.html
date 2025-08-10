@@ -160,7 +160,7 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-visible">
+    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 rounded-full backdrop-blur-md shadow-lg transition-all duration-700 ease-in-out header-hidden">
         <nav class="container mx-auto flex justify-between items-center py-4 px-6 lg:px-12">
             <a href="#home" class="flex items-center space-x-3 group">
                 <img src="Logo .jpg" alt="Sai Medisales Logo" class="h-12 w-auto">
@@ -490,7 +490,7 @@
     </div>
 
     <script>
-        // Combined JavaScript for all site functionalities
+        // Combined and cleaned up JavaScript for all site functionalities
 
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -522,24 +522,17 @@
             });
         });
 
-        // Header scroll behavior
-        let lastScrollTop = 0;
+        // Header scroll behavior: invisible at start, appears when scrolling down
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 50) {
-                // Scrolling down, hide the header
-                header.classList.remove('header-visible');
-                header.classList.add('header-hidden');
-                if (mobileNav && !mobileNav.classList.contains('hidden')) {
-                    mobileNav.classList.add('hidden');
-                }
-            } else {
-                // Scrolling up or at the top, show the header
+            if (scrollTop > 50) { // Shows header after scrolling down 50px
                 header.classList.remove('header-hidden');
                 header.classList.add('header-visible');
+            } else { // Hides header when at the very top
+                header.classList.remove('header-visible');
+                header.classList.add('header-hidden');
             }
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         });
 
         // Fade in animation on scroll
