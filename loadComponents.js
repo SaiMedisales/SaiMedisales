@@ -10,11 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const element = document.getElementById(elementId);
             if (element) {
                 element.innerHTML = html;
-                // If header, remove .header-hidden to show it
-                if (elementId === 'header-placeholder') {
-                    const header = document.getElementById('header');
-                    if (header) header.classList.remove('header-hidden');
-                }
             }
         } catch (error) {
             console.error(`Error loading ${url}:`, error);
@@ -22,6 +17,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     loadHTML('header.html', 'header-placeholder').then(() => {
+        const header = document.getElementById('header');
+        if (header) {
+            // Show header initially if not at top
+            if (window.scrollY > 10) {
+                header.classList.remove('header-hidden');
+            } else {
+                header.classList.add('header-hidden');
+            }
+
+            // Scroll effect: Hide header at top, show on scroll down
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 10) {
+                    header.classList.remove('header-hidden');
+                } else {
+                    header.classList.add('header-hidden');
+                }
+            });
+        }
+
+        // Setup mobile menu after header is loaded
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileNav = document.getElementById('mobile-nav');
         if (mobileMenuButton && mobileNav) {
