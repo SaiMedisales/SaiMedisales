@@ -19,14 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
     loadHTML('header.html', 'header-placeholder').then(() => {
         const header = document.getElementById('header');
         if (header) {
-            // Show header initially if not at top
+            // Initial state based on scroll
             if (window.scrollY > 10) {
                 header.classList.remove('header-hidden');
             } else {
                 header.classList.add('header-hidden');
             }
 
-            // Scroll effect: Hide header at top, show on scroll down
+            // Scroll effect to show/hide header
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 10) {
                     header.classList.remove('header-hidden');
@@ -43,6 +43,15 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenuButton.addEventListener('click', () => {
                 mobileNav.classList.toggle('hidden');
                 mobileNav.classList.toggle('flex');
+            });
+            // Optional: Close mobile nav when a link is clicked (better UX)
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileNav.classList.contains('hidden')) {
+                        mobileNav.classList.add('hidden');
+                        mobileNav.classList.remove('flex');
+                    }
+                });
             });
         }
     }).catch(error => {
