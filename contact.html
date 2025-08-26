@@ -76,9 +76,13 @@
                         </div>
                         <h3 class="text-lg font-semibold mb-2">Visit Us</h3>
                         <p class="text-sm opacity-90 mb-3">Baramati, Maharastra, India</p>
-                        <button onclick="showMap()" class="text-white hover:text-gray-200 font-medium">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Sai+Medisales,+Namokar+Heights,+Mahalaxmi+Nagar,+Bhigwan+Road,+Baramati,+Pune,+Maharashtra+413102,+India"
+                           target="_blank"
+                           rel="noopener"
+                           class="text-white hover:text-gray-200 font-medium flex items-center justify-center mt-2">
+                            <i class="fas fa-directions mr-2"></i>
                             Get Directions
-                        </button>
+                        </a>
                     </div>
 
                     <div class="contact-card card-hover rounded-2xl p-6 text-white text-center fade-in">
@@ -203,11 +207,13 @@
                                         <p class="text-gray-600 mb-3">
                                             Sai Medisales, Baramati, Maharastra, India.
                                         </p>
-                                        <button onclick="showMap()" 
-                                                    class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                        <a href="https://www.google.com/maps/dir/?api=1&destination=Sai+Medisales,+Namokar+Heights,+Mahalaxmi+Nagar,+Bhigwan+Road,+Baramati,+Pune,+Maharashtra+413102,+India"
+                                           target="_blank"
+                                           rel="noopener"
+                                           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center mt-2">
                                             <i class="fas fa-directions mr-2"></i>
                                             Get Directions
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -297,14 +303,6 @@
         });
       });
     });
-
-    // Scroll to map
-    function showMap() {
-      var map = document.getElementById('mapContainer');
-      if (map) {
-        map.scrollIntoView({behavior: 'smooth'});
-      }
-    }
     </script>
 </body>
 </html>
