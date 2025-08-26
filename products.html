@@ -5,29 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Products - Sai Medisales</title>
     <meta name="description" content="Explore our comprehensive range of veterinary medicines, dairy nutrition, poultry products, and pet care supplies at Sai Medisales in Baramati, Pune.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Our Products - Sai Medisales">
+    <meta property="og:description" content="Explore our comprehensive range of veterinary medicines, dairy nutrition, poultry products, and pet care supplies at Sai Medisales.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Logo.jpg">
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
     <link rel="manifest" href="site.webmanifest">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-gray-50">
 
     <div id="header-placeholder"></div>
 
-    <main class="medical-pattern pt-20">
-        
+    <main class="medical-pattern pt-24" aria-labelledby="products-page-title">
         <section class="hero-gradient-products py-20">
-            <div class="container mx-auto px-6 lg:px-12 text-center fade-in">
-                <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins">
+            <div class="container mx-auto px-6 lg:px-12 text-center fade-in visible">
+                <h1 id="products-page-title" class="text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins">
                     Our Products
                 </h1>
                 <p class="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
@@ -38,30 +43,45 @@
 
         <section class="py-16">
             <div class="container mx-auto px-6 lg:px-12">
-                <div class="mb-12 text-center fade-in">
+                <div class="mb-12 text-center fade-in visible">
                     <h2 class="text-4xl font-bold text-gray-800 font-poppins mb-4">Product Categories</h2>
                     <p class="text-gray-600 text-lg">Browse our products by category to find what you need.</p>
                 </div>
                 
-                <div id="filter-buttons" class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
-                    <button class="filter-btn active bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors hover:bg-blue-700" data-category="all">All Products</button>
-                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="veterinary">Veterinary Medicines</button>
-                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="dairy">Dairy Nutrition</button>
-                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="poultry">Poultry Products</button>
-                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100" data-category="pet">Pet Care</button>
-                </div>
+                <nav aria-label="Product Filters" id="filter-buttons" class="flex flex-wrap justify-center gap-4 mb-12 fade-in visible">
+                    <button class="filter-btn active bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors hover:bg-blue-700 focus:outline-none" data-category="all" aria-pressed="true">All Products</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100 focus:outline-none" data-category="veterinary" aria-pressed="false">Veterinary Medicines</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100 focus:outline-none" data-category="dairy" aria-pressed="false">Dairy Nutrition</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100 focus:outline-none" data-category="poultry" aria-pressed="false">Poultry Products</button>
+                    <button class="filter-btn bg-white text-gray-700 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-colors hover:bg-gray-100 focus:outline-none" data-category="pet" aria-pressed="false">Pet Care</button>
+                </nav>
 
-                <div id="products-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+                <div id="products-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-in visible" aria-live="polite" aria-label="Product List">
+                    <!-- Product cards will be dynamically inserted here by products.js -->
                 </div>
             </div>
         </section>
-
     </main>
+
+    <button id="backToTop" class="hidden fixed right-6 bottom-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-800 transition-all z-50" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <div id="footer-placeholder"></div>
 
     <script src="loadComponents.js"></script>
     <script type="module" src="products.js"></script>
+    <script>
+      // Back to top button
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+          btn.classList.remove('hidden');
+        } else {
+          btn.classList.add('hidden');
+        }
+      });
+      btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    </script>
 </body>
 </html>
-
