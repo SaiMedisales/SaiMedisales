@@ -1,118 +1,218 @@
-// products.js
-document.addEventListener('DOMContentLoaded', () => {
+const categoryConfig = {
+    veterinary: {
+        label: 'Veterinary Medicines',
+        icon: 'fa-cow',
+        color: 'bg-blue-600',
+        categories: ['Large Animal Medicines']
+    },
+    dairy: {
+        label: 'Dairy Nutrition',
+        icon: 'fa-leaf',
+        color: 'bg-green-600',
+        categories: ['Dairy Nutrition']
+    },
+    poultry: {
+        label: 'Poultry Products',
+        icon: 'fa-feather',
+        color: 'bg-amber-500',
+        categories: ['Poultry & Birds']
+    },
+    pet: {
+        label: 'Pet Care',
+        icon: 'fa-paw',
+        color: 'bg-purple-600',
+        categories: ['Pet Food', 'Pet Medicines & Accessories']
+    }
+};
 
-    const products = [
-        {
-            name: "Veterinary Medicine 1",
-            description: "A highly effective veterinary medicine for common animal ailments.",
-            category: "veterinary",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Veterinary+Medicine+1"
-        },
-        {
-            name: "Dairy Nutrition Supplement",
-            description: "A premium supplement to improve the health and milk yield of dairy animals.",
-            category: "dairy",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Dairy+Nutrition"
-        },
-        {
-            name: "Poultry Feed Additive",
-            description: "An additive that promotes healthy growth and egg production in poultry.",
-            category: "poultry",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Poultry+Product"
-        },
-        {
-            name: "Pet Care Shampoo",
-            description: "A gentle, pH-balanced shampoo for dogs and cats.",
-            category: "pet",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Pet+Care+Product"
-        },
-        {
-            name: "Veterinary Antibiotic",
-            description: "A broad-spectrum antibiotic for treating bacterial infections in livestock.",
-            category: "veterinary",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Veterinary+Medicine+2"
-        },
-        {
-            name: "Dairy Calcium Gel",
-            description: "An oral calcium gel to prevent milk fever in cows.",
-            category: "dairy",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Dairy+Nutrition+2"
-        },
-        {
-            name: "Poultry Vaccine",
-            description: "Essential vaccine for preventing common poultry diseases.",
-            category: "poultry",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Poultry+Product+2"
-        },
-        {
-            name: "Pet Food for Puppies",
-            description: "Nutritious dry food specially formulated for the growth of puppies.",
-            category: "pet",
-            imageUrl: "https://via.placeholder.com/300x200.png?text=Pet+Care+Product+2"
-        }
-    ];
-
+document.addEventListener('DOMContentLoaded', async () => {
     const productsContainer = document.getElementById('products-container');
     const filterButtons = document.getElementById('filter-buttons');
+    const productsSummary = document.getElementById('products-summary');
 
-    function renderProducts(filteredProducts) {
-        productsContainer.innerHTML = ''; // Clear existing products
-        filteredProducts.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.className = 'product-card bg-white rounded-xl shadow-lg overflow-hidden fade-in card-hover';
-            productCard.innerHTML = `
-                <img src="${product.imageUrl}" alt="${product.name}" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold font-poppins text-gray-800 mb-2">${product.name}</h3>
-                    <p class="text-gray-600 mb-4">${product.description}</p>
-                    <a href="#" class="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
-                        Learn More
-                    </a>
-                </div>
-            `;
-            productsContainer.appendChild(productCard);
+    if (!productsContainer || !filterButtons || !productsSummary) return;
+
+    let products = [];
+    let selectedCategory = getRequestedCategory();
+
+    function getRequestedCategory() {
+        const requested = new URLSearchParams(window.location.search).get('category');
+        return requested && categoryConfig[requested] ? requested : 'all';
+    }
+
+    function getProductCategory(product) {
+        return Object.entries(categoryConfig).find(([, config]) =>
+            config.categories.includes(product.category)
+        )?.[0] || 'veterinary';
+    }
+
+    function formatDetailKey(key) {
+        return key
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, character => character.toUpperCase());
+    }
+
+    function createProductFallback(product, category) {
+        const fallback = document.createElement('div');
+        fallback.className = `product-fallback ${category.color} text-white flex flex-col items-center justify-center p-6 text-center`;
+
+        const icon = document.createElement('i');
+        icon.className = `fas ${category.icon} text-5xl mb-3`;
+        icon.setAttribute('aria-hidden', 'true');
+
+        const text = document.createElement('span');
+        text.className = 'font-semibold';
+        text.textContent = `${product.category} product`;
+
+        fallback.append(icon, text);
+        return fallback;
+    }
+
+    function createProductVisual(product, category) {
+        const visual = document.createElement('div');
+        visual.className = 'product-visual bg-slate-100';
+        if (product.image) {
+            const image = document.createElement('img');
+            image.src = product.image;
+            image.alt = product.name;
+            image.loading = 'lazy';
+            image.addEventListener('error', () => {
+                visual.replaceChildren(createProductFallback(product, category));
+            }, { once: true });
+            visual.append(image);
+        } else {
+            visual.append(createProductFallback(product, category));
+        }
+
+        return visual;
+    }
+
+    function createProductCard(product) {
+        const categoryKey = getProductCategory(product);
+        const category = categoryConfig[categoryKey];
+        const card = document.createElement('article');
+        card.className = 'product-card bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in visible';
+
+        const body = document.createElement('div');
+        body.className = 'p-6';
+
+        const categoryLabel = document.createElement('p');
+        categoryLabel.className = 'text-sm font-semibold text-blue-700 mb-2';
+        categoryLabel.textContent = category.label;
+
+        const name = document.createElement('h3');
+        name.className = 'text-xl font-bold font-poppins text-gray-800 mb-2';
+        name.textContent = product.name;
+
+        const description = document.createElement('p');
+        description.className = 'text-gray-600 mb-4';
+        description.textContent = product.description;
+
+        const productMeta = document.createElement('div');
+        productMeta.className = 'flex flex-wrap items-center justify-between gap-3 mb-4';
+
+        const price = document.createElement('span');
+        price.className = 'text-lg font-bold text-blue-700';
+        price.textContent = product.price;
+
+        const availability = document.createElement('span');
+        availability.className = 'rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800';
+        availability.textContent = product.availability;
+        productMeta.append(price, availability);
+
+        const details = document.createElement('details');
+        details.className = 'mb-5 rounded-lg bg-slate-50 p-3 text-sm text-gray-700';
+        const summary = document.createElement('summary');
+        summary.className = 'cursor-pointer font-semibold text-blue-700';
+        summary.textContent = 'Product information';
+        details.append(summary);
+
+        const detailList = document.createElement('dl');
+        detailList.className = 'mt-3 space-y-2';
+        Object.entries(product.details || {}).forEach(([key, value]) => {
+            const group = document.createElement('div');
+            const label = document.createElement('dt');
+            label.className = 'font-medium text-gray-800';
+            label.textContent = formatDetailKey(key);
+            const detail = document.createElement('dd');
+            detail.textContent = Array.isArray(value) ? value.join(', ') : value;
+            group.append(label, detail);
+            detailList.append(group);
+        });
+        details.append(detailList);
+
+        const enquiry = document.createElement('a');
+        enquiry.className = 'inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors';
+        enquiry.href = `https://wa.me/919822514631?text=${encodeURIComponent(`Hello Sai Medisales, I would like information about ${product.name}.`)}`;
+        enquiry.target = '_blank';
+        enquiry.rel = 'noopener';
+        enquiry.textContent = 'Ask about this product';
+
+        body.append(categoryLabel, name, description, productMeta, details, enquiry);
+        card.append(createProductVisual(product, category), body);
+        return card;
+    }
+
+    function getFilteredProducts() {
+        return selectedCategory === 'all'
+            ? products
+            : products.filter(product => getProductCategory(product) === selectedCategory);
+    }
+
+    function updateFilterButtons() {
+        filterButtons.querySelectorAll('.filter-btn').forEach(button => {
+            const isActive = button.dataset.category === selectedCategory;
+            button.setAttribute('aria-pressed', String(isActive));
+            button.classList.toggle('active', isActive);
+            button.classList.toggle('bg-blue-600', isActive);
+            button.classList.toggle('text-white', isActive);
+            button.classList.toggle('bg-white', !isActive);
+            button.classList.toggle('text-gray-700', !isActive);
+            button.classList.toggle('border', !isActive);
+            button.classList.toggle('border-gray-300', !isActive);
         });
     }
 
-    // Initial render of all products
-    renderProducts(products);
-
-    // Event listener for filter buttons
-    filterButtons.addEventListener('click', (e) => {
-        if (e.target.classList.contains('filter-btn')) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-blue-600', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300');
-            });
-
-            // Add active class to the clicked button
-            e.target.classList.add('active', 'bg-blue-600', 'text-white');
-            e.target.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
-
-            const category = e.target.dataset.category;
-
-            if (category === 'all') {
-                renderProducts(products);
-            } else {
-                const filtered = products.filter(product => product.category === category);
-                renderProducts(filtered);
-            }
+    function updateUrl() {
+        const url = new URL(window.location.href);
+        if (selectedCategory === 'all') {
+            url.searchParams.delete('category');
+        } else {
+            url.searchParams.set('category', selectedCategory);
         }
+        window.history.replaceState({}, '', url);
+    }
+
+    function renderProducts() {
+        const filteredProducts = getFilteredProducts();
+        productsContainer.replaceChildren(...filteredProducts.map(createProductCard));
+        const label = selectedCategory === 'all' ? 'all categories' : categoryConfig[selectedCategory].label;
+        productsSummary.textContent = `${filteredProducts.length} product${filteredProducts.length === 1 ? '' : 's'} shown for ${label}.`;
+        updateFilterButtons();
+    }
+
+    filterButtons.addEventListener('click', event => {
+        const button = event.target.closest('.filter-btn');
+        if (!button || !filterButtons.contains(button)) return;
+        selectedCategory = button.dataset.category;
+        updateUrl();
+        renderProducts();
     });
 
-    // Fade-in animation on scroll
-    const handleScrollAnimations = () => {
-        const elements = document.querySelectorAll('.fade-in');
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150;
-            if (elementTop < window.innerHeight - elementVisible) {
-                element.classList.add('visible');
-            }
-        });
-    };
-
-    window.addEventListener('scroll', handleScrollAnimations);
-    window.addEventListener('load', handleScrollAnimations);
+    try {
+        const response = await fetch('products.json');
+        if (!response.ok) throw new Error(`Unable to load products: ${response.status}`);
+        const data = await response.json();
+        if (!Array.isArray(data)) throw new Error('Invalid product catalogue data.');
+        products = data;
+        renderProducts();
+    } catch (error) {
+        console.error('Product catalogue error:', error);
+        productsContainer.replaceChildren();
+        const message = document.createElement('p');
+        message.className = 'col-span-full rounded-lg bg-red-50 p-5 text-center text-red-700';
+        message.textContent = 'The product catalogue is temporarily unavailable. Please contact us for product information.';
+        productsContainer.append(message);
+        productsSummary.textContent = 'The product catalogue is temporarily unavailable.';
+    }
 });

@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Sai Medisales</title>
-    <meta name="description" content="Contact Sai Medisales in Baramati, Pune. Send us a query, find our address, phone number, email, business hours, and get directions on Google Maps.">
+    <meta name="description" content="Contact Sai Medisales in Baramati, Pune for veterinary medicines, dairy nutrition, poultry products, pet-care supplies, and product guidance.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Contact Sai Medisales">
+    <meta property="og:description" content="Contact Sai Medisales in Baramati for veterinary medicines, animal nutrition, poultry products, and pet-care supplies.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.saimedisales.com/logo.jpg">
+    <meta property="og:url" content="https://www.saimedisales.com/contact.html">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://www.saimedisales.com/contact.html">
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -21,6 +29,46 @@
     <style>
       html { scroll-behavior: smooth; }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What veterinary products do you supply?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We supply veterinary medicines, dairy nutrition, poultry products, pet-care supplies, and other animal-health essentials. Contact us for availability of a specific product."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help me choose the right product?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Tell us the animal type and the product you need, and we will help you find suitable options. For diagnosis and treatment decisions, please consult a qualified veterinarian."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer delivery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Delivery availability depends on the product, stock, and your location. Call or WhatsApp us with your requirement and address for the available options."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I enquire or order on WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Send us your product requirement on WhatsApp and our team will respond with availability and the next steps."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-gray-50">
 
@@ -35,7 +83,7 @@
                         Get In Touch
                     </h1>
                     <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                        Ready to partner with us? We're here to help you find the perfect medical solutions for your needs.
+                        Need veterinary medicines, animal nutrition, poultry products, or pet-care supplies? Our team is ready to help.
                     </p>
                     <div class="pulse-animation inline-block">
                         <i class="fas fa-phone-alt text-6xl text-white mb-4"></i>
@@ -75,7 +123,7 @@
                             <i class="fas fa-map-marker-alt text-2xl"></i>
                         </div>
                         <h3 class="text-lg font-semibold mb-2">Visit Us</h3>
-                        <p class="text-sm opacity-90 mb-3">Baramati, Maharastra, India</p>
+                        <p class="text-sm opacity-90 mb-3">Baramati, Maharashtra, India</p>
                         <a href="https://www.google.com/maps/dir/?api=1&destination=Sai+Medisales,+Namokar+Heights,+Mahalaxmi+Nagar,+Bhigwan+Road,+Baramati,+Pune,+Maharashtra+413102,+India"
                            target="_blank"
                            rel="noopener"
@@ -91,7 +139,7 @@
                         </div>
                         <h3 class="text-lg font-semibold mb-2">WhatsApp</h3>
                         <p class="text-sm opacity-90 mb-3">Instant Support</p>
-                        <a href="https://wa.me/919822514631" target="_blank" class="text-white hover:text-gray-200 font-medium">
+                        <a href="https://wa.me/919822514631" target="_blank" rel="noopener" class="text-white hover:text-gray-200 font-medium">
                             Chat Now
                         </a>
                     </div>
@@ -108,45 +156,41 @@
                         <div class="bg-white rounded-2xl shadow-xl p-8">
                             <h2 class="text-3xl font-bold font-poppins text-gray-800 mb-6">Send Us a Message</h2>
                             
-                            <div id="successMessage" class="success-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
-                                <div class="flex items-center">
-                                    <i class="fas fa-check-circle mr-2"></i>
-                                    <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
-                                </div>
-                            </div>
+                            <div id="successMessage" class="success-message border px-4 py-3 rounded-lg mb-6" role="status" aria-live="polite"></div>
 
-                            <form id="contactForm" action="https://formspree.io/f/xjkrlejp" method="POST" class="space-y-6">
+                            <form id="contactForm" action="https://formspree.io/f/xjkrlejp" method="POST" class="space-y-6" aria-describedby="form-privacy">
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
-                                        <label class="block text-gray-700 font-medium mb-2">Full Name *</label>
-                                        <input type="text" name="name" required 
+                                        <label for="name" class="block text-gray-700 font-medium mb-2">Full Name *</label>
+                                        <input id="name" type="text" name="name" autocomplete="name" required 
                                                 class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                     </div>
                                     <div>
-                                        <label class="block text-gray-700 font-medium mb-2">Phone Number *</label>
-                                        <input type="tel" name="phone" required 
+                                        <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number *</label>
+                                        <input id="phone" type="tel" name="phone" autocomplete="tel" required 
                                                 class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                     </div>
                                 </div>
                                 
                                 <div>
-                                    <label class="block text-gray-700 font-medium mb-2">Email Address *</label>
-                                    <input type="email" name="email" required 
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                                    <input id="email" type="email" name="email" autocomplete="email" required 
                                             class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
                                 
                                 <div>
-                                    <label class="block text-gray-700 font-medium mb-2">Your Query *</label>
-                                    <input type="text" name="query" required 
+                                    <label for="query" class="block text-gray-700 font-medium mb-2">Your Query *</label>
+                                    <input id="query" type="text" name="query" required 
                                             class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 </div>
                                 
                                 <div>
-                                    <label class="block text-gray-700 font-medium mb-2">Message *</label>
-                                    <textarea name="message" rows="5" required 
+                                    <label for="message" class="block text-gray-700 font-medium mb-2">Message *</label>
+                                    <textarea id="message" name="message" rows="5" required 
                                                     placeholder="Tell us how we can help you..."
                                                     class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
                                 </div>
+                                <p id="form-privacy" class="text-sm text-gray-500">We use your details only to respond to this enquiry.</p>
                                 
                                 <button type="submit" 
                                         class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
@@ -162,22 +206,16 @@
                         <div class="business-hours rounded-2xl p-8 text-white">
                             <h3 class="text-2xl font-bold font-poppins mb-6">Business Hours</h3>
                             <div class="space-y-4">
-                                <div class="flex justify-between items-center">
+                                <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                                     <span class="font-medium">Monday - Saturday</span>
-                                    <span>10:00 AM - 3:00 PM</span>
-                                    <span>5:00 PM - 9:00 PM</span>
+                                    <span>10:00 AM - 3:00 PM &amp; 5:00 PM - 9:00 PM</span>
                                 </div>
                                 
                                 <div class="flex justify-between items-center">
                                     <span class="font-medium">Sunday</span>
                                     <span class="text-red-200">Closed</span>
                                 </div>
-                                <div class="mt-6 pt-4 border-t border-white border-opacity-20">
-                                    <p class="text-sm opacity-90">
-                                        <i class="fas fa-info-circle mr-2"></i>
-                                        Emergency services available 24/7
-                                    </p>
-                                </div>
+                                <p class="mt-6 border-t border-white border-opacity-20 pt-4 text-sm opacity-90">For product availability and delivery enquiries, please call or WhatsApp us during business hours.</p>
                             </div>
                         </div>
 
@@ -205,7 +243,7 @@
                                     <div>
                                         <h4 class="font-semibold text-gray-800">Directions</h4>
                                         <p class="text-gray-600 mb-3">
-                                            Sai Medisales, Baramati, Maharastra, India.
+                                            Sai Medisales, Baramati, Maharashtra, India.
                                         </p>
                                         <a href="https://www.google.com/maps/dir/?api=1&destination=Sai+Medisales,+Namokar+Heights,+Mahalaxmi+Nagar,+Bhigwan+Road,+Baramati,+Pune,+Maharashtra+413102,+India"
                                            target="_blank"
@@ -239,41 +277,41 @@
                     
                     <div class="faq-item bg-gray-50 rounded-lg fade-in">
                         <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
-                            <span>What types of medical equipment do you supply?</span>
-                            <i class="fas fa-chevron-down transition-transform"></i>
+                            <span>What veterinary products do you supply?</span>
+                            <i class="fas fa-chevron-down transition-transform" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                            <p>We supply a wide range of medical equipment including diagnostic devices, surgical instruments, hospital furniture, patient monitoring systems, and rehabilitation equipment. Contact us for specific product inquiries.</p>
+                            <p>We supply veterinary medicines, dairy nutrition, poultry products, pet-care supplies, and other animal-health essentials. Contact us for availability of a specific product.</p>
                         </div>
                     </div>
 
                     <div class="faq-item bg-gray-50 rounded-lg fade-in">
                         <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
-                            <span>Do you provide installation and maintenance services?</span>
-                            <i class="fas fa-chevron-down transition-transform"></i>
+                            <span>Can you help me choose the right product?</span>
+                            <i class="fas fa-chevron-down transition-transform" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                            <p>Yes, we provide complete installation, training, and maintenance services for all equipment we supply. Our certified technicians ensure proper setup and ongoing support.</p>
+                            <p>Yes. Tell us the animal type and the product you need, and we will help you find suitable options. For diagnosis and treatment decisions, please consult a qualified veterinarian.</p>
                         </div>
                     </div>
 
                     <div class="faq-item bg-gray-50 rounded-lg fade-in">
                         <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
-                            <span>What are your delivery timelines?</span>
-                            <i class="fas fa-chevron-down transition-transform"></i>
+                            <span>Do you offer delivery?</span>
+                            <i class="fas fa-chevron-down transition-transform" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                            <p>Delivery timelines vary based on product availability and location. Standard items are typically delivered within 3-7 business days, while specialized equipment may take 2-4 weeks.</p>
+                            <p>Delivery availability depends on the product, stock, and your location. Call or WhatsApp us with your requirement and address for the available options.</p>
                         </div>
                     </div>
 
                     <div class="faq-item bg-gray-50 rounded-lg fade-in">
                         <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 transition-colors flex justify-between items-center">
-                            <span>Do you offer financing options?</span>
-                            <i class="fas fa-chevron-down transition-transform"></i>
+                            <span>Can I enquire or order on WhatsApp?</span>
+                            <i class="fas fa-chevron-down transition-transform" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-600">
-                            <p>Yes, we offer flexible financing options and payment plans for qualified customers. Contact our sales team to discuss financing solutions that work for your budget.</p>
+                            <p>Yes. Send us your product requirement on WhatsApp and our team will respond with availability and the next steps.</p>
                         </div>
                     </div>
 
@@ -286,6 +324,7 @@
     <div id="footer-placeholder"></div>
 
     <script src="loadComponents.js"></script>
+    <script src="contact.js"></script>
     <script>
     // Fade-in animation on load
     document.addEventListener('DOMContentLoaded', function() {
@@ -294,12 +333,18 @@
       });
 
       // FAQ accordion functionality
-      document.querySelectorAll('.faq-question').forEach(function(btn) {
+      document.querySelectorAll('.faq-question').forEach(function(btn, index) {
+        var answer = btn.parentElement.querySelector('.faq-answer');
+        var answerId = 'faq-answer-' + (index + 1);
+        answer.id = answerId;
+        btn.setAttribute('aria-controls', answerId);
+        btn.setAttribute('aria-expanded', 'false');
         btn.addEventListener('click', function() {
-          var answer = btn.parentElement.querySelector('.faq-answer');
           var icon = btn.querySelector('i');
-          answer.classList.toggle('hidden');
-          icon.classList.toggle('rotate-180');
+          var isOpen = btn.getAttribute('aria-expanded') === 'true';
+          answer.classList.toggle('hidden', isOpen);
+          icon.classList.toggle('rotate-180', !isOpen);
+          btn.setAttribute('aria-expanded', String(!isOpen));
         });
       });
     });

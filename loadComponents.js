@@ -18,40 +18,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loadHTML('header.html', 'header-placeholder').then(() => {
         const header = document.getElementById('header');
-        if (header) {
-            // Initial state based on scroll
-            if (window.scrollY > 10) {
-                header.classList.remove('header-hidden');
-            } else {
-                header.classList.add('header-hidden');
-            }
-
-            // Scroll effect to show/hide header
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 10) {
-                    header.classList.remove('header-hidden');
-                } else {
-                    header.classList.add('header-hidden');
-                }
-            });
-        }
-
-        // Setup mobile menu after header is loaded
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileNav = document.getElementById('mobile-nav');
+
+        function closeMobileMenu() {
+            if (!mobileMenuButton || !mobileNav) return;
+            mobileNav.classList.add('hidden');
+            mobileNav.classList.remove('flex');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+        }
+
+        function setHeaderVisibility(isVisible) {
+            if (!header) return;
+            header.classList.toggle('header-hidden', !isVisible);
+            header.classList.toggle('header-visible', isVisible);
+            header.setAttribute('aria-hidden', String(!isVisible));
+            header.inert = !isVisible;
+
+            if (!isVisible) closeMobileMenu();
+        }
+
+        if (header) {
+            const revealHeader = () => setHeaderVisibility(window.scrollY > 50);
+            revealHeader();
+            window.addEventListener('scroll', revealHeader, { passive: true });
+        }
+
         if (mobileMenuButton && mobileNav) {
             mobileMenuButton.addEventListener('click', () => {
-                mobileNav.classList.toggle('hidden');
-                mobileNav.classList.toggle('flex');
+                const isOpen = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                mobileNav.classList.toggle('hidden', isOpen);
+                mobileNav.classList.toggle('flex', !isOpen);
+                mobileMenuButton.setAttribute('aria-expanded', String(!isOpen));
             });
-            // Optional: Close mobile nav when a link is clicked (better UX)
             mobileNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (!mobileNav.classList.contains('hidden')) {
-                        mobileNav.classList.add('hidden');
-                        mobileNav.classList.remove('flex');
-                    }
-                });
+                link.addEventListener('click', closeMobileMenu);
             });
         }
     }).catch(error => {
