@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const categoryKey = getProductCategory(product);
         const category = categoryConfig[categoryKey];
         const card = document.createElement('article');
-        card.className = 'product-card bg-white rounded-xl shadow-lg overflow-hidden card-hover fade-in visible';
+        card.className = 'product-card bg-white rounded-xl shadow-lg overflow-hidden card-hover tilt-hover fade-in visible';
 
         const body = document.createElement('div');
         body.className = 'p-6';
