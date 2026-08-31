@@ -67,31 +67,37 @@
 
     <section id="home" class="hero-gradient text-white pt-24 pb-20 px-6 lg:px-12 relative overflow-hidden">
         <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="hero-blob w-96 h-96 bg-amber-400 -top-20 -right-20"></div>
+        <div class="hero-blob w-80 h-80 bg-emerald-400 bottom-0 left-0"></div>
         <div class="container mx-auto relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="fade-in">
-                    <h1 class="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight">
-                        Your Trusted <span class="text-yellow-300">Veterinary Partner</span> Since 1999
+                    <span class="eyebrow glass-badge text-amber-200 mb-5">
+                        <i class="fas fa-shield-heart"></i>
+                        Trusted Since 1999
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-bold font-poppins mb-6 mt-5 leading-tight">
+                        Your Trusted <span class="text-amber-300">Veterinary Partner</span> Since 1999
                     </h1>
                     <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
                         Comprehensive range of veterinary medicines, nutrition, and care products for all animals. Quality healthcare solutions you can trust.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <a href="products.html" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 text-center shadow-lg hover:shadow-xl">
+                        <a href="products.html" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 hover:scale-105 transition-all duration-300 text-center shadow-lg hover:shadow-xl">
                             Explore Products
                         </a>
-                        <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 text-center">
+                        <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 hover:scale-105 transition-all duration-300 text-center">
                             Get Consultation
                         </a>
                     </div>
-                    <div class="flex items-center space-x-6 text-blue-100">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-check-circle text-green-400"></i>
-                            <span>25+ Years Experience</span>
+                    <div class="flex flex-wrap items-center gap-3 text-blue-100">
+                        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2">
+                            <i class="fas fa-check-circle text-amber-300"></i>
+                            <span class="text-sm font-medium">25+ Years Experience</span>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-check-circle text-green-400"></i>
-                            <span>1000+ Happy Customers</span>
+                        <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2">
+                            <i class="fas fa-check-circle text-amber-300"></i>
+                            <span class="text-sm font-medium">1000+ Happy Customers</span>
                         </div>
                     </div>
                 </div>
@@ -125,22 +131,34 @@
 
     <section class="py-16 px-6 lg:px-12 bg-white">
         <div class="container mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center fade-in">
-                    <div class="counter text-5xl font-bold text-blue-600 font-poppins" data-target="25">0</div>
-                    <p class="text-gray-600 font-medium">Years Experience</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center fade-in rounded-2xl border border-slate-100 shadow-lg card-hover p-6">
+                    <div class="icon-badge icon-badge-teal w-12 h-12 mx-auto mb-3">
+                        <i class="fas fa-calendar-check text-lg"></i>
+                    </div>
+                    <div class="counter text-4xl font-bold text-blue-600 font-poppins" data-target="25">0</div>
+                    <p class="text-gray-600 font-medium text-sm mt-1">Years Experience</p>
                 </div>
-                <div class="text-center fade-in" style="animation-delay: 0.2s;">
-                    <div class="counter text-5xl font-bold text-blue-600 font-poppins" data-target="1000">0</div>
-                    <p class="text-gray-600 font-medium">Happy Customers</p>
+                <div class="text-center fade-in rounded-2xl border border-slate-100 shadow-lg card-hover p-6" style="animation-delay: 0.2s;">
+                    <div class="icon-badge icon-badge-green w-12 h-12 mx-auto mb-3">
+                        <i class="fas fa-users text-lg"></i>
+                    </div>
+                    <div class="counter text-4xl font-bold text-blue-600 font-poppins" data-target="1000">0</div>
+                    <p class="text-gray-600 font-medium text-sm mt-1">Happy Customers</p>
                 </div>
-                <div class="text-center fade-in" style="animation-delay: 0.4s;">
-                    <div class="counter text-5xl font-bold text-blue-600 font-poppins" data-target="500">0</div>
-                    <p class="text-gray-600 font-medium">Products Available</p>
+                <div class="text-center fade-in rounded-2xl border border-slate-100 shadow-lg card-hover p-6" style="animation-delay: 0.4s;">
+                    <div class="icon-badge icon-badge-amber w-12 h-12 mx-auto mb-3">
+                        <i class="fas fa-kit-medical text-lg"></i>
+                    </div>
+                    <div class="counter text-4xl font-bold text-blue-600 font-poppins" data-target="500">0</div>
+                    <p class="text-gray-600 font-medium text-sm mt-1">Products Available</p>
                 </div>
-                <div class="text-center fade-in" style="animation-delay: 0.6s;">
-                    <div class="counter text-5xl font-bold text-blue-600 font-poppins" data-target="50">0</div>
-                    <p class="text-gray-600 font-medium">Cities Served</p>
+                <div class="text-center fade-in rounded-2xl border border-slate-100 shadow-lg card-hover p-6" style="animation-delay: 0.6s;">
+                    <div class="icon-badge icon-badge-teal w-12 h-12 mx-auto mb-3">
+                        <i class="fas fa-city text-lg"></i>
+                    </div>
+                    <div class="counter text-4xl font-bold text-blue-600 font-poppins" data-target="50">0</div>
+                    <p class="text-gray-600 font-medium text-sm mt-1">Cities Served</p>
                 </div>
             </div>
         </div>
@@ -154,27 +172,27 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-white rounded-2xl p-6 card-hover fade-in shadow-lg">
-                    <div class="w-16 h-16 bg-blue-600 product-category rounded-2xl flex items-center justify-center mb-4">
-                        <i class="fas fa-paw text-white text-2xl"></i>
+                <div class="bg-white rounded-2xl p-6 card-hover fade-in shadow-lg border border-slate-100">
+                    <div class="icon-badge icon-badge-teal w-16 h-16 mb-4">
+                        <i class="fas fa-paw text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Share Your Requirement</h3>
                     <p class="text-gray-600 mb-5">Tell us the animal type, product requirement, preferred company, and pack size if you know it.</p>
                     <a href="https://wa.me/919822514631?text=Hello%20Sai%20Medisales%2C%20I%20need%20help%20finding%20a%20product." target="_blank" rel="noopener" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Message Us</a>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-6 card-hover fade-in shadow-lg" style="animation-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-green-500 product-category rounded-2xl flex items-center justify-center mb-4">
-                        <i class="fas fa-tags text-white text-2xl"></i>
+                <div class="bg-white rounded-2xl p-6 card-hover fade-in shadow-lg border border-slate-100" style="animation-delay: 0.2s;">
+                    <div class="icon-badge icon-badge-green w-16 h-16 mb-4">
+                        <i class="fas fa-tags text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Choose a Trusted Brand</h3>
                     <p class="text-gray-600 mb-5">Enquire about Virbac, Intas, Vetoquinol, Venky's, Provimi, and other brands we source.</p>
                     <a href="products.html#brands" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Browse Brands</a>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-6 card-hover fade-in shadow-lg" style="animation-delay: 0.4s;">
-                    <div class="w-16 h-16 bg-purple-600 product-category rounded-2xl flex items-center justify-center mb-4">
-                        <i class="fas fa-star text-white text-2xl"></i>
+                <div class="bg-white rounded-2xl p-6 card-hover fade-in shadow-lg border border-slate-100" style="animation-delay: 0.4s;">
+                    <div class="icon-badge icon-badge-amber w-16 h-16 mb-4">
+                        <i class="fas fa-star text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-800 mb-2">Special Products</h3>
                     <p class="text-gray-600 mb-5">Ask us about Sai Medisales special products selected for practical customer needs and value.</p>

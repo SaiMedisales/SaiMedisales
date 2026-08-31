@@ -23,6 +23,31 @@ body {
     line-height: 1.6;
     color: #16302b;
     background-color: #f8faf7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a, button {
+    transition: all 0.25s ease;
+}
+
+::selection {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--light-gray-background);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
 }
 
 .font-poppins {
@@ -59,12 +84,12 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+@keyframes softGlow {
+    0%, 100% { box-shadow: 0 8px 20px rgba(21, 107, 122, 0.25); }
+    50% { box-shadow: 0 8px 28px rgba(229, 143, 35, 0.35); }
 }
 .pulse-animation {
-    animation: pulse 2s infinite ease-in-out;
+    animation: softGlow 3s ease-in-out infinite;
 }
 
 @keyframes slideIn {
@@ -98,7 +123,7 @@ body {
     transition: all 0.3s ease;
 }
 .nav-link:hover {
-    background-color: rgba(59, 130, 246, 0.1);
+    background-color: rgba(21, 107, 122, 0.08);
     transform: translateY(-1px);
 }
 .nav-link::after {
@@ -108,7 +133,7 @@ body {
     left: 50%;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
@@ -173,7 +198,7 @@ body {
 }
 
 :focus-visible {
-    outline: 3px solid #1d4ed8;
+    outline: 3px solid var(--primary-color);
     outline-offset: 3px;
 }
 
@@ -218,14 +243,20 @@ body {
     border: 1px solid var(--border-color);
     background: #fff;
     box-shadow: 0 8px 20px rgba(22, 48, 43, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .brand-card:hover {
     border-color: var(--secondary-color);
-    box-shadow: 0 14px 28px rgba(22, 48, 43, 0.12);
+    box-shadow: 0 16px 32px rgba(22, 48, 43, 0.14);
+    transform: translateY(-5px);
 }
 .brand-mark {
     background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color));
     color: #fff;
+    transition: transform 0.3s ease;
+}
+.brand-card:hover .brand-mark {
+    transform: scale(1.08) rotate(-2deg);
 }
 .form-input {
     transition: all 0.3s ease;
@@ -321,6 +352,60 @@ body {
 }
 .service-ribbon {
     background: linear-gradient(100deg, var(--primary-dark), var(--primary-color), #3f8c6a);
+}
+
+/* =====================================
+ * Modern UI accents
+ * ===================================== */
+.glass-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+}
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.hero-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+}
+.stat-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 20px rgba(22, 48, 43, 0.06);
+    transition: all 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(22, 48, 43, 0.12);
+    border-color: var(--secondary-color);
+}
+.faq-item {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 16px rgba(22, 48, 43, 0.05);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.faq-item:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 12px 24px rgba(22, 48, 43, 0.1);
 }
 
 @media (prefers-reduced-motion: reduce) {
