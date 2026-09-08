@@ -9,7 +9,7 @@
     <meta property="og:title" content="Sai Medisales | Veterinary Medicines &amp; Animal Care">
     <meta property="og:description" content="Veterinary medicines, dairy nutrition, poultry products, and pet-care essentials in Baramati, Pune.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.saimedisales.com/logo.jpg">
+    <meta property="og:image" content="https://www.saimedisales.com/hero-banner.jpg">
     <meta property="og:url" content="https://www.saimedisales.com/">
     <meta name="twitter:card" content="summary">
     <link rel="canonical" href="https://www.saimedisales.com/">
@@ -448,19 +448,21 @@
 
         // Back to top button
         const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
             });
-        });
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
         // WhatsApp chat function
         function openWhatsApp() {

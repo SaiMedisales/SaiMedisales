@@ -9,7 +9,7 @@
     <meta property="og:title" content="Contact Sai Medisales">
     <meta property="og:description" content="Contact Sai Medisales in Baramati for veterinary medicines, animal nutrition, poultry products, and pet-care supplies.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.saimedisales.com/logo.jpg">
+    <meta property="og:image" content="https://www.saimedisales.com/hero-banner.jpg">
     <meta property="og:url" content="https://www.saimedisales.com/contact.html">
     <meta name="twitter:card" content="summary">
     <link rel="canonical" href="https://www.saimedisales.com/contact.html">
@@ -166,6 +166,9 @@
                             <div id="successMessage" class="success-message border px-4 py-3 rounded-lg mb-6" role="status" aria-live="polite"></div>
 
                             <form id="contactForm" action="https://formspree.io/f/xjkrlejp" method="POST" class="space-y-6" aria-describedby="form-privacy">
+                                <input type="hidden" name="_subject" value="New enquiry from Sai Medisales website">
+                                <label for="companyWebsite" class="absolute left-[-9999px]" aria-hidden="true">Leave this field empty</label>
+                                <input id="companyWebsite" type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="absolute left-[-9999px]" aria-hidden="true">
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <label for="name" class="block text-gray-700 font-medium mb-2">Full Name *</label>
@@ -330,6 +333,15 @@
 
     <div id="footer-placeholder"></div>
 
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="chat-widget" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp mr-2"></i>
+        Chat with us
+    </div>
+
     <script src="loadComponents.js"></script>
     <script src="contact.js"></script>
     <script>
@@ -354,7 +366,30 @@
           btn.setAttribute('aria-expanded', String(!isOpen));
         });
       });
+
+      // Back to top button
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 300) {
+            backToTop.classList.add('visible');
+          } else {
+            backToTop.classList.remove('visible');
+          }
+        });
+        backToTop.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     });
+
+    // WhatsApp chat function
+    function openWhatsApp() {
+        var phoneNumber = '919822514631';
+        var message = 'Hello! I would like to know more about your veterinary products.';
+        var url = 'https://wa.me/' + phoneNumber + '?text=' + encodeURIComponent(message);
+        window.open(url, '_blank');
+    }
     </script>
 </body>
 </html>

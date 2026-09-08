@@ -9,7 +9,7 @@
     <meta property="og:title" content="Veterinary Brands &amp; Special Products | Sai Medisales">
     <meta property="og:description" content="Tell us your veterinary product requirement and enquire about current availability from trusted brands.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.saimedisales.com/logo.jpg">
+    <meta property="og:image" content="https://www.saimedisales.com/hero-banner.jpg">
     <meta property="og:url" content="https://www.saimedisales.com/products.html">
     <meta name="twitter:card" content="summary">
     <link rel="canonical" href="https://www.saimedisales.com/products.html">
@@ -83,6 +83,35 @@
             </div>
         </section>
 
+        <section id="catalogue" class="py-16 bg-white" aria-labelledby="catalogue-title">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="mb-10 text-center">
+                    <span class="eyebrow text-teal-700 justify-center inline-flex mb-3">
+                        <i class="fas fa-boxes-stacked"></i>
+                        Product Catalogue
+                    </span>
+                    <h2 id="catalogue-title" class="text-4xl font-bold font-poppins text-gray-800 mb-4">Explore Our Product Categories</h2>
+                    <p class="mx-auto max-w-3xl text-gray-600">Browse a sample of what we can source. Availability, pack size, and pricing may change &mdash; contact us to confirm current stock for your requirement.</p>
+                </div>
+
+                <div id="filter-buttons" class="mb-8 flex flex-wrap justify-center gap-3" role="group" aria-label="Filter products by category">
+                    <button type="button" class="filter-btn rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-semibold text-gray-700 transition-colors" data-category="all" aria-pressed="true">All Products</button>
+                    <button type="button" class="filter-btn rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-semibold text-gray-700 transition-colors" data-category="veterinary" aria-pressed="false">Veterinary Medicines</button>
+                    <button type="button" class="filter-btn rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-semibold text-gray-700 transition-colors" data-category="dairy" aria-pressed="false">Dairy Nutrition</button>
+                    <button type="button" class="filter-btn rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-semibold text-gray-700 transition-colors" data-category="poultry" aria-pressed="false">Poultry Products</button>
+                    <button type="button" class="filter-btn rounded-full border border-gray-300 bg-white px-5 py-2 text-sm font-semibold text-gray-700 transition-colors" data-category="pet" aria-pressed="false">Pet Care</button>
+                </div>
+
+                <p id="products-summary" class="mb-8 text-center text-gray-600" aria-live="polite">Loading products&hellip;</p>
+
+                <div id="products-container" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+
+                <p class="mx-auto mt-10 max-w-3xl text-center text-sm text-gray-500">
+                    Product information shown here is for general enquiry purposes only. Please consult a qualified veterinarian for diagnosis, treatment, dosage, and vaccination decisions, and confirm current pricing and stock with our team before purchase.
+                </p>
+            </div>
+        </section>
+
         <section class="border-y border-amber-200 bg-amber-50 py-16" aria-labelledby="special-products-title">
             <div class="container mx-auto px-6 lg:px-12 text-center">
                 <h2 id="special-products-title" class="mb-4 text-4xl font-bold font-poppins text-gray-800">Sai Medisales Special Products</h2>
@@ -136,24 +165,40 @@
         </section>
     </main>
 
-    <button id="backToTop" class="hidden fixed right-6 bottom-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-800 transition-all z-50" aria-label="Back to top">
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <div class="chat-widget" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp mr-2"></i>
+        Chat with us
+    </div>
 
     <div id="footer-placeholder"></div>
 
     <script src="loadComponents.js"></script>
+    <script src="products.js"></script>
     <script>
       // Back to top button
       const btn = document.getElementById('backToTop');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-          btn.classList.remove('hidden');
-        } else {
-          btn.classList.add('hidden');
-        }
-      });
-      btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+      if (btn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 200) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+        });
+        btn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+      }
+
+      // WhatsApp chat function
+      function openWhatsApp() {
+        const phoneNumber = '919822514631';
+        const message = 'Hello! I would like to know more about your veterinary products.';
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+      }
     </script>
 </body>
 </html>
